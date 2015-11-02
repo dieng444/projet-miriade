@@ -19,7 +19,13 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "sensio/framework-extra-bundle": "~3.0,>=3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
+<<<<<<< HEAD
         "stof/doctrine-extensions-bundle": "~1.1"
+=======
+        "stof/doctrine-extensions-bundle": "^1.2",
+        "friendsofsymfony/user-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "^1.2"
+>>>>>>> 5318a8457914e01f2d5294c29b9ab4be133b5d7e
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
@@ -60,4 +66,7 @@
         }
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5318a8457914e01f2d5294c29b9ab4be133b5d7e
