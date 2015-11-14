@@ -1,0 +1,100 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	min-width: 320px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+            /*body { background-color:#CCC }*/
+.jumbotron-main{
+	padding-top: 50px;
+	min-height: 400px;
+	background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+}
+.intro-message{
+	text-align: center;
+	color: #fff;
+}
+.jumbotron-main nav.navbar{
+	background-color: rgb(245, 245, 245);
+	border-bottom: 2px solid silver;
+}
+.navbar-brand{
+	padding: 5px;
+	height: auto;
+}
+#navbar{
+	padding-top: 10px;
+}
+#navbar .nav{
+	font-size: 17px;
+}
+.contact-item{
+	overflow: hidden;
+	min-height: 170px;
+	padding: 5px;
+	margin-bottom: 20px;
+	background-color: #F5F5F5;
+	border: 1px solid #E3E3E3;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+.contact-item img{
+	width: 100%;
+	max-width: 150px;
+	max-height: 80px;
+}
+.contact-item table{
+	margin: 0;
+}
+.contact-item table td{
+	border: none!important;
+}
+#connexionModal,#inscriptionModal{
+	opacity: 1;
+}
+#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
+	width: 400px;
+}
+@media screen and (max-width: 768px) {
+ 	#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
+		width: auto;
+	}
+}
+
+.participants-navigation{
+	padding: 0;
+}
+
+.participants-navigation .container-fluid{
+	margin: 0px 15px;
+	padding: 0;
+	background-color: #F5F5F5;
+	border: 1px solid #E3E3E3;
+	border-radius: 4px;
+	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.organisateurs-block-item{
+	margin-bottom: 10px;
+}
+.justified{
+	text-align: center;
+}
+.participants-list img.img-responsive{
+	margin: auto;
+}
+.participants-pagination-wrap .pagination{
+	margin: 40px 0 0;
+}
+
+/*.btn-success{
+	background: #D67E30;
+	border-color: #D67E30;
+}
+.btn-success:hover{
+	background-color: rgb(240, 162, 27);
+	border-color: rgb(218, 193, 11);
+}*/
+.tab-sections{
+	margin-bottom: 20px;
+}
