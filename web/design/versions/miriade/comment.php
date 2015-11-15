@@ -55,11 +55,11 @@
   <strong>Quelques jours avant la&nbsp;conférence nous vous enverrons un email avec votre planning de rendez-vous personnalisé</strong> avec les détails de toutes les personnes que vous allez rencontrer.</p>
           
           </div>
+        </div>
+        <?php include('aside.inc'); ?>
 
       </div>
       <!-- /.row -->
-      
-      <?php include('aside.inc'); ?>
 
       <footer>
         <p>&copy; Miriade 2015</p>

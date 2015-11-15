@@ -101,11 +101,13 @@
               </li>
             </ul>
           </nav>
+        </div>
+      
+      
+        <?php include('aside.inc'); ?>
+
       </div>
       <!-- /.row -->
-      
-      <?php include('aside.inc'); ?>
-
       <footer>
         <p>&copy; Miriade 2015</p>
       </footer>

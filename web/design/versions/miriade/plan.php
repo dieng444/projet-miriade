@@ -58,12 +58,12 @@
                 </div>
               <div id="map-container" class="col-md-8"></div>
             </div><!-- /map-outer -->
-        </div> <!-- /row -->
+          </div> <!-- /row -->
+        </div>
+        <?php include('aside.inc'); ?>
 
       </div>
       <!-- /.row -->
-      
-      <?php include('aside.inc'); ?>
 
       <footer>
         <p>&copy; Miriade 2015</p>

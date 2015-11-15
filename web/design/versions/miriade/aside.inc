@@ -1,4 +1,3 @@
-<div class="row">
         <div class="col-md-3">
            <div class="well organisateurs-block">
               <h4>Organizateurs</h4>
@@ -42,5 +41,4 @@
               <!-- /.row -->
            </div>
         </div>
-      </div>
-      <!-- /.row -->
+      
