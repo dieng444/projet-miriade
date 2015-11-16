@@ -5,12 +5,12 @@
         {#{%if is_granted("ROLE_USER")%}#}
             {#{%if owner_fiche_exist==false%}#}
             <div class="head-button">
-                <a href="{{ path('event_event_event_dashboard') }}" class='btn boxShadow1' type='button'>La Carte</a>
-                <a href="{{ path('carto_fiche_fiche_new') }}" class="btn boxShadow1">Votre Initiative</a>
-                {%if is_granted("ROLE_SUPER_ADMIN")%}
-                    <a href="{{ path('carto_admin_manageFiches') }}" class="btn boxShadow1">Administration</a>
-                {%endif%}
-                <a href="{{ path('fos_user_security_logout') }}" class="btn boxShadow1">Déconnexion</a>
+                <a href="{{ path('miriade_event_event_dashboard') }}" class='btn boxShadow1' type='button'>Accueil/a>
+                <a href="{{ path('miriade_event_event_new') }}" class="btn boxShadow1">Nouvel événement</a>
+                {#{%if is_granted("ROLE_SUPER_ADMIN")%}#}
+                    {#<a href="{{ path('carto_admin_manageFiches') }}" class="btn boxShadow1">Administration</a>#}
+                {#{%endif%}#}
+                {#<a href="{{ path('fos_user_security_logout') }}" class="btn boxShadow1">Déconnexion</a>#}
             </div>
         {#{% else %}#}
             {#<div class="head-button">#}
@@ -25,7 +25,7 @@
 
 {% block footer %}
     <footer>
-        <p>© BDIS 2015 tous droits réservés</p>
-        <p><a href="#">Contacts</a> | <a href="{{ path('carto_fiche_dashboard_credits') }}">Crédits</a> | <a href="{{ path('carto_fiche_dashboard_mentions') }}">Mentions légales</a> | <a href="{{ path('carto_fiche_dashboard_charte') }}">Charte BDIS</a> | <a href="http://la-bdis.org/">Site national</a></p>
+        <p>© MIRIADE 2015 tous droits réservés</p>
+        {#<p><a href="#">Contacts</a> | <a href="{{ path('carto_fiche_dashboard_credits') }}">Crédits</a> | <a href="{{ path('carto_fiche_dashboard_mentions') }}">Mentions légales</a> | <a href="{{ path('carto_fiche_dashboard_charte') }}">Charte BDIS</a> | <a href="http://la-bdis.org/">Site national</a></p>#}
     </footer>
 {% endblock %}

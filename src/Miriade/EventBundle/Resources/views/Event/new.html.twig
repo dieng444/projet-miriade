@@ -1,4 +1,4 @@
-{% extends 'EventEventBundle::layout.html.twig' %}
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
 
 {% block content %}
     <div id="wrap">
@@ -6,7 +6,7 @@
             <h2>Création d'une événement</h2>
             <hr>
         </div>
-        {{ form_start(form, {"action": path('event_event_event_create')} ) }}
+        {{ form_start(form, {"action": path('miriade_event_event_create')} ) }}
         <p>{{ form_label(form.title) }}</p>
         <p>{{ form_widget(form.title) }}</p>
 
