@@ -1,14 +1,14 @@
-event_event_event_dashboard:
+miriade_event_event_dashboard:
     pattern: /event/dashboard
     defaults:
-        _controller: EventEventBundle:Event:dashboard
+        _controller: MiriadeEventBundle:Event:dashboard
 
-event_event_event_new:
+miriade_event_event_new:
     pattern: /event/new
     defaults:
-        _controller: EventEventBundle:Event:new
+        _controller: MiriadeEventBundle:Event:new
 
-event_event_event_create:
+miriade_event_event_create:
     pattern: /event/create
     defaults:
-        _controller: EventEventBundle:Event:create
+        _controller: MiriadeEventBundle:Event:create

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -78,6 +79,21 @@
           <form class="navbar-form navbar-right">
             <!-- <div class="form-group input-group-sm">
               <input type="text" placeholder="Email" class="form-control">
+=======
+{% extends '::base.html.twig' %}
+
+{% block header %}
+    <header class='boxShadow1'>
+        {#{%if is_granted("ROLE_USER")%}#}
+            {#{%if owner_fiche_exist==false%}#}
+            <div class="head-button">
+                <a href="{{ path('miriade_event_event_dashboard') }}" class='btn boxShadow1' type='button'>Accueil/a>
+                <a href="{{ path('miriade_event_event_new') }}" class="btn boxShadow1">Nouvel événement</a>
+                {#{%if is_granted("ROLE_SUPER_ADMIN")%}#}
+                    {#<a href="{{ path('carto_admin_manageFiches') }}" class="btn boxShadow1">Administration</a>#}
+                {#{%endif%}#}
+                {#<a href="{{ path('fos_user_security_logout') }}" class="btn boxShadow1">Déconnexion</a>#}
+>>>>>>> bd6152963382c8ce1659490ffa1d0b9f09d066a1
             </div>
             <div class="form-group input-group-sm">
               <input type="password" placeholder="Password" class="form-control">
@@ -179,9 +195,16 @@
     </div>
     <!-- Inscription Modal : end -->
 
+<<<<<<< HEAD
     </div> <!-- /container -->
      <footer>
         <p>&copy; Miriade 2015</p>
+=======
+{% block footer %}
+    <footer>
+        <p>© MIRIADE 2015 tous droits réservés</p>
+        {#<p><a href="#">Contacts</a> | <a href="{{ path('carto_fiche_dashboard_credits') }}">Crédits</a> | <a href="{{ path('carto_fiche_dashboard_mentions') }}">Mentions légales</a> | <a href="{{ path('carto_fiche_dashboard_charte') }}">Charte BDIS</a> | <a href="http://la-bdis.org/">Site national</a></p>#}
+>>>>>>> bd6152963382c8ce1659490ffa1d0b9f09d066a1
     </footer>
   </body>
 </html>

@@ -18,10 +18,10 @@ class EventType extends AbstractType
     {
         $builder
             ->add('title', 'text', array('label' => 'Title', 'required' => true ))
-            ->add('description', 'text', array('label' => 'Description','required' => false))
-            ->add('startDate', 'datetime', array('label' => 'startDate','required' => false))
-            ->add('endDate', 'datetime', array('label' => 'endDate','required' => false))
-            ->add('locate', 'text', array('label' => 'Adresse', 'required' => false))
+            ->add('description', 'text', array('label' => 'Description','required' => true))
+            ->add('startDate', 'datetime', array('label' => 'startDate','required' => true))
+            ->add('endDate', 'datetime', array('label' => 'endDate','required' => true))
+            ->add('locate', 'text', array('label' => 'Adresse', 'required' => true))
             ->add('image', 'text', array('label' => 'Image', 'required' => false))
         ;
     }
@@ -32,7 +32,7 @@ class EventType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Event\EventBundle\Entity\Event'
+            'data_class' => 'Miriade\EventBundle\Entity\Event'
         ));
     }
 
