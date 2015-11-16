@@ -146,6 +146,40 @@
             </div>
             <!-- /.div -->
           </div>
+          <!-- ajout emiliano -->
+          <h2>Ajouer un Partenaire</h2>
+          <div class="row well">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>Partenaire</label>
+                  <input type="text" class="form-control" placeholder="Partenaire">
+                </div>
+                <div class="form-group">
+                  <label>Adresse</label>
+                  <input type="text" class="form-control" placeholder="Adresse">
+                </div>
+                <div class="form-group">
+                  <label>Mail</label>
+                  <input type="text" class="form-control" placeholder="Mail">
+                </div>
+                <div class="form-group">
+                  <label>Téléphone</label>
+                  <input type="text" class="form-control" placeholder="Téléphone">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleInputFile">logo</label>
+                  <input type="file" id="exampleInputFile">
+                  <p class="help-block">Image du partenaire</p>
+                  <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                </div>
+              </div>
+              <div class="row justified" style="margin-top: 20px;">
+                <button type="button" class="btn btn-lg btn-success">Ajouter</button>
+              </div>
+            </div>
+          <!--  fin ajout emiliano -->  
         </div>
         <?php include('aside.inc'); ?>
 
@@ -158,3 +192,4 @@
     </div> <!-- /container -->
 
       <?php include('footer.inc'); ?>
+      
