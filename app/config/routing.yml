@@ -1,3 +1,7 @@
+miriade_event:
+    resource: "@MiriadeEventBundle/Resources/config/routing.yml"
+    prefix:   /
+
 miriade_user:
     resource: "@MiriadeUserBundle/Resources/config/routing.yml"
     prefix:   /

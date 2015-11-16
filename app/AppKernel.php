@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Miriade\UserBundle\MiriadeUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Miriade\EventBundle\MiriadeEventBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
