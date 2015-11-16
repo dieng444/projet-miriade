@@ -1,3 +1,14 @@
-miriade_event_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: MiriadeEventBundle:Default:index }
+miriade_event_event_dashboard:
+    pattern: /event/dashboard
+    defaults:
+        _controller: MiriadeEventBundle:Event:dashboard
+
+miriade_event_event_new:
+    pattern: /event/new
+    defaults:
+        _controller: MiriadeEventBundle:Event:new
+
+miriade_event_event_create:
+    pattern: /event/create
+    defaults:
+        _controller: MiriadeEventBundle:Event:create
