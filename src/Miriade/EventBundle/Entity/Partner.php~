@@ -59,7 +59,7 @@ class Partner
     /**
      * @var int
      *
-     * @ORM\Column(name="cp", type="integer", length=5)
+     * @ORM\Column(name="cp", type="int", length=5)
      */
     private $cp;
 
@@ -194,51 +194,5 @@ class Partner
     public function getLogo()
     {
         return $this->logo;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Partner
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set cp
-     *
-     * @param \int $cp
-     * @return Partner
-     */
-    public function setCp(\int $cp)
-    {
-        $this->cp = $cp;
-
-        return $this;
-    }
-
-    /**
-     * Get cp
-     *
-     * @return \int 
-     */
-    public function getCp()
-    {
-        return $this->cp;
     }
 }

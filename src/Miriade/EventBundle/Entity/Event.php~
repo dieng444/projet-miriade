@@ -78,13 +78,13 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner")
      * @ORM\JoinColumn(nullable=false)
      */
     private $partner;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session")
      * @ORM\JoinColumn(nullable=false)
      */
     private $session;
@@ -282,74 +282,5 @@ class Event
     public function getSession()
     {
         return $this->session;
-    }
-
-    /**
-     * Set adress
-     *
-     * @param string $adress
-     * @return Event
-     */
-    public function setAdress($adress)
-    {
-        $this->adress = $adress;
-
-        return $this;
-    }
-
-    /**
-     * Get adress
-     *
-     * @return string 
-     */
-    public function getAdress()
-    {
-        return $this->adress;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Event
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
-     *
-     * @return string 
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set cp
-     *
-     * @param integer $cp
-     * @return Event
-     */
-    public function setCp($cp)
-    {
-        $this->cp = $cp;
-
-        return $this;
-    }
-
-    /**
-     * Get cp
-     *
-     * @return integer 
-     */
-    public function getCp()
-    {
-        return $this->cp;
     }
 }

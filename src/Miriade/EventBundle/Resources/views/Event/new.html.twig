@@ -1,15 +1,158 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
-
 {% block content %}
-    <div id="wrap">
-        <div class="titre">
-            <h2>CrÈation d'une ÈvÈnement</h2>
-            <hr>
-        </div>
-        {{ form_start(form, {"action": path('miriade_event_event_create')} ) }}
-        <p>{{ form_label(form.title) }}</p>
-        <p>{{ form_widget(form.title) }}</p>
+<div class="container" xmlns="http://www.w3.org/1999/html">
+    <div class="row">
+        <div class="col-md-9">
 
-        {{ form_end(form) }}
-    </div>
+            <h1>Cr√©ation d'√©v√©nement</h1>
+            {{ form_start(form, {"action": path('miriade_event_event_create')} ) }}
+            <div class="event-creation">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.title) }}
+                            {{ form_widget(form.title) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_label(form.description) }}
+                            {{ form_widget(form.description) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.image) }}
+                            {{ form_widget(form.image) }}
+                            <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.startDate) }}
+                                    {{ form_widget(form.startDate) }}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    {{ form_label(form.endDate) }}
+                                    {{ form_widget(form.endDate) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.adress) }}
+                            {{ form_widget(form.adress) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.city) }}
+                            {{ form_widget(form.city) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form_label(form.cp) }}
+                            {{ form_widget(form.cp) }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+                        <script>
+
+                            function init_map() {
+                                var var_location = new google.maps.LatLng(49.1871015,-0.3131677);
+
+                                var var_mapoptions = {
+                                    center: var_location,
+                                    zoom: 14
+                                };
+
+                                var var_marker = new google.maps.Marker({
+                                    position: var_location,
+                                    map: var_map,
+                                    title:"Venice"});
+
+                                var var_map = new google.maps.Map(document.getElementById("map-container"),
+                                        var_mapoptions);
+
+                                var_marker.setMap(var_map);
+
+                            }
+
+                            google.maps.event.addDomListener(window, 'load', init_map);
+                        </script>
+                        <style>
+                            #map-outer {  height: 440px;
+                                padding: 20px;
+                                border: 2px solid #CCC;
+                                margin-bottom: 20px;
+                                background-color:#FFF }
+                            #map-container { height: 220px }
+                            @media all and (max-width: 991px) {
+                                #map-outer  { height: 650px }
+                            }
+                        </style>
+                        <div id="map-container" class="col-md-12"></div>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row justified" style="margin-top: 20px;">
+                    <button type="button" class="btn btn-lg btn-success">Cr√©er</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+
+
+            {#<h2>Sessions</h2>#}
+            {#<div class="session-creation">#}
+                {#<div class="list-group">#}
+                    {#<button type="button" class="list-group-item">Session 1</button>#}
+                    {#<button type="button" class="list-group-item">Session 2</button>#}
+                {#</div>#}
+                {#<h3>Ajouter une session</h3>#}
+                {#<div class="row well">#}
+                    {#<div class="col-md-6">#}
+                        {#<div class="form-group">#}
+                            {#<label>Titre</label>#}
+                            {#<input type="text" class="form-control" placeholder="Titre">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label>Plage horaire</label>#}
+                            {#<input type="text" class="form-control" placeholder="Titre">#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="col-md-6">#}
+                        {#<div class="form-group">#}
+                            {#<label>Description</label>#}
+                            {#<textarea class="form-control" placeholder="Description" style="min-height:220px;"></textarea>#}
+                        {#</div>#}
+                    {#</div>#}
+                    {#<div class="row justified" style="margin-top: 20px;">#}
+                        {#<button type="button" class="btn btn-lg btn-success">Ajouter</button>#}
+                    {#</div>#}
+                {#</div>#}
+                {#<!-- /.div -->#}
+            {#</div>#}
+        {#</div>#}
+        <!-- ajout emiliano -->
+    <h2>Ajouter une session</h2>
+
+    {{ form_label(form.session) }}
+    {{ form_widget(form.session) }}
+        <h2>Ajouter un Partenaire</h2>
+
+    {{ form_label(form.partner) }}
+    {{ form_widget(form.partner) }}
+
+
 {% endblock %}

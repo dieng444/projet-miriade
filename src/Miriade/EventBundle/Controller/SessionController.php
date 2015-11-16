@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Miriade\EventBundle\Entity\Event;
-use Miriade\EventBundle\Form\EventType;
+use Miriade\EventBundle\Entity\Session;
+use Miriade\EventBundle\Form\SessionType;
 
-class EventController extends Controller
+class SessionController extends Controller
 {
 
     /**
@@ -23,56 +23,56 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $category = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        $partner = $em->getRepository('MiriadeEventBundle:Session')->findAll();
 
         return array(
-            'category' => $category,
+            'partner' => $partner,
         );
     }
 
     /**
-     * Creates a form to create a Event entity.
+     * Creates a form to create a Session entity.
      *
-     * @param Event $entity The entity
+     * @param Session $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Event $entity)
+    private function createCreateForm(Session $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
-            'action' => $this->generateUrl('miriade_event_event_create'),
+        $form = $this->createForm(new SessionType(), $entity, array(
+            'action' => $this->generateUrl('miriade_event_session_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer un événement'));
+        $form->add('submit', 'submit', array('label' => 'Créer une session'));
 
         return $form;
     }
 
     /**
-     * Displays a form to create a new Categorie entity.
+     * Displays a form to create a new Session entity.
      *
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-            $entity = new Event();
-            $form = $this->createCreateForm($entity);
-            return array(
-                'entity' => $entity,
-                'form' => $form->createView(),
-            );
+        $entity = new Session();
+        $form = $this->createCreateForm($entity);
+        return array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        );
     }
 
     /**
-     * Creates a new Event entity.
+     * Creates a new Session entity.
      * @Method("POST")
-     * @Template("MiriadeEventBundle:Event:new.html.twig")
+     * @Template("MiriadeEventBundle:Session:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Event();
+        $entity = new Session();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);

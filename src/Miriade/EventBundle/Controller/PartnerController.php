@@ -9,10 +9,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Miriade\EventBundle\Entity\Event;
-use Miriade\EventBundle\Form\EventType;
+use Miriade\EventBundle\Entity\Partner;
+use Miriade\EventBundle\Form\PartnerType;
 
-class EventController extends Controller
+class PartnerController extends Controller
 {
 
     /**
@@ -23,28 +23,28 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $category = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        $partner = $em->getRepository('MiriadeEventBundle:Partner')->findAll();
 
         return array(
-            'category' => $category,
+            'partner' => $partner,
         );
     }
 
     /**
-     * Creates a form to create a Event entity.
+     * Creates a form to create a Partner entity.
      *
-     * @param Event $entity The entity
+     * @param Partner $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Event $entity)
+    private function createCreateForm(Partner $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
-            'action' => $this->generateUrl('miriade_event_event_create'),
+        $form = $this->createForm(new PartnerType(), $entity, array(
+            'action' => $this->generateUrl('miriade_event_partner_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Créer un événement'));
+        $form->add('submit', 'submit', array('label' => 'Créer une session'));
 
         return $form;
     }
@@ -57,12 +57,12 @@ class EventController extends Controller
      */
     public function newAction()
     {
-            $entity = new Event();
-            $form = $this->createCreateForm($entity);
-            return array(
-                'entity' => $entity,
-                'form' => $form->createView(),
-            );
+        $entity = new Partner();
+        $form = $this->createCreateForm($entity);
+        return array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        );
     }
 
     /**
@@ -72,7 +72,7 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Event();
+        $entity = new Partner();
 
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
