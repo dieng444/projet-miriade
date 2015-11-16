@@ -67,6 +67,22 @@
                   <label>Localisation</label>
                   <input type="text" class="form-control" placeholder="Localisation">
                 </div>
+                <!--ajout emiliano 16/11/2015 15:44-->
+                <div class="row">
+                  <div class="col-md-4">
+                      <div class="form-group">
+                      <label>Nb tables</label>
+                      <input type="text" class="form-control" placeholder="00">
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                      <div class="form-group">
+                      <label>Durée RDV</label>
+                      <input type="text" class="form-control" placeholder="minutes">
+                    </div>
+                  </div>
+                </div>  
+                <!--fin ajout emiliano 16/11/2015 15:44-->
               </div>
               <div class="col-md-6">
                 <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -109,39 +125,51 @@
               </div>
             </div>
             <!-- /.row -->
-            <div class="row justified" style="margin-top: 20px;">
+            <!-- bougé tout en bas pour modifier le formulaire complet - emiliano -->
+            <!--<div class="row justified" style="margin-top: 20px;">
               <button type="button" class="btn btn-lg btn-success">Créer</button>
-            </div>
+            </div>-->
           </div>
 
           <br>
 
           <h2>Sessions</h2>
           <div class="session-creation">
-            <div class="list-group">
-              <button type="button" class="list-group-item">Session 1</button>
-              <button type="button" class="list-group-item">Session 2</button>
+            <div class="list-group" id="sessions">
+              <button type="button" class="list-group-item">Session 1 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+              <button type="button" class="list-group-item">Session 2 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
             </div>
               <h3>Ajouter une session</h3>
             <div class="row well">
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Titre</label>
-                  <input type="text" class="form-control" placeholder="Titre">
+                  <input type="text" class="form-control" placeholder="Titre" id="sessionTitle">
                 </div>
                 <div class="form-group">
                   <label>Plage horaire</label>
-                  <input type="text" class="form-control" placeholder="Titre">
+                  <input type="text" class="form-control" placeholder="Plage horaire" id="sessionTime">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label>Description</label>
-                  <textarea class="form-control" placeholder="Description" style="min-height:220px;"></textarea>
+                  <textarea class="form-control" placeholder="Description" style="min-height:220px;" id="sessionDesc"></textarea>
                 </div>
               </div>
               <div class="row justified" style="margin-top: 20px;">
-                <button type="button" class="btn btn-lg btn-success">Ajouter</button>
+                <button type="button" class="btn btn-lg btn-success" id="addSessions">Ajouter</button>
+                <!--<script>
+                  $( document ).ready(function() {
+                      console.log( "ready!" );
+                    $("#addSession").on('click', function(){
+                        alert('hello');
+                        var title =  $("#sessionTitle").val();
+                        var session =  '<button type="button" class="list-group-item">'+ title +'<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>';
+                        $("#sessions").append(session);
+                    });
+                  });
+                </script>-->
               </div>
             </div>
             <!-- /.div -->
@@ -179,7 +207,11 @@
                 <button type="button" class="btn btn-lg btn-success">Ajouter</button>
               </div>
             </div>
-          <!--  fin ajout emiliano -->  
+          <!--  fin ajout emiliano --> 
+          <!--ajout emiliano 16/11/2015 15:44--> 
+          <div class="row justified" style="margin-top: 20px;">
+            <button type="button" class="btn btn-lg btn-success">Créer</button>
+          </div> 
         </div>
         <?php include('aside.inc'); ?>
 
