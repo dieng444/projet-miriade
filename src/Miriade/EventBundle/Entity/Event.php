@@ -3,6 +3,7 @@
 namespace Miriade\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
@@ -89,6 +90,22 @@ class Event
      */
     private $session;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="nbTable", type="integer")
+     */
+    private $nbTable;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="rdv", type="integer")
+     */
+    private $rdv;
+
+    public function __construct()
+    {
+        $this->session = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -351,5 +368,51 @@ class Event
     public function getCp()
     {
         return $this->cp;
+    }
+
+    /**
+     * Set nbTable
+     *
+     * @param integer $nbTable
+     * @return Event
+     */
+    public function setNbTable($nbTable)
+    {
+        $this->nbTable = $nbTable;
+
+        return $this;
+    }
+
+    /**
+     * Get nbTable
+     *
+     * @return integer 
+     */
+    public function getNbTable()
+    {
+        return $this->nbTable;
+    }
+
+    /**
+     * Set rdv
+     *
+     * @param integer $rdv
+     * @return Event
+     */
+    public function setRdv($rdv)
+    {
+        $this->rdv = $rdv;
+
+        return $this;
+    }
+
+    /**
+     * Get rdv
+     *
+     * @return integer 
+     */
+    public function getRdv()
+    {
+        return $this->rdv;
     }
 }

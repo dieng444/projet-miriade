@@ -11,17 +11,17 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.title) }}
-                            {{ form_widget(form.title) }}
+                            {{ form_widget(form.title, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                         <div class="form-group">
                             {{ form_label(form.description) }}
-                            {{ form_widget(form.description) }}
+                            {{ form_widget(form.description, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.image) }}
-                            {{ form_widget(form.image) }}
+                            {{ form_widget(form.image, {'attr' : {'id' : 'exampleInputFile'}}) }}
                             <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                         </div>
                     </div>
@@ -32,14 +32,21 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
+                                        {#<span class="input-group-addon">#}
+                                            {#<span class="glyphicon glyphicon-calendar"></span>#}
+                                        {#</span>#}
                                     {{ form_label(form.startDate) }}
-                                    {{ form_widget(form.startDate) }}
+                                    {{ form_widget(form.startDate, {'attr' : {'class' : 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <div class='input-group date' id='datetimepicker1'>
                                     {{ form_label(form.endDate) }}
-                                    {{ form_widget(form.endDate) }}
+                                    {{ form_widget(form.endDate, {'attr' : {'class' : 'form-control'}}) }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -50,19 +57,19 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.adress) }}
-                            {{ form_widget(form.adress) }}
+                            {{ form_widget(form.adress, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.city) }}
-                            {{ form_widget(form.city) }}
+                            {{ form_widget(form.city, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             {{ form_label(form.cp) }}
-                            {{ form_widget(form.cp) }}
+                            {{ form_widget(form.cp, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -103,6 +110,20 @@
                             }
                         </style>
                         <div id="map-container" class="col-md-12"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form_label(form.adress) }}
+                                {{ form_widget(form.adress, {'attr' : {'class' : 'form-control'}}) }}
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                {{ form_label(form.rdv) }}
+                                {{ form_widget(form.rdv, {'attr' : {'class' : 'form-control'}}) }}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -146,13 +167,16 @@
         {#</div>#}
         <!-- ajout emiliano -->
     <h2>Ajouter une session</h2>
-
-    {{ form_label(form.session) }}
-    {{ form_widget(form.session) }}
+       {% for sessions in form.session %}
+        {{ form_widget(form.sessions) }}
+    {% endfor %}
         <h2>Ajouter un Partenaire</h2>
 
     {{ form_label(form.partner) }}
     {{ form_widget(form.partner) }}
+    <ul class="tags" data-prototype="{{ form_widget(form.partner.vars.prototype)|e }}">
+        {{ form_widget(form.partner.vars.prototype.name)|e }}
+    </ul>
 
 
 {% endblock %}

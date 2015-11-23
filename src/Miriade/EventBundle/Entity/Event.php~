@@ -3,6 +3,7 @@
 namespace Miriade\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
@@ -78,17 +79,33 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner")
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $partner;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session")
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $session;
 
+    /**
+     * @var integer
+     * @ORM\Column(name="nbTable", type="integer")
+     */
+    private $nbTable;
+
+    /**
+     * @var integer
+     * @ORM\Column(name="rdv", type="integer")
+     */
+    private $rdv;
+
+    public function __construct()
+    {
+        $this->session = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -282,5 +299,97 @@ class Event
     public function getSession()
     {
         return $this->session;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     * @return Event
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string 
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Event
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string 
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param integer $cp
+     * @return Event
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return integer 
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+
+    /**
+     * Set nbTable
+     *
+     * @param integer $nbTable
+     * @return Event
+     */
+    public function setNbTable($nbTable)
+    {
+        $this->nbTable = $nbTable;
+
+        return $this;
+    }
+
+    /**
+     * Get nbTable
+     *
+     * @return integer 
+     */
+    public function getNbTable()
+    {
+        return $this->nbTable;
     }
 }
