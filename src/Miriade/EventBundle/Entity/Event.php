@@ -81,14 +81,14 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     */
-    private $partner;
+     
+    private $partner;*/
 
     /**
      * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     */
-    private $session;
+     *
+    private $session;*/
 
     /**
      * @var integer
@@ -261,18 +261,18 @@ class Event
      * @param \Miriade\EventBundle\Entity\Partner $partner
      * @return Event
      */
-    public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
+    /*public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
     {
         $this->partner = $partner;
 
         return $this;
-    }
+    }*/
 
     /**
      * Get partner
      *
      * @return \Miriade\EventBundle\Entity\Partner 
-     */
+     *
     public function getPartner()
     {
         return $this->partner;
@@ -284,22 +284,22 @@ class Event
      * @param \Miriade\EventBundle\Entity\Session $session
      * @return Event
      */
-    public function setSession(\Miriade\EventBundle\Entity\Session $session)
+    /*public function setSession(\Miriade\EventBundle\Entity\Session $session)
     {
         $this->session = $session;
 
         return $this;
-    }
+    }*/
 
     /**
      * Get session
      *
      * @return \Miriade\EventBundle\Entity\Session 
-     */
+     *
     public function getSession()
     {
         return $this->session;
-    }
+    }*/
 
     /**
      * Set adress

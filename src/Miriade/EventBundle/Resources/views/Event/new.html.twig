@@ -1,11 +1,10 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 {% block content %}
-<div class="container" xmlns="http://www.w3.org/1999/html">
+<div class="container">
     <div class="row">
         <div class="col-md-9">
-
             <h1>Création d'événement</h1>
-            {{ form_start(form, {"action": path('miriade_event_event_create')} ) }}
+            {{ form_start(form, {"action": path('miriade_event_event_new')} ) }}
             <div class="event-creation">
                 <div class="row">
                     <div class="col-md-6">
@@ -56,21 +55,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {{ form_label(form.adress) }}
-                            {{ form_widget(form.adress, {'attr' : {'class' : 'form-control'}}) }}
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
                             {{ form_label(form.city) }}
                             {{ form_widget(form.city, {'attr' : {'class' : 'form-control'}}) }}
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            {{ form_label(form.cp) }}
-                            {{ form_widget(form.cp, {'attr' : {'class' : 'form-control'}}) }}
-                        </div>
+                        {{ form_label(form.cp) }}
+                        {{ form_widget(form.cp, {'attr' : {'class' : 'form-control'}}) }}
                     </div>
                     <div class="col-md-6">
                         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -127,56 +118,97 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row justified" style="margin-top: 20px;">
+                {#<div class="row justified" style="margin-top: 20px;">
                     <button type="button" class="btn btn-lg btn-success">Créer</button>
-                </div>
+                </div>#}
             </div>
-            {{ form_end(form) }}
+            {#{{ form_end(form) }}#}
 
-
-            {#<h2>Sessions</h2>#}
-            {#<div class="session-creation">#}
-                {#<div class="list-group">#}
-                    {#<button type="button" class="list-group-item">Session 1</button>#}
-                    {#<button type="button" class="list-group-item">Session 2</button>#}
-                {#</div>#}
-                {#<h3>Ajouter une session</h3>#}
-                {#<div class="row well">#}
-                    {#<div class="col-md-6">#}
-                        {#<div class="form-group">#}
-                            {#<label>Titre</label>#}
-                            {#<input type="text" class="form-control" placeholder="Titre">#}
-                        {#</div>#}
-                        {#<div class="form-group">#}
-                            {#<label>Plage horaire</label>#}
-                            {#<input type="text" class="form-control" placeholder="Titre">#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="col-md-6">#}
-                        {#<div class="form-group">#}
-                            {#<label>Description</label>#}
-                            {#<textarea class="form-control" placeholder="Description" style="min-height:220px;"></textarea>#}
-                        {#</div>#}
-                    {#</div>#}
-                    {#<div class="row justified" style="margin-top: 20px;">#}
-                        {#<button type="button" class="btn btn-lg btn-success">Ajouter</button>#}
-                    {#</div>#}
-                {#</div>#}
+            <h2>Sessions</h2>
+                <div class="session-creation">
+                    <div class="list-group">
+                        <button type="button" class="list-group-item">Session 1</button>
+                        <button type="button" class="list-group-item">Session 2</button>
+                    </div>
+                <h3>Ajouter une session</h3>
+                <div class="row well">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Titre</label>
+                            <input type="text" name="session_name" class="form-control" placeholder="Titre">
+                        </div>
+                        <div class="form-group">
+                            <label>Plage horaire</label>
+                            <input type="text" name="session_rangHoraire" class="form-control" placeholder="Plage d'horaire">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea class="form-control" name="session_desc" placeholder="Description" style="min-height:220px;"></textarea>
+                        </div>
+                    </div>
+                    <div class="row justified" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-lg btn-success">Ajouter</button>
+                    </div>
+                </div>
                 {#<!-- /.div -->#}
-            {#</div>#}
-        {#</div>#}
+            </div>
+        </div>
+         </div>
         <!-- ajout emiliano -->
-    <h2>Ajouter une session</h2>
+        <h2>Ajouer un Partenaire</h2>
+        <div class="row well">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Partenaire</label>
+              <input type="text" name="partner_name" class="form-control" placeholder="Partenaire">
+            </div>
+            <div class="form-group">
+              <label>Adresse</label>
+              <input type="text" name="partner_address" class="form-control" placeholder="Adresse">
+            </div>
+            <div class="form-group">
+              <label>Ville</label>
+              <input type="text" name="partner_city" class="form-control" placeholder="Ville">
+            </div>
+            <div class="form-group">
+              <label>Code postal</label>
+              <input type="text" name="partner_cp" class="form-control" placeholder="Code postal">
+            </div>
+            <div class="form-group">
+              <label>Mail</label>
+              <input type="text" name="partner_email" class="form-control" placeholder="Mail">
+            </div>
+            <div class="form-group">
+              <label>Téléphone</label>
+              <input type="text" name="partner_phone" class="form-control" placeholder="Téléphone">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputFile">logo</label>
+              <input type="file" id="exampleInputFile" name="partner[logo]"">
+              <p class="help-block">Image du partenaire</p>
+              <img class="img-responsive" src="http://placehold.it/700x400" alt="">
+            </div>
+          </div>
+          <div class="row justified" style="margin-top: 20px;">
+            <button type="button" class="btn btn-lg btn-success">Ajouter</button>
+          </div>
+        </div>
+    {#<h2>Ajouter une session</h2>
        {% for sessions in form.session %}
         {{ form_widget(form.sessions) }}
     {% endfor %}
-        <h2>Ajouter un Partenaire</h2>
-
+    <h2>Ajouter un Partenaire</h2>
     {{ form_label(form.partner) }}
     {{ form_widget(form.partner) }}
     <ul class="tags" data-prototype="{{ form_widget(form.partner.vars.prototype)|e }}">
         {{ form_widget(form.partner.vars.prototype.name)|e }}
-    </ul>
-
-
+    </ul>#}
+     <div class="row justified" style="margin-top: 20px;">
+        <input type="submit" class="btn btn-lg btn-primary" name="form_action" value="Créer l'événement"/>
+    </div>
+    </form>
 {% endblock %}

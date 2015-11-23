@@ -57,12 +57,49 @@ class EventController extends Controller
      */
     public function newAction()
     {
-            $entity = new Event();
-            $form = $this->createCreateForm($entity);
-            return array(
-                'entity' => $entity,
-                'form' => $form->createView(),
-            );
+        $form = $this->createCreateForm(new Event());
+        if ($this->getRequest()->isMethod("POST")) {
+            $data = $this->getRequest()->request->all();
+            $data = $this->getRequest()->request->all()['event_eventbundle_event'];
+            //var_dump($event);
+            //~ var_dump('\n\n');
+            //~ var_dump($this->getRequest()->request);
+            //~ var_dump('\n\n');
+            //~ var_dump($this->getRequest()->request->all());die;
+            //var_dump($this->getRequest()->request);die;
+            //$form->HandleRequest($this->getRequest());
+             $em = $this->getDoctrine()->getManager();
+            $event = new Event();
+            $event->setTitle($data['title']);
+            $event->setDescription($data['description']);
+            $event->setStartDate(new \DateTime($data['startDate']));
+            $event->setEndDate(new \DateTime($data['endDate']));
+            $event->setCity($data['city']);
+            $event->setCp($data['cp']);
+            $event->setAdress($data['adress']);
+            $event->setRdv($data['rdv']);
+            $em->persist($event);
+            $em->flush();
+            return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
+            //var_dump($form);die;
+            //~ if ($form->isValid()) {
+                //~ var_dump('OK');die;
+                //~ $event = $form->getData();
+                //~ var_dump($event);die;
+                //~ $em->persist($event);
+                //~ $em->flush();
+//~ 
+                //~ return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
+            //~ }
+        } else {
+            return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
+        }
+        
+        /*return array(
+            'entity' => $entity,
+            'form' => $form->createView(),
+        );*/
+
     }
 
     /**
