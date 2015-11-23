@@ -4,7 +4,7 @@
               <div class="row">
                 <div class="col-md-12 organisateurs-block-item">
                   <a href="#">
-                      <img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_03/220x0_logo_net_en.png" alt="">
+                      <img class="img-responsive" src="//silvernormandie.talkb2b.net/thumbs/Box/Image/2015_03/220x0_logo_net_en.png" alt="">
                   </a>
                 </div>
                 <div class="col-md-12 organisateurs-block-item">
