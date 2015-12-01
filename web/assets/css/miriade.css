@@ -8,7 +8,7 @@ body {
 .jumbotron-main{
 	padding-top: 50px;
 	min-height: 400px;
-	background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+	background: transparent url("//ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
 }
 .intro-message{
 	text-align: center;

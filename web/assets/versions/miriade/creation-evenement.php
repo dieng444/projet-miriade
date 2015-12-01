@@ -30,8 +30,8 @@
             <!-- /.row -->
 
             <!-- Datepicker : start -->
-            <script type="text/javascript" src="../../dist/js/moment.js"></script>
-            <script type="text/javascript" src="../../dist/js/bootstrap-datetimepicker.js"></script>
+            <script type="text/javascript" src="../../js/moment.js"></script>
+            <script type="text/javascript" src="../../js/bootstrap-datetimepicker.js"></script>
             <script type="text/javascript">
                 $(document).ready(function(){
                     $('#datetimepicker1').datetimepicker();
