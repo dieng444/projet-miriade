@@ -225,7 +225,7 @@ class Partner
      * @param \int $cp
      * @return Partner
      */
-    public function setCp(\int $cp)
+    public function setCp($cp)
     {
         $this->cp = $cp;
 
@@ -241,4 +241,16 @@ class Partner
     {
         return $this->cp;
     }
+    public function uploadLogo($logo)
+    {
+		$realName = $logo['name'];
+	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
+	    $tmp_name = $logo['tmp_name'];
+	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
+	    if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
+			$this->logo = $name;
+			return true;
+		} else
+			return false;
+	}
 }

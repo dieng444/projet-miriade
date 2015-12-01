@@ -10,121 +10,82 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Miriade\EventBundle\Entity\Event;
+use Miriade\EventBundle\Entity\Session;
+use Miriade\EventBundle\Entity\Partner;
 use Miriade\EventBundle\Form\EventType;
 
 class EventController extends Controller
 {
 
     /**
-     *
      * @Template()
      */
     public function dashboardAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $category = $em->getRepository('MiriadeEventBundle:Event')->findAll();
-
         return array(
             'category' => $category,
         );
     }
-
-    /**
-     * Creates a form to create a Event entity.
-     *
-     * @param Event $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createCreateForm(Event $entity)
-    {
-        $form = $this->createForm(new EventType(), $entity, array(
-            'action' => $this->generateUrl('miriade_event_event_create'),
-            'method' => 'POST',
-        ));
-
-        $form->add('submit', 'submit', array('label' => 'Créer un événement'));
-
-        return $form;
-    }
-
     /**
      * Displays a form to create a new Categorie entity.
-     *
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $form = $this->createCreateForm(new Event());
+        $event = new Event();
+        $session = new Session();
+        $partner = new Partner();
+        $form = $this->CreateForm(new EventType(), $event);
         if ($this->getRequest()->isMethod("POST")) {
             $data = $this->getRequest()->request->all();
-            $data = $this->getRequest()->request->all()['event_eventbundle_event'];
-            //var_dump($event);
-            //~ var_dump('\n\n');
-            //~ var_dump($this->getRequest()->request);
-            //~ var_dump('\n\n');
-            //~ var_dump($this->getRequest()->request->all());die;
-            //var_dump($this->getRequest()->request);die;
-            //$form->HandleRequest($this->getRequest());
-             $em = $this->getDoctrine()->getManager();
-            $event = new Event();
-            $event->setTitle($data['title']);
-            $event->setDescription($data['description']);
-            $event->setStartDate(new \DateTime($data['startDate']));
-            $event->setEndDate(new \DateTime($data['endDate']));
-            $event->setCity($data['city']);
-            $event->setCp($data['cp']);
-            $event->setAdress($data['adress']);
-            $event->setRdv($data['rdv']);
-            $em->persist($event);
-            $em->flush();
-            return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
-            //var_dump($form);die;
+            //var_dump($data);die;
+            //Les sessions
+            $session->setName(trim(strip_tags($data['session_name'])));
+            $session->setRangHoraire(trim(strip_tags($data['session_rangHoraire'])));
+            $session->setDescription(trim(strip_tags($data['session_desc'])));
+            //Les parténaires
+            $partner->setName(trim(strip_tags($data['partner_name'])));
+            $partner->setAddress(trim(strip_tags($data['partner_address'])));
+            $partner->setCity(trim(strip_tags($data['partner_city'])));
+            $partner->setCp((int)trim(strip_tags($data['partner_cp'])));
+            $partner->setEmail(trim(strip_tags($data['partner_email'])));
+            $partner->setPhone(trim(strip_tags($data['partner_phone'])));
+            $partner->setLogo("_none");
+			$form->HandleRequest($this->getRequest());
+            $em = $this->getDoctrine()->getManager();
+            if(isset($_FILES['event_eventbundle_event']) && 
+				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
+				$image = $_FILES['event_eventbundle_event'];
+				if($event->uploadImage($image))
+					$event->setImage($event->getImage());
+			} else 
+				$event->setImage("_none");
+				
+			if(isset($_FILES['partner_logo']) && 
+				strlen($_FILES['partner_logo']['name']) > 0 ) {
+				$logo = $_FILES['partner_logo'];
+				//var_dump($log
+				if($partner->uploadLogo($logo))
+					$partner->setLogo($partner->getLogo());
+			} else 
+				$event->setLogo("_none");
+				
+            $event->setPartner($partner);
+            $event->setSession($session);
+            
+			$em->persist($event);
+			$em->flush();
+			return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
             //~ if ($form->isValid()) {
-                //~ var_dump('OK');die;
-                //~ $event = $form->getData();
-                //~ var_dump($event);die;
-                //~ $em->persist($event);
-                //~ $em->flush();
-//~ 
                 //~ return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
-            //~ }
+            //~ } else {
+				//~ return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
+			//~ }
         } else {
             return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
         }
-        
-        /*return array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-        );*/
-
-    }
-
-    /**
-     * Creates a new Event entity.
-     * @Method("POST")
-     * @Template("MiriadeEventBundle:Event:new.html.twig")
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Event();
-
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
-        }
-
-        return array(
-            'entity' => $entity,
-            'form' => $form->createView(),
-        );
     }
 }

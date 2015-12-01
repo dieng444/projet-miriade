@@ -81,14 +81,14 @@ class Event
     /**
      * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     
-    private $partner;*/
+     */
+    private $partner;
 
     /**
      * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
-     *
-    private $session;*/
+     **/
+    private $session;
 
     /**
      * @var integer
@@ -102,10 +102,11 @@ class Event
      */
     private $rdv;
 
-    public function __construct()
-    {
-        $this->session = new ArrayCollection();
-    }
+    //~ public function __construct()
+    //~ {
+        //~ //$this->session = new ArrayCollection();
+        //~ $this->startDate = new
+    //~ }
 
     /**
      * Get id
@@ -148,7 +149,7 @@ class Event
      */
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
+        $this->startDate = new \DateTime($startDate);
 
         return $this;
     }
@@ -171,7 +172,7 @@ class Event
      */
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
+        $this->endDate = new \DateTime($endDate);
 
         return $this;
     }
@@ -261,18 +262,18 @@ class Event
      * @param \Miriade\EventBundle\Entity\Partner $partner
      * @return Event
      */
-    /*public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
+    public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
     {
         $this->partner = $partner;
 
         return $this;
-    }*/
+    }
 
     /**
      * Get partner
      *
      * @return \Miriade\EventBundle\Entity\Partner 
-     *
+     **/
     public function getPartner()
     {
         return $this->partner;
@@ -284,22 +285,22 @@ class Event
      * @param \Miriade\EventBundle\Entity\Session $session
      * @return Event
      */
-    /*public function setSession(\Miriade\EventBundle\Entity\Session $session)
+    public function setSession(\Miriade\EventBundle\Entity\Session $session)
     {
         $this->session = $session;
 
         return $this;
-    }*/
+    }
 
     /**
      * Get session
      *
      * @return \Miriade\EventBundle\Entity\Session 
-     *
+     **/
     public function getSession()
     {
         return $this->session;
-    }*/
+    }
 
     /**
      * Set adress
@@ -415,4 +416,20 @@ class Event
     {
         return $this->rdv;
     }
+    /**
+     * Permet d'enregistrer l'image de l'événement
+     * @param $image : l'image à enrégistrer
+     * */
+    public function uploadImage($image)
+    {
+		$realName = $image['name']['image'];
+	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
+	    $tmp_name = $image['tmp_name']['image'];
+	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
+	    if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
+			$this->image = $name;
+			return true;
+		} else
+			return false;
+	}
 }
