@@ -2,7 +2,12 @@ miriade_event_event_dashboard:
     pattern: /event/dashboard
     defaults:
         _controller: MiriadeEventBundle:Event:dashboard
-
+        
+miriade_home:
+    pattern: /
+    defaults:
+        _controller: MiriadeEventBundle:Event:home
+        
 miriade_event_event_new:
     pattern: /event/new
     defaults:

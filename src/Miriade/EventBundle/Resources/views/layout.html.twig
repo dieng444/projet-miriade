@@ -34,15 +34,20 @@
                     {#</li>#}
                 </ul>
                 <form class="navbar-form navbar-right">
-                    <!-- <div class="form-group input-group-sm">
-                      <input type="text" placeholder="Email" class="form-control">
-                    </div>
-                    <div class="form-group input-group-sm">
-                      <input type="password" placeholder="Password" class="form-control">
-                    </div> -->
-                    <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Créer un événement</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModal">Connexion</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inscriptionModal">Inscription</button>
+
+                    {% if app.user %} 
+                        <!-- si l'utilisateur est connecté -->
+
+                        <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Creation</a>
+                        <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary">Déconnexion</a>
+
+                        {% else %}
+                            <!-- sinon -->
+
+                        <a href="{{ path('fos_user_security_login') }}" class="btn btn-primary">Connexion</a>
+                        <a href="{{ path('fos_user_registration_register') }}" class="btn btn-success">Inscription</a>
+
+                    {% endif %}
                 </form>
             </div><!--/.navbar-collapse -->
         </div>
@@ -62,20 +67,7 @@
                 <h2 class="modal-title" id="gridSystemModalLabel">Identifiez-vous</h2>
             </div>
             <div class="modal-body">
-                <form class="form-signin">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="loginId" placeholder="Login">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="passId" placeholder="Mots de passe">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input value="remember-me" type="checkbox"> Remember me
-                        </label>
-                    </div>
-                    <!-- <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button> -->
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inscriptionModal" style="float:left;">Inscription</button>

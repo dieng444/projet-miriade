@@ -3,6 +3,8 @@
 namespace Miriade\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\AttributeOverrides;
+use Doctrine\ORM\Mapping\AttributeOverride;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -10,6 +12,26 @@ use FOS\UserBundle\Model\User as BaseUser;
  *
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="Miriade\UserBundle\Entity\UserRepository")
+ *
+ * @AttributeOverrides({
+ *     @AttributeOverride(name="username",
+ *         column=@ORM\Column(
+ *             name="username",
+ *             type="string",
+ *             length=255,
+ *             nullable=true
+ *         )
+ *     ),
+ *     @AttributeOverride(name="usernameCanonical",
+ *         column=@ORM\Column(
+ *             name="usernameCanonical",
+ *             type="string",
+ *             length=255,
+ *             nullable=true
+ *         )
+ *     ),
+ * })
+ *
  */
 class User extends BaseUser
 {
@@ -67,5 +89,10 @@ class User extends BaseUser
     public function getDateSubscription()
     {
         return $this->dateSubscription;
+    }
+
+    public function setEmail($email){
+        parent::setEmail($email);
+        $this->setUsername($email);
     }
 }

@@ -29,6 +29,15 @@ class EventController extends Controller
         );
     }
     /**
+     * @Template()
+     */
+    public function homeAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        return $this->render('MiriadeEventBundle:Event:dashboard.html.twig', array('events' => $events));
+    }
+    /**
      * Displays a form to create a new Categorie entity.
      * @Method("GET")
      * @Template()
