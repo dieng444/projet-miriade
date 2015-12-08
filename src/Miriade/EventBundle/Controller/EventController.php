@@ -23,9 +23,9 @@ class EventController extends Controller
     public function dashboardAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $category = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        $events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
         return array(
-            'category' => $category,
+            'events' => $events,
         );
     }
     /**
@@ -44,7 +44,8 @@ class EventController extends Controller
             //var_dump($data);die;
             //Les sessions
             $session->setName(trim(strip_tags($data['session_name'])));
-            $session->setRangHoraire(trim(strip_tags($data['session_rangHoraire'])));
+            $session->setHoraireDebut(trim(strip_tags($data['horaireDebut'])));
+            $session->setHoraireFin(trim(strip_tags($data['horaireFin'])));
             $session->setDescription(trim(strip_tags($data['session_desc'])));
             //Les parténaires
             $partner->setName(trim(strip_tags($data['partner_name'])));
@@ -55,6 +56,7 @@ class EventController extends Controller
             $partner->setPhone(trim(strip_tags($data['partner_phone'])));
             $partner->setLogo("_none");
 			$form->HandleRequest($this->getRequest());
+			//var_dump($this->getRequest());die;
             $em = $this->getDoctrine()->getManager();
             if(isset($_FILES['event_eventbundle_event']) && 
 				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
@@ -87,5 +89,24 @@ class EventController extends Controller
         } else {
             return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
         }
+    }
+	/**
+     * Trouve et affiche les informations d'un événement enregistré dans la base de données.
+     *
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+        if (!$event) {
+            throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
+        }
+
+        return array(
+            'events' => $event
+        );
     }
 }

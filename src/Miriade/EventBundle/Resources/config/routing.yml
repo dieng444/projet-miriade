@@ -32,3 +32,18 @@ miriade_event_session_create:
     pattern: /session/create
     defaults:
         _controller: MiriadeEventBundle:Session:create
+        
+miriade_event_event_show:
+    pattern: /show/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:show
+
+miriade_event_event_session:
+    pattern: /show/program/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:session
+
+miriade_event_event_contact:
+    pattern: /show/contact/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:show

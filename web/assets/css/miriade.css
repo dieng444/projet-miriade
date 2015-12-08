@@ -1,104 +1,453 @@
+/* ==================================================== */
+/* ====================== Global ====================== */
+/* ==================================================== */
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-	min-width: 320px;
-  padding-top: 50px;
-  padding-bottom: 20px;
+    min-width: 320px;
+    padding-top: 50px;
+    color: #1B1C1D;
+    background-color: #F2F2F2;
 }
-            /*body { background-color:#CCC }*/
-.jumbotron-main{
-	padding-top: 50px;
-	min-height: 400px;
-	background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+
+textarea {
+    resize: none;
 }
+
+/*body { background-color:#CCC }*/
+
 .intro-message{
-	text-align: center;
-	color: #fff;
-}
-.jumbotron-main nav.navbar{
-	background-color: rgb(245, 245, 245);
-	border-bottom: 2px solid silver;
-}
-.navbar-brand{
-	padding: 5px;
-	height: auto;
-}
-#navbar{
-	padding-top: 10px;
-}
-#navbar .nav{
-	font-size: 17px;
-}
-.contact-item{
-	overflow: hidden;
-	min-height: 170px;
-	padding: 5px;
-	margin-bottom: 20px;
-	background-color: #F5F5F5;
-	border: 1px solid #E3E3E3;
-	border-radius: 4px;
-	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
-}
-.contact-item img{
-	width: 100%;
-	max-width: 150px;
-	max-height: 80px;
-}
-.contact-item table{
-	margin: 0;
-}
-.contact-item table td{
-	border: none!important;
-}
-#connexionModal,#inscriptionModal{
-	opacity: 1;
-}
-#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
-	width: 400px;
-}
-@media screen and (max-width: 768px) {
- 	#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
-		width: auto;
-	}
+    text-align: center;
+    color: #fff;
 }
 
-.participants-navigation{
-	padding: 0;
-}
-
-.participants-navigation .container-fluid{
-	margin: 0px 15px;
-	padding: 0;
-	background-color: #F5F5F5;
-	border: 1px solid #E3E3E3;
-	border-radius: 4px;
-	box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
-}
-
-.organisateurs-block-item{
-	margin-bottom: 10px;
-}
 .justified{
-	text-align: center;
-}
-.participants-list img.img-responsive{
-	margin: auto;
-}
-.participants-pagination-wrap .pagination{
-	margin: 40px 0 0;
+    text-align: center;
 }
 
-/*.btn-success{
-	background: #D67E30;
-	border-color: #D67E30;
-}
-.btn-success:hover{
-	background-color: rgb(240, 162, 27);
-	border-color: rgb(218, 193, 11);
-}*/
 .tab-sections{
-	margin-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+#event-wrapper .col-md-9 {
+    width: 100%;
+}
+
+#event-wrapper .col-md-9 h1,
+#event-wrapper .col-md-9 h2 {
+    display: inline;
+    font-size: 20px;
+    font-variant: small-caps;
+    margin-bottom: 2px;
+    margin-left: 15px;
+    margin-top: 20px;
+    padding: 2px 15px;
+    position: relative;
+    top: -4px;
+    background-color: #EEEEEE;
+    border-top: solid 1px silver;
+    border-left: solid 1px silver;
+    border-right: solid 1px silver;
+    color: gray;
+    border-radius: 4px 4px 0 0;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.btn-file input[type='file'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.row.well {
+    padding: 14px;
+    background-color: white;
+    margin-bottom: 50px;
+    box-shadow: -1px 5px 10px -2px silver;
+}
+
+.well {
+    background-color: white;
+}
+
+.list-group {
+    margin-bottom: 55px;
+}
+
+label {
+    background-color: #F2F2F2;
+    color: gray;
+    font-style: italic;
+    font-weight: normal;
+    left: 12px;
+    padding: 0 10px;
+    position: relative;
+    top: 5px;
+}
+
+.form-control:focus {
+    border: solid 1px #2F88AA;
+    box-shadow: none;
+}
+
+button.btn.btn-lg.btn-success {
+    width: 100%;
+    background-color: #364B5A;
+    border: 0;
+    border-radius: 0;
+}
+
+/*
+button.btn.btn-lg.btn-success:hover {
+    background-color: #2F88AA;
+}
+*/
+
+.col-md-9 h1, .participants h3 {
+    background-color: #2F88AA;
+    color: white;
+    display: inline;
+    font-size: 25px;
+    font-variant: small-caps;
+    padding: 0 20px;
+    position: relative;
+    top: -4px;
+    border-radius: 4px 4px 0 0;
+}
+
+.aside-content {
+    padding: 0;
+    box-shadow: -1px 5px 10px -2px silver;
+}
+
+.aside-content h4 {
+    background-color: #1B1C1D;
+    color: white;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+}
+
+.aside-content .row {
+    padding: 0 19px;
+}
+
+.organisateurs-block-item a {
+    display: flex;
+    justify-content: center;
+}
+
+.event-description {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 42px;
+    border-top: solid 1px #2F88AA;
+    box-shadow: -1px 5px 10px -2px silver;
+}
+
+.participants .col-md-12.well {
+    padding-bottom: 0;
+    border-top: solid 1px #2F88AA;
+    border-radius: 0;
 }
 
 footer{
-	margin-top: 30px;
+    margin-top: 30px;
+    padding: 30px 0;
+    background-color: #1B1C1D;
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+    margin-bottom: 0;
+}
+
+footer p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p img {
+    margin-right: 15px;
+}
+
+/* ==================================================== */
+/* ==================== Navigation ==================== */
+/* ==================================================== */
+
+.navbar-brand{
+    padding: 5px;
+    height: auto;
+}
+
+#navbar{
+    padding-top: 8px;
+}
+
+#navbar .nav{
+    font-size: 17px;
+}
+
+nav.navbar.navbar-default.navbar-fixed-top {
+    background-color: #1B1C1D;
+}
+
+nav.navbar-fixed-top div#navbar form.navbar-form.navbar-right {
+    margin-top: 3px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: 0 0 3px white;
+    border-radius: 5px;
+}
+
+nav.navbar-fixed-top div#navbar ul li a {
+    color: white;
+    font-variant: small-caps;
+
+}
+
+nav.navbar-fixed-top div#navbar ul li a:hover {
+    border-top: solid 1px #2F88AA;
+    border-bottom: solid 1px #D26F28;
+}
+
+nav.navbar-fixed-top .btn.btn-default:first-of-type,
+nav.navbar-fixed-top div#navbar button {
+    font-variant: small-caps;
+    border: 0;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+nav.navbar-fixed-top .btn.btn-default:first-of-type:hover,
+nav.navbar-fixed-top div#navbar button:hover {
+    opacity: 0.9;
+}
+
+nav.navbar-fixed-top .btn.btn-default:first-of-type {
+    background-color: #CBCBCB;
+}
+
+nav.navbar-fixed-top div#navbar button:first-of-type {
+    background-color: #2F88AA;
+}
+
+nav.navbar-fixed-top div#navbar button:last-of-type {
+    background-color: #D26F28;
+}
+
+/* ==================================================== */
+/* ==================== Jumbotron ===================== */
+/* ==================================================== */
+
+.jumbotron-main {
+    padding-top: 50px;
+    margin-bottom: 50px;
+    min-height: 400px;
+    background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+}
+
+.jumbotron-main nav.navbar {
+    background-color: rgb(245, 245, 245);
+    border-bottom: 2px solid silver;
+}
+
+.jumbotron-main .intro-message {
+    margin-top: 30px;
+}
+
+/* ==================================================== */
+/* ====================== Contact ===================== */
+/* ==================================================== */
+
+.contact {
+    padding-bottom: 215px;
+}
+
+.contact h3 {
+    font-variant: small-caps;
+    margin-bottom: -7px;
+}
+
+.contact-item {
+    overflow: hidden;
+    min-height: 170px;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.contact-item h4 {
+    background-color: #EEEEEE;
+    color: gray;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.contact-item img {
+    width: 100%;
+    max-width: 150px;
+    max-height: 80px;
+}
+
+.contact-item table {
+    margin: 0;
+}
+
+.contact-item table td {
+    border: none!important;
+}
+
+.col-md-6 {
+    margin-bottom: 15px;
+}
+
+/*
+.col-md-6 {
+    padding-left: 0;
+}
+*/
+
+/* ==================================================== */
+/* ==================== Connexion ===================== */
+/* ==================================================== */
+
+#connexionModal,#inscriptionModal{
+    opacity: 1;
+}
+
+#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
+    width: 400px;
+}
+
+@media screen and (max-width: 768px) {
+    #connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
+        width: auto;
+    }
+}
+
+.participants-navigation {
+    padding: 0;
+}
+
+.participants-navigation .container-fluid {
+    margin: 0px 15px;
+    padding: 0;
+    background-color: #F5F5F5;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.participants-list img.img-responsive {
+    margin: auto;
+}
+
+.participants-pagination-wrap .pagination {
+    margin: 40px 0 0;
+}
+
+.participants-pagination-wrap .pagination li a {
+    color: gray;
+}
+
+.participants-pagination-wrap .pagination li a:hover {
+    color: white;
+    background-color: #2F88AA;
+}
+
+.participants-pagination-wrap .pagination li:first-of-type a:hover,
+.participants-pagination-wrap .pagination li:last-of-type a:hover {
+    background-color: #D26F28;
+}
+
+.organisateurs-block-item {
+    margin-bottom: 10px;
+}
+
+.btn-success {
+    background-color: #D26F28;
+    border: 0;
+}
+
+.btn-success:hover {
+    background-color: #D26F28;
+    border: 0;
+    opacity: 0.9;
+}
+
+.participants-pagination-wrap .pagination {
+    margin: 20px 0 20px 0;
+}
+
+.btn-success:active,
+.btn-success:focus,
+.btn-success.active.focus,
+.btn-success.active:focus,
+.btn-success.focus:active,
+.btn-success:active:focus,
+.btn-success:active:hover {
+    border: 0;
+    background-color: #D16A25;
+}
+
+/* ==================================================== */
+/* ====================== Admin = ===================== */
+/* ==================================================== */
+
+.admin {
+    background-image: none;
+    background-color: #2F88AA;
+    padding: 5px 0;
+    min-height: 0;
+    margin-bottom: 50px;
+}
+
+.admin h1 {
+    font-size: 32px;
+    margin: 25px 0 10px 0;
+}
+
+.admin .intro-message {
+    margin-top: 0;
+}
+
+/* ==================================================== */
+/* ====================== Formulaire de creation d'un événement = ===================== */
+/* ==================================================== */
+#map-outer {
+	height: 440px;
+	padding: 20px;
+	border: 2px solid #CCC;
+	margin-bottom: 20px;
+	background-color:#FFF
+}
+
+#map-container {
+	height: 220px
+}
+
+@media all and (max-width: 991px) {
+	#map-outer {
+		height: 650px
+	}
 }

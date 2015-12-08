@@ -10,13 +10,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-ba    r"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><img src="img/miriade_logo.png" alt="Miriade"></a>
+                <a class="navbar-brand" href="{{ path('miriade_event_event_dashboard') }}"><img src="{{ asset('assets/images/miriade_logo.png') }}" alt="Miriade"></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse" >
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="{{ path('miriade_event_event_dashboard') }}">Accueil du site</a>
                     </li>
+                    {% block headervent %}
+
+                    {% endblock %}
                     {#<li>#}
                         {#<a href="{{ path('carto_fiche_dashboard_dashboard') }}">Programme</a>#}
                     {#</li>#}
@@ -37,7 +40,7 @@
                     <div class="form-group input-group-sm">
                       <input type="password" placeholder="Password" class="form-control">
                     </div> -->
-                    <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Creation</a>
+                    <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Créer un événement</a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModal">Connexion</button>
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inscriptionModal">Inscription</button>
                 </form>
@@ -45,9 +48,8 @@
         </div>
     </nav>
     <div class="container intro-message">
-        <h1>Titre</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-success btn-lg" href="#" role="button" data-toggle="modal" data-target="#inscriptionModal">Inscription &raquo;</a></p>
+        {% block intromessage %}
+        {% endblock %}
     </div>
 </div>
 

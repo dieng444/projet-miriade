@@ -150,7 +150,7 @@ class Event
     public function setStartDate($startDate)
     {
         $this->startDate = new \DateTime($startDate);
-
+		
         return $this;
     }
 
@@ -173,7 +173,6 @@ class Event
     public function setEndDate($endDate)
     {
         $this->endDate = new \DateTime($endDate);
-
         return $this;
     }
 

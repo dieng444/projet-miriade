@@ -1,7 +1,9 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
-
 {% block content %}
-    <div id="wrap">
-            <h2>Bonjour</h2>
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+            <h2>Liste des événements</h2>
+        {% for event in events %}
+            <h3><a href="{{ path('miriade_event_event_show', { 'id': event.id }) }}">{{ event.title }} ({{ event.startDate|date("d/m/Y") }} - {{ event.endDate|date("d/m/Y") }}</a></h3>
+        {% endfor %}
     </div>
 {% endblock %}

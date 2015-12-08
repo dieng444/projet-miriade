@@ -1,0 +1,24 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+{% block headervent %}
+    <li>
+        <a href="{{ path('miriade_event_event_show', { 'id': events.id }) }}">Programme</a>
+    </li>
+    <li>
+        <a href="{{ path('miriade_event_event_contact', {'id': events.id }) }}">Contact</a>
+    </li>
+    {#<li>#}
+        {#<a href="{{ path('miriade_event_event_map', { 'id': event.id }) }}">Plan d'accès</a>#}
+    {#</li>#}
+{% endblock %}
+
+{% block intromessage %}
+    <h1>Programme de l'événement</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container" xmlns="http://www.w3.org/1999/html">
+        {% for event in events %}
+                <p>event.session.name</p>
+            {% endfor %}
+    </div>
+{% endblock%}
