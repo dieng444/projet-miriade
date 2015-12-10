@@ -83,7 +83,7 @@
             <div class="form-group input-group-sm">
               <input type="password" placeholder="Password" class="form-control">
             </div> -->
-            <a class="btn btn-default" href="creation-evenement.php" role="button">Creation</a>
+            <!-- <a class="btn btn-default" href="creation-evenement.php" role="button">Creation</a> -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#connexionModal">Connexion</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inscriptionModal">Inscription</button>
           </form>
