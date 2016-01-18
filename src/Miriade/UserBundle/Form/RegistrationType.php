@@ -9,7 +9,18 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->remove('username');
+
+        $builder->remove('username')
+        ->add('lastname', 'text', array('label' => 'Nom', 'required' => true))
+        ->add('firstname', 'text', array('label' => 'Pr�nom', 'required' => true))
+        ->add('enterprise', 'text', array('label' => 'Nom de l\'entreprise', 'required' => false))
+        ->add('job', 'text', array('label' => 'Poste occup�', 'required' => false))
+        ->add('siret', 'text', array('label' => 'SIRET', 'required' => true))
+        ->add('adress', 'text', array('label' => 'Adresse', 'required' => true))
+        ->add('zipcode', 'text', array('label' => 'Code postale', 'required' => true))
+        ->add('city', 'text', array('label' => 'Ville', 'required' => true))
+        ->add('phone', 'text', array('label' => 'Téléphone', 'required' => true));
+
     }
 
     public function getParent()
