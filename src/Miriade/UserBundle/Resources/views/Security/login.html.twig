@@ -11,9 +11,9 @@
 <div id="login-page" class="container">
 	<div class="row">
 		<div class="col-md-9">
-			<h2>Connexion</h2>
 			<form action="{{ path("fos_user_security_check") }}" method="post">
 				<div class="row well">
+					<h2>Connexion</h2>
 					<div class="row">
 				    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 							<div class="form-group">
@@ -29,6 +29,7 @@
 								<label class="reset-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 							</div>
 					    <input type="submit" id="_submit" class="btn btn-success" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+							<input type="reset" class="btn" />
 					</div>
 				</div>
 			</form>

@@ -56,7 +56,7 @@ class EventController extends Controller
             $session->setHoraireDebut($data['horaireDebut']);
             $session->setHoraireFin($data['horaireFin']);
             $session->setDescription(trim(strip_tags($data['session_desc'])));
-            //Les parténaires
+            //Les partï¿½naires
             $partner->setName(trim(strip_tags($data['partner_name'])));
             $partner->setAddress(trim(strip_tags($data['partner_address'])));
             $partner->setCity(trim(strip_tags($data['partner_city'])));
@@ -67,26 +67,26 @@ class EventController extends Controller
 			$form->HandleRequest($this->getRequest());
 			//var_dump($this->getRequest());die;
             $em = $this->getDoctrine()->getManager();
-            if(isset($_FILES['event_eventbundle_event']) && 
+            if(isset($_FILES['event_eventbundle_event']) &&
 				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
 				$image = $_FILES['event_eventbundle_event'];
 				if($event->uploadImage($image))
 					$event->setImage($event->getImage());
-			} else 
+			} else
 				$event->setImage("_none");
-				
-			if(isset($_FILES['partner_logo']) && 
+
+			if(isset($_FILES['partner_logo']) &&
 				strlen($_FILES['partner_logo']['name']) > 0 ) {
 				$logo = $_FILES['partner_logo'];
 				//var_dump($log
 				if($partner->uploadLogo($logo))
 					$partner->setLogo($partner->getLogo());
-			} else 
+			} else
 				$event->setLogo("_none");
-				
+
             $event->setPartner($partner);
             $event->setSession($session);
-            
+
 			$em->persist($event);
 			$em->flush();
 			return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
@@ -100,7 +100,7 @@ class EventController extends Controller
         }
     }
 	/**
-     * Trouve et affiche les informations d'un événement enregistré dans la base de données.
+     * Trouve et affiche les informations d'un ï¿½vï¿½nement enregistrï¿½ dans la base de donnï¿½es.
      *
      * @Method("GET")
      * @Template()
@@ -111,11 +111,12 @@ class EventController extends Controller
 
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
         if (!$event) {
-            throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
+            throw $this->createNotFoundException('Impossible de trouver l\'ï¿½vï¿½nement demandï¿½.');
         }
 
         return array(
             'events' => $event
         );
+
     }
 }

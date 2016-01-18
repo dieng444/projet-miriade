@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: 'varela_roundregular';
-    src: url('../fonts/varelaround-regular-webfont.eot');
-    src: url('../fonts/varelaround-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/varelaround-regular-webfont.woff2') format('woff2'),
-         url('../fonts/varelaround-regular-webfont.woff') format('woff'),
-         url('../fonts/varelaround-regular-webfont.ttf') format('truetype'),
-         url('../fonts/varelaround-regular-webfont.svg#varela_roundregular') format('svg');
+    src: url('../fonts/VarelaRound/varelaround-regular-webfont.eot');
+    src: url('../fonts/VarelaRound/varelaround-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.woff2') format('woff2'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.woff') format('woff'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.ttf') format('truetype'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.svg#varela_roundregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -17,10 +17,11 @@
 body {
     min-width: 320px;
     padding-top: 50px;
+    padding-bottom: 50px;
     color: #1B1C1D;
     background-color: #F2F2F2;
     font-family: varela_roundregular, sans-serif;
-    /* background: url('../images/office.jpg') no-repeat !important; */
+    background: url('../images/office.jpg') no-repeat !important;
 }
 
 textarea {
@@ -67,7 +68,6 @@ textarea {
 label {
     background-color: #F2F2F2;
     color: gray;
-    font-style: italic;
     font-weight: normal;
     left: 12px;
     padding: 0 10px;
@@ -80,7 +80,11 @@ label {
     box-shadow: none;
 }
 
-button.btn.btn-lg.btn-success {
+.btn.btn-lg {
+  width: 90%;
+}
+
+.btn.btn-lg.btn-success {
     width: 100%;
     background-color: #364B5A;
     border: 0;
@@ -150,6 +154,7 @@ button.btn.btn-lg.btn-success {
 
 #list-events .well {
   padding: 0;
+  border-radius: 0;
 }
 
 #list-events h2 {
@@ -175,7 +180,7 @@ button.btn.btn-lg.btn-success {
 }
 
 /* ==================================================== */
-/* ================== Page de login =================== */
+/* ================ Login/Inscription ================= */
 /* ==================================================== */
 
 #login-page {
@@ -183,42 +188,57 @@ button.btn.btn-lg.btn-success {
   width: 50%;
   height: 50%;
   position: absolute;
+  z-index: 3;
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
-#login-page .reset-label {
+#register-page {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+#login-page .reset-label,
+#register-page .reset-label {
   background-color: white;
   font-style: normal;
   position: static;
 }
 
-#login-page .col-md-9 {
+#login-page .col-md-9,
+#register-page .col-md-9 {
   width: 100%;
 }
 
-#login-page .col-md-9 h2 {
+#login-page .col-md-9 h2,
+#register-page .col-md-9 h2 {
   background-color: #2f88aa;
-  border-radius: 10px 10px 0 0;
   color: white;
   font-variant: small-caps;
-  margin: auto;
-  padding: 5px;
+  margin: 0 0 20px 0;
+  padding: 10px 0;
   text-align: center;
-  width: 60%;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
 }
 
-#login-page .well {
-  padding: 30px 0;
+#login-page .well,
+#register-page .well {
+  padding: 0 0 30px 0;
   margin: 0;
+  border: 0;
   border-radius: 10px;
+  box-shadow: 0 0 30px black;
 }
 
-#login-page .well > .row {
-  width: 80%;
+#login-page .well > .row,
+#register-page .well > .row {
   margin: auto;
+  padding: 0 50px;
 }
 
-#login-page .form-control {
+#login-page .form-control,
+#register-page .form-control {
   height: 50px;
 }
 
@@ -247,7 +267,6 @@ nav.navbar.navbar-default.navbar-fixed-top {
 nav.navbar-fixed-top div#navbar ul li a {
     color: white;
     font-variant: small-caps;
-    background-color: rgba(100, 100, 100, 0.2);
 }
 
 nav.navbar-fixed-top div#navbar ul li a:hover {
@@ -266,10 +285,6 @@ nav.navbar-fixed-top div#navbar button {
 nav.navbar-fixed-top .btn.btn-default:first-of-type:hover,
 nav.navbar-fixed-top div#navbar button:hover {
     opacity: 0.9;
-}
-
-nav.navbar-fixed-top .btn.btn-default:first-of-type {
-    background-color: #CBCBCB;
 }
 
 nav.navbar-fixed-top div#navbar button:first-of-type {
@@ -401,15 +416,27 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
     margin-bottom: 2px;
     margin-left: 15px;
     margin-top: 20px;
-    padding: 2px 15px;
+    padding: 10px 15px;
     position: relative;
-    top: -4px;
+    top: -9px;
     background-color: #EEEEEE;
     border-top: solid 1px silver;
     border-left: solid 1px silver;
     border-right: solid 1px silver;
     color: gray;
     border-radius: 4px 4px 0 0;
+}
+
+.event-creation {
+  padding: 30px !important;
+}
+
+.event-creation textarea.form-control {
+  height: 300px;
+}
+
+.event-creation input.form-control {
+  height: 50px;
 }
 
 .organisateurs-block-item a {

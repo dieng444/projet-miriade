@@ -7,8 +7,8 @@
         <a href="{{ path('miriade_event_event_contact', {'id': events.id }) }}">Contact</a>
     </li>
     {#<li>#}
-        {#<a href="{{ path('miriade_event_event_map', { 'id': event.id }) }}">Plan d'accès</a>#}
-    {#</li>#}
+        {#<a href="{{ path('miriade_event_event_map', { 'id': events.id }) }}">Plan d'accès</a>#}
+    {#</li> #}
 {% endblock %}
 
 {% block intromessage %}
@@ -18,7 +18,7 @@
 {% block content %}
     <div class="container" xmlns="http://www.w3.org/1999/html">
         {% for event in events %}
-                <p>event.session.name</p>
+                <p>{{ event.session.name }}</p>
             {% endfor %}
     </div>
 {% endblock%}

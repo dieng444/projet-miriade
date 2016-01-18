@@ -3,8 +3,8 @@
 	<div id="event-wrapper" class="container">
         <div class="row">
             <div class="col-md-9">
-                <h2>Création d'événement</h2>
                 {{ form_start(form, {"action": path('miriade_event_event_new')} ) }}
+								<h1>Création d'événement</h1>
                 <div class="event-creation row well">
                     <div class="row">
                         <div class="col-md-6">
@@ -159,6 +159,9 @@
 									</div>
 								</div>
 							</div>
+							<div class="row justified" style="margin-top: 20px;">
+									<button type="button" class="btn btn-lg">Ajouter</button>
+							</div>
 						</div>
                         </div>
                         <div class="col-md-6">
@@ -166,9 +169,6 @@
                                 <label>Description</label>
                                 <textarea class="form-control" placeholder="Description" name="session_desc" style="min-height:220px;"></textarea>
                             </div>
-                        </div>
-                        <div class="row justified" style="margin-top: 20px;">
-                            <button type="button" class="btn btn-lg btn-success">Ajouter</button>
                         </div>
                     </div>
                 </div>
@@ -210,14 +210,11 @@
                             <img class="img-responsive" src="http://placehold.it/700x400" alt="">
                         </div>
                     </div>
-                    <div class="row justified" style="margin-top: 20px;">
-                        <button type="button" class="btn btn-lg btn-success">Ajouter</button>
-                    </div>
                 </div>
                 <div class="row justified" style="margin-top: 20px;">
-					<input type="submit" class="btn btn-lg btn-primary" name="form_action" value="Créer l'événement"/>
-				</div>
-			</form>
+									<input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer l'événement"/>
+								</div>
+							</form>
             </div>
             <!-- Aside here? -->
         </div>
