@@ -10,3 +10,6 @@
 /vendor/
 /web/bundles/
 /web/upload/
+.idea/*
+app/SymfonyRequirements.php
+app/check.php

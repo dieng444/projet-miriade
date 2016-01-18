@@ -53,8 +53,8 @@ class EventController extends Controller
             //var_dump($data);die;
             //Les sessions
             $session->setName(trim(strip_tags($data['session_name'])));
-            $session->setHoraireDebut(trim(strip_tags($data['horaireDebut'])));
-            $session->setHoraireFin(trim(strip_tags($data['horaireFin'])));
+            $session->setHoraireDebut($data['horaireDebut']);
+            $session->setHoraireFin($data['horaireFin']);
             $session->setDescription(trim(strip_tags($data['session_desc'])));
             //Les parténaires
             $partner->setName(trim(strip_tags($data['partner_name'])));
