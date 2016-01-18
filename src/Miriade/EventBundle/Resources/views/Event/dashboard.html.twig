@@ -1,9 +1,37 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 {% block content %}
-    <div class="container" xmlns="http://www.w3.org/1999/html">
+    <div id="list-events" class="container" xmlns="http://www.w3.org/1999/html">
             <h2>Liste des événements</h2>
         {% for event in events %}
-            <h3><a href="{{ path('miriade_event_event_show', { 'id': event.id }) }}">{{ event.title }} ({{ event.startDate|date("d/m/Y") }} - {{ event.endDate|date("d/m/Y") }}</a></h3>
+          <h3><a href="{{ path('miriade_event_event_show', { 'id': event.id }) }}">{{ event.title }} ({{ event.startDate|date("d/m/Y") }} - {{ event.endDate|date("d/m/Y") }}</a></h3>
         {% endfor %}
+        <!-- Version statique à dynamiser -->
+        <div class="well">
+          <div class="row">
+            <div class="col-sm-9 col-xs-5">
+                <h3>Événement 1</h3>
+                <h4>Introtext</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-9 col-xs-5">
+                <h3>Événement 2</h3>
+                <h4>Introtext</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-9 col-xs-5">
+                <h3>Événement 3</h3>
+                <h4>Introtext</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+            </div>
+          </div>
+          <hr>
+        </div>
+      </div>
     </div>
 {% endblock %}

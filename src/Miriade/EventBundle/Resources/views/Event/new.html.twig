@@ -3,7 +3,7 @@
 	<div id="event-wrapper" class="container">
         <div class="row">
             <div class="col-md-9">
-                <h1>Création d'événement</h1>
+                <h2>Création d'événement</h2>
                 {{ form_start(form, {"action": path('miriade_event_event_new')} ) }}
                 <div class="event-creation row well">
                     <div class="row">
@@ -136,29 +136,29 @@
                                 <label>Titre</label>
                                 <input type="text" name="session_name" class="form-control" placeholder="Titre">
                             </div>
-                            <div class="row"> 
-							<div class="col-md-6"> 
-								<div class="form-group"> 
-									<label>Plage horaire debut</label> 
-									<div class='input-group date' id='datetimepicker3'> 
-										<input type='text' name="horaireDebut" class="form-control" /> 
-										<span class="input-group-addon"> 
-											<span class="glyphicon glyphicon-time"></span> 
-										</span> 
-									</div> 
-								</div> 
-							</div> 
-							<div class="col-md-6"> 
-								<div class="form-group"> 
-									<label>Plage horaire fin</label> 
-									<div class='input-group date' id='datetimepicker4'> 
-										<input type='text' name="horaireFin" class="form-control" /> 
-										<span class="input-group-addon"> 
-											<span class="glyphicon glyphicon-time"></span> 
-										</span> 
-									</div> 
-								</div> 
-							</div> 
+                            <div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Plage horaire debut</label>
+									<div class='input-group date' id='datetimepicker3'>
+										<input type='text' name="horaireDebut" class="form-control" />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-time"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Plage horaire fin</label>
+									<div class='input-group date' id='datetimepicker4'>
+										<input type='text' name="horaireFin" class="form-control" />
+										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-time"></span>
+										</span>
+									</div>
+								</div>
+							</div>
 						</div>
                         </div>
                         <div class="col-md-6">

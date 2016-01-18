@@ -2,54 +2,29 @@
 /* ====================== Global ====================== */
 /* ==================================================== */
 
-/* Move down content because we have a fixed navbar that is 50px tall */
+@font-face {
+    font-family: 'varela_roundregular';
+    src: url('../fonts/varelaround-regular-webfont.eot');
+    src: url('../fonts/varelaround-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/varelaround-regular-webfont.woff2') format('woff2'),
+         url('../fonts/varelaround-regular-webfont.woff') format('woff'),
+         url('../fonts/varelaround-regular-webfont.ttf') format('truetype'),
+         url('../fonts/varelaround-regular-webfont.svg#varela_roundregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     min-width: 320px;
     padding-top: 50px;
     color: #1B1C1D;
     background-color: #F2F2F2;
+    font-family: varela_roundregular, sans-serif;
+    /* background: url('../images/office.jpg') no-repeat !important; */
 }
 
 textarea {
     resize: none;
-}
-
-/*body { background-color:#CCC }*/
-
-.intro-message{
-    text-align: center;
-    color: #fff;
-}
-
-.justified{
-    text-align: center;
-}
-
-.tab-sections{
-    margin-bottom: 20px;
-}
-
-#event-wrapper .col-md-9 {
-    width: 100%;
-}
-
-#event-wrapper .col-md-9 h1,
-#event-wrapper .col-md-9 h2 {
-    display: inline;
-    font-size: 20px;
-    font-variant: small-caps;
-    margin-bottom: 2px;
-    margin-left: 15px;
-    margin-top: 20px;
-    padding: 2px 15px;
-    position: relative;
-    top: -4px;
-    background-color: #EEEEEE;
-    border-top: solid 1px silver;
-    border-left: solid 1px silver;
-    border-right: solid 1px silver;
-    color: gray;
-    border-radius: 4px 4px 0 0;
 }
 
 .btn-file {
@@ -112,12 +87,6 @@ button.btn.btn-lg.btn-success {
     border-radius: 0;
 }
 
-/*
-button.btn.btn-lg.btn-success:hover {
-    background-color: #2F88AA;
-}
-*/
-
 .col-md-9 h1, .participants h3 {
     background-color: #2F88AA;
     color: white;
@@ -148,43 +117,109 @@ button.btn.btn-lg.btn-success:hover {
     padding: 0 19px;
 }
 
-.organisateurs-block-item a {
-    display: flex;
-    justify-content: center;
-}
-
-.event-description {
-    background-color: white;
-    padding: 25px;
-    margin-bottom: 42px;
-    border-top: solid 1px #2F88AA;
-    box-shadow: -1px 5px 10px -2px silver;
-}
-
-.participants .col-md-12.well {
-    padding-bottom: 0;
-    border-top: solid 1px #2F88AA;
-    border-radius: 0;
-}
-
-footer{
-    margin-top: 30px;
-    padding: 30px 0;
-    background-color: #1B1C1D;
+.justified{
     text-align: center;
-    color: white;
-    font-size: xx-large;
-    margin-bottom: 0;
 }
 
-footer p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tab-sections{
+    margin-bottom: 20px;
 }
 
-footer p img {
-    margin-right: 15px;
+/* ==================================================== */
+/* ====================== Header ====================== */
+/* ==================================================== */
+
+.jumbotron {
+  padding: 0;
+  margin-bottom: 80px;
+}
+
+.jumbotron-main nav.navbar {
+    background-color: rgb(245, 245, 245);
+    border-bottom: 2px solid silver;
+}
+
+.intro-message{
+    text-align: center;
+    color: #fff;
+}
+
+/* ==================================================== */
+/* ===================== Accueil ====================== */
+/* ==================================================== */
+
+#list-events .well {
+  padding: 0;
+}
+
+#list-events h2 {
+  background-color: #2f88aa;
+  color: white;
+  font-variant: small-caps;
+  font-weight: bold;
+  margin-bottom: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+#list-events .row {
+  margin: 20px;
+}
+
+#list-events .col-sm-9 {
+  width: 100%;
+}
+
+#list-events .row:hover {
+  background-color: rgba(242, 242, 242, 0.2);
+}
+
+/* ==================================================== */
+/* ================== Page de login =================== */
+/* ==================================================== */
+
+#login-page {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#login-page .reset-label {
+  background-color: white;
+  font-style: normal;
+  position: static;
+}
+
+#login-page .col-md-9 {
+  width: 100%;
+}
+
+#login-page .col-md-9 h2 {
+  background-color: #2f88aa;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  font-variant: small-caps;
+  margin: auto;
+  padding: 5px;
+  text-align: center;
+  width: 60%;
+}
+
+#login-page .well {
+  padding: 30px 0;
+  margin: 0;
+  border-radius: 10px;
+}
+
+#login-page .well > .row {
+  width: 80%;
+  margin: auto;
+}
+
+#login-page .form-control {
+  height: 50px;
 }
 
 /* ==================================================== */
@@ -202,24 +237,17 @@ footer p img {
 
 #navbar .nav{
     font-size: 17px;
+    margin-left: 20px;
 }
 
 nav.navbar.navbar-default.navbar-fixed-top {
     background-color: #1B1C1D;
 }
 
-nav.navbar-fixed-top div#navbar form.navbar-form.navbar-right {
-    margin-top: 3px;
-    padding: 5px;
-    background-color: white;
-    box-shadow: 0 0 3px white;
-    border-radius: 5px;
-}
-
 nav.navbar-fixed-top div#navbar ul li a {
     color: white;
     font-variant: small-caps;
-
+    background-color: rgba(100, 100, 100, 0.2);
 }
 
 nav.navbar-fixed-top div#navbar ul li a:hover {
@@ -252,80 +280,27 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
     background-color: #D26F28;
 }
 
-/* ==================================================== */
-/* ==================== Jumbotron ===================== */
-/* ==================================================== */
-
-.jumbotron-main {
-    padding-top: 50px;
-    margin-bottom: 50px;
-    min-height: 400px;
-    background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+.navbar-form {
+  margin-top: 0;
 }
 
-.jumbotron-main nav.navbar {
-    background-color: rgb(245, 245, 245);
-    border-bottom: 2px solid silver;
+.navbar-form .btn {
+  border: 0;
+  padding: 12px;
+  font-variant: small-caps;
+  font-weight: bold;
+  border-radius: 0;
 }
 
-.jumbotron-main .intro-message {
-    margin-top: 30px;
+.navbar-form .btn:first-of-type {
+  color: #8EB7D0;
+  border: solid 2px #8EB7D0;
 }
 
-/* ==================================================== */
-/* ====================== Contact ===================== */
-/* ==================================================== */
-
-.contact {
-    padding-bottom: 215px;
+.navbar-form .btn:last-of-type {
+  color: #E2BC7E;
+  border: solid 2px #E2BC7E;
 }
-
-.contact h3 {
-    font-variant: small-caps;
-    margin-bottom: -7px;
-}
-
-.contact-item {
-    overflow: hidden;
-    min-height: 170px;
-    padding: 5px 0;
-    margin-bottom: 20px;
-    background-color: white;
-    border: 1px solid #E3E3E3;
-    border-radius: 4px;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
-}
-
-.contact-item h4 {
-    background-color: #EEEEEE;
-    color: gray;
-    text-align: center;
-    padding: 5px 0;
-}
-
-.contact-item img {
-    width: 100%;
-    max-width: 150px;
-    max-height: 80px;
-}
-
-.contact-item table {
-    margin: 0;
-}
-
-.contact-item table td {
-    border: none!important;
-}
-
-.col-md-6 {
-    margin-bottom: 15px;
-}
-
-/*
-.col-md-6 {
-    padding-left: 0;
-}
-*/
 
 /* ==================================================== */
 /* ==================== Connexion ===================== */
@@ -411,6 +386,119 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 }
 
 /* ==================================================== */
+/* ==================== Événement ===================== */
+/* ==================================================== */
+
+#event-wrapper .col-md-9 {
+    width: 100%;
+}
+
+#event-wrapper .col-md-9 h1,
+#event-wrapper .col-md-9 h2 {
+    display: inline;
+    font-size: 20px;
+    font-variant: small-caps;
+    margin-bottom: 2px;
+    margin-left: 15px;
+    margin-top: 20px;
+    padding: 2px 15px;
+    position: relative;
+    top: -4px;
+    background-color: #EEEEEE;
+    border-top: solid 1px silver;
+    border-left: solid 1px silver;
+    border-right: solid 1px silver;
+    color: gray;
+    border-radius: 4px 4px 0 0;
+}
+
+.organisateurs-block-item a {
+    display: flex;
+    justify-content: center;
+}
+
+.event-description {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 42px;
+    border-top: solid 1px #2F88AA;
+    box-shadow: -1px 5px 10px -2px silver;
+}
+
+.participants .col-md-12.well {
+    padding-bottom: 0;
+    border-top: solid 1px #2F88AA;
+    border-radius: 0;
+}
+
+#map-outer {
+	height: 440px;
+	padding: 20px;
+	border: 2px solid #CCC;
+	margin-bottom: 20px;
+	background-color:#FFF
+}
+
+#map-container {
+	height: 220px
+}
+
+@media all and (max-width: 991px) {
+	#map-outer {
+		height: 650px
+	}
+}
+
+/* ==================================================== */
+/* ====================== Contact ===================== */
+/* ==================================================== */
+
+.contact {
+    padding-bottom: 215px;
+}
+
+.contact h3 {
+    font-variant: small-caps;
+    margin-bottom: -7px;
+}
+
+.contact-item {
+    overflow: hidden;
+    min-height: 170px;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid #E3E3E3;
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.contact-item h4 {
+    background-color: #EEEEEE;
+    color: gray;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.contact-item img {
+    width: 100%;
+    max-width: 150px;
+    max-height: 80px;
+}
+
+.contact-item table {
+    margin: 0;
+}
+
+.contact-item table td {
+    border: none!important;
+}
+
+.col-md-6 {
+    margin-bottom: 15px;
+}
+
+/* ==================================================== */
 /* ====================== Admin = ===================== */
 /* ==================================================== */
 
@@ -432,22 +520,16 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 }
 
 /* ==================================================== */
-/* ====================== Formulaire de creation d'un événement = ===================== */
+/* ===================== Footer ======================= */
 /* ==================================================== */
-#map-outer {
-	height: 440px;
-	padding: 20px;
-	border: 2px solid #CCC;
-	margin-bottom: 20px;
-	background-color:#FFF
-}
 
-#map-container {
-	height: 220px
-}
-
-@media all and (max-width: 991px) {
-	#map-outer {
-		height: 650px
-	}
+footer{
+    margin-top: 20px;
+    padding: 5px 0;
+    background-color: #1B1C1D;
+    text-align: center;
+    color: white;
+    font-size: large;
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
 }

@@ -8,7 +8,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                    <span class="icon-ba    r"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ path('miriade_event_event_dashboard') }}"><img src="{{ asset('assets/images/miriade_logo.png') }}" alt="Miriade"></a>
             </div>
@@ -20,22 +20,22 @@
                     {% block headervent %}
 
                     {% endblock %}
-                    {#<li>#}
-                        {#<a href="{{ path('carto_fiche_dashboard_dashboard') }}">Programme</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('carto_fiche_dashboard_dashboard') }}">Comment ça marche ?</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('carto_fiche_dashboard_dashboard') }}">Contact</a>#}
-                    {#</li>#}
-                    {#<li>#}
-                        {#<a href="{{ path('carto_fiche_dashboard_dashboard') }}">Plan d'accès</a>#}
-                    {#</li>#}
+                    <li>
+                        <a href="{{ path('miriade_event_event_dashboard') }}">Programme</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('miriade_event_event_dashboard') }}">Comment ça marche ?</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('miriade_event_event_dashboard') }}">Contact</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('miriade_event_event_dashboard') }}">Plan d'accès</a>
+                    </li>
                 </ul>
                 <form class="navbar-form navbar-right">
 
-                    {% if app.user %} 
+                    {% if app.user %}
                         <!-- si l'utilisateur est connecté -->
 
                         <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Creation</a>
@@ -67,7 +67,7 @@
                 <h2 class="modal-title" id="gridSystemModalLabel">Identifiez-vous</h2>
             </div>
             <div class="modal-body">
-                
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inscriptionModal" style="float:left;">Inscription</button>
@@ -119,5 +119,4 @@
 {% endblock %}
 
 {% block footer %}
-    <p>&copy; Miriade 2015</p>
 {% endblock %}

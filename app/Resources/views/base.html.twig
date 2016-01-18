@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="icon" href="{{ asset('assets/img/favicon.ico') }}">
+        <link rel="icon" href="{{ asset('assets/images/favicon.png') }}">
         <title>{% block title %}Miriade{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('assets/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
@@ -14,7 +13,6 @@
             <link href="{{ asset('assets/css/miriade.css') }}" type="text/css" rel="stylesheet" />
             <link href="{{ asset('assets/css/datepicker.css') }}" type="text/css" rel="stylesheet" />
         {% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link href='http://fonts.googleapis.com/css?family=Titillium+Web:300,400,700' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -39,6 +37,7 @@
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap-select.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/formEffects.js') }}"></script>
     {% endblock %}
     </body>
 </html>
