@@ -1,0 +1,83 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+{%block stylesheets%}
+	<link href="{{ asset('assets/css/map.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
+{% block headervent %}
+	<li>
+		<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_program',{'id':event.id}) }}">Programme</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_contact',{'id':event.id}) }}">Contact</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_map',{'id':event.id}) }}">Plan d'accès</a>
+	</li>
+{% endblock %}
+{% block content %}
+	<div class="container">
+        <div class="row">
+			<div class="col-md-9">
+                <h1>Plan d'accès</h1>
+                <div class="row">
+                    <div id="map-outer" class="col-md-12">
+                        <div id="address" class="col-md-4">
+                            <h2>Notre position</h2>
+                            <address>
+                                <strong>MIRIADE INNOVATION</strong><br>
+                                Campus EffiScience <br>
+                                2 Esplanade Anton Philips <br>
+                                14460 COLOMBELLES<br>
+                                FRANCE
+                            </address>
+                        </div>
+                        <div id="map-container" class="col-md-8"></div>
+                    </div><!-- /map-outer -->
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="well organisateurs-block aside-content">
+					<h4>Organisateurs</h4>
+					<div class="row">
+						<div class="col-md-12 organisateurs-block-item">
+							<a href="#">
+									<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_03/220x0_logo_net_en.png" alt="">
+							</a>
+						</div>
+						<div class="col-md-12 organisateurs-block-item">
+							<a href="#">
+									<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_08/220x0_miriade_Region_HD.jpg" alt="">
+							</a>
+						</div>
+						<div class="col-md-12 organisateurs-block-item">
+							<a href="#">
+									<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_07/220x0_cci_midi_pyrenees.gif" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="well aside-content">
+					<h4>Vues de profil</h4>
+					<div class="row">
+						<table class="table table-condensed">
+							<tr>
+								<td class="col-md-2">Avant l'événement</td>
+								<td class="col-md-1">17218</td>
+							</tr>
+							<tr>
+								<td class="col-md-2">Après l'événement</td>
+								<td class="col-md-1">13285</td>
+							</tr>
+							<tr>
+								<td class="col-md-2">RDV acceptés</td>
+								<td class="col-md-1">107</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,19 +1,21 @@
-miriade_event_event_dashboard:
+miriade_event_dashboard:
     pattern: /event/dashboard
     defaults:
         _controller: MiriadeEventBundle:Event:dashboard
         
 miriade_home:
-    pattern: /
+    pattern: /{id}
     defaults:
         _controller: MiriadeEventBundle:Event:home
+    requirements:
+              id: \d+
         
-miriade_event_event_new:
+miriade_event_new:
     pattern: /event/new
     defaults:
         _controller: MiriadeEventBundle:Event:new
 
-miriade_event_event_create:
+miriade_event_create:
     pattern: /event/create
     defaults:
         _controller: MiriadeEventBundle:Event:create
@@ -38,17 +40,27 @@ miriade_event_session_create:
     defaults:
         _controller: MiriadeEventBundle:Session:create
         
-miriade_event_event_show:
-    pattern: /show/{id}
+miriade_event_show:
+    pattern: /event/show/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:show
 
-miriade_event_event_session:
-    pattern: /show/program/{id}
+miriade_event_program:
+    pattern: /event/program/{id}
     defaults:
-        _controller: MiriadeEventBundle:Event:session
+        _controller: MiriadeEventBundle:Event:program
 
-miriade_event_event_contact:
-    pattern: /show/contact/{id}
+miriade_event_contact:
+    pattern: /event/contact/{id}
     defaults:
-        _controller: MiriadeEventBundle:Event:show
+        _controller: MiriadeEventBundle:Event:contact
+        
+miriade_event_about:
+    pattern: /event/about/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:about
+        
+miriade_event_map:
+    pattern: /event/map/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:map

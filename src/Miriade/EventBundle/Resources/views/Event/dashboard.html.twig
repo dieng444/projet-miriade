@@ -6,7 +6,7 @@
         {% for event in events %}
           <div class="row">
             <div class="col-sm-9 col-xs-5">
-                <h3><a href="{{ path('miriade_event_event_show', { 'id': event.id }) }}">{{ event.title }} ({{ event.startDate|date("d/m/Y") }} - {{ event.endDate|date("d/m/Y") }})</a></h3>
+                <h3><a href="{{ path('miriade_event_show', { 'id': event.id }) }}">{{ event.title }} ({{ event.startDate|date("d/m/Y") }} - {{ event.endDate|date("d/m/Y") }})</a></h3>
                 <p>{{ event.description }}</p>
             </div>
           </div>

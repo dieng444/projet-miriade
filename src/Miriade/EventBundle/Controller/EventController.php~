@@ -31,13 +31,11 @@ class EventController extends Controller
     /**
      * @Template()
      */
-    public function homeAction($id)
+    public function homeAction()
     {
         $em = $this->getDoctrine()->getManager();
-        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
-        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
-        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
+        $events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        return $this->render('MiriadeEventBundle:Event:dashboard.html.twig', array('events' => $events));
     }
     /**
      * Displays a form to create a new Categorie entity.
@@ -58,7 +56,7 @@ class EventController extends Controller
             $session->setHoraireDebut($data['horaireDebut']);
             $session->setHoraireFin($data['horaireFin']);
             $session->setDescription(trim(strip_tags($data['session_desc'])));
-            //Les partï¿½naires
+            //Les parténaires
             $partner->setName(trim(strip_tags($data['partner_name'])));
             $partner->setAddress(trim(strip_tags($data['partner_address'])));
             $partner->setCity(trim(strip_tags($data['partner_city'])));
@@ -69,26 +67,26 @@ class EventController extends Controller
 			$form->HandleRequest($this->getRequest());
 			//var_dump($this->getRequest());die;
             $em = $this->getDoctrine()->getManager();
-            if(isset($_FILES['event_eventbundle_event']) &&
+            if(isset($_FILES['event_eventbundle_event']) && 
 				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
 				$image = $_FILES['event_eventbundle_event'];
 				if($event->uploadImage($image))
 					$event->setImage($event->getImage());
-			} else
+			} else 
 				$event->setImage("_none");
-
-			if(isset($_FILES['partner_logo']) &&
+				
+			if(isset($_FILES['partner_logo']) && 
 				strlen($_FILES['partner_logo']['name']) > 0 ) {
 				$logo = $_FILES['partner_logo'];
 				//var_dump($log
 				if($partner->uploadLogo($logo))
 					$partner->setLogo($partner->getLogo());
-			} else
+			} else 
 				$event->setLogo("_none");
-
+				
             $event->setPartner($partner);
             $event->setSession($session);
-
+            
 			$em->persist($event);
 			$em->flush();
 			return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
@@ -102,51 +100,23 @@ class EventController extends Controller
         }
     }
 	/**
-     * Trouve et affiche les informations d'un ï¿½vï¿½nement enregistrï¿½ dans la base de donnÃ©es.
+     * Trouve et affiche les informations d'un événement enregistré dans la base de données.
      *
      * @Method("GET")
      * @Template()
      */
     public function showAction(Request $request, $id)
     {
+        $em = $this->getDoctrine()->getManager();
         
-        $event = $em->getEvent($id);
+        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+        var_dump($event);die;
         if (!$event) {
-            throw $this->createNotFoundException('Impossible de trouver l\'Ã©vÃ©nement demandÃ©.');
+            throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
         }
 
         return array(
             'events' => $event
         );
-	}
-
-	public function programAction($id)
-	{
-		$event = $this->getEvent($id);
-		return $this->render('MiriadeEventBundle:Event:program.html.twig', array('var' => "Programme ".$id,"event" => $event));
-	}
-	public function aboutAction($id)
-	{
-		$event = $this->getEvent($id);
-		return $this->render('MiriadeEventBundle:Event:about.html.twig', array('var' => "About ".$id,"event" => $event));
-	}
-	public function mapAction($id)
-	{
-		$event = $this->getEvent($id);
-		return $this->render('MiriadeEventBundle:Event:map.html.twig', array('var' => "map ".$id,"event" => $event));
-	}
-	private function getEvent($id)
-	{
-		$em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
-        return $event;
-	}
-	public function contactAction($id)
-	{
-		$em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
-		return $this->render('MiriadeEventBundle:Event:contact.html.twig', array('var' => "contact".$id,"event" => $event));
-	}
+    }
 }

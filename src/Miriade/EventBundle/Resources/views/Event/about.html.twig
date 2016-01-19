@@ -1,0 +1,92 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+
+{% block headervent %}
+	<li>
+		<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_program',{'id':event.id}) }}">Programme</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_contact',{'id':event.id}) }}">Contact</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_map',{'id':event.id}) }}">Plan d'accès</a>
+	</li>
+{% endblock %}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<h1>Préparer son après-midi de RDV BtoB</h1>
+			<div class="event-description">
+				<p><u><strong>La première convention d’affaires BtoB «&nbsp;Silver Normandie&nbsp;» est gratuite</strong></u>. &nbsp;En 20/30 minutes, entrepreneurs et professionnels peuvent identifier et impulser des coopérations B2B et des partenariats. C'est un moyen facile et rapide de présenter vos activités à des partenaires potentiels et de toucher de nouveaux marchés.</p>
+				<p><strong>Cette journée est également ouverte aux entreprises nationales et internationales qui souhaitent rencontrer des partenaires potentiels sur notre territoire.</strong></p>
+				<p><span style="font-size:24px;"><strong>Comment ça marche&nbsp;?</strong></span></p>
+				<ol>
+					<li>Enregistrement</li>
+					<li>Visibilité et promotion du profil</li>
+					<li>Prise de rendez-vous</li>
+					<li>Planning des rendez-vous</li>
+				</ol>
+				<p><span style="font-size:24px;"><strong>Enregistrement</strong></span></p>
+				<p><strong>Il faudra remplir un questionnaire en ligne</strong>&nbsp;et créer son profil.&nbsp;Votre profil permet de <strong>présenter vos produits et services</strong> à des partenaires potentiels et à <strong>décrire vos attentes en termes de coopérations et partenariats futurs.&nbsp;</strong></p>
+				<p>Si vous souhaitez ajouter un profil en anglais, cliquez sur «&nbsp; ajouter un profil de coopération&nbsp;» et remplissez à nouveau la fiche.</p>
+				<p><span style="font-size:24px;"><strong>Visibilité et promotion du profil</strong></span></p>
+				<p>Une fois le profil complété,<strong> il sera activé par l’administrateur et visible par le public</strong>.</p>
+				<p><strong>La Miriade et ses partenaires en feront la promotion par le biais de leur réseau local, national et international.</strong></p>
+				<p>Vous pourrez aussi inviter vos contacts et promouvoir votre participation à cet évènement.</p>
+				<p>Si vous souhaitez modifier vos informations, vous pourrez le faire à tout moment en utilisant l’adresse mail et le mot de passe saisis lors de l’enregistrement.</p>
+				<p><span style="font-size:24px;"><strong>Prise de rendez-vous</strong></span></p>
+				<p>Après avoir reçu un email indiquant l'ouverture des prises de rendez-vous, vous pourrez procéder à l'étape suivante: <strong>planifier vos rencontres BtoB</strong>. En quelques minutes, vous pouvez <strong>saisir vos critères de recherche en fonction de vos besoins commerciaux / technologiques</strong>, cibler les profils qui vous intéressent et identifier des partenaires potentiels.</p>
+				<p>Vous pourrez alors envoyer vos demandes de rendez-vous. Soyez également prêt à répondre à des partenaires potentiels intéressés par votre profil.</p>
+				<p>Il est possible de choisir un maximum de <strong>8 rendez-vous par participant</strong>.</p>
+				<p><span style="font-size:24px;"><strong>Planning de rendez-vous</strong></span></p>
+				<p><strong>Quelques jours avant la&nbsp;conférence nous vous enverrons un email avec votre planning de rendez-vous personnalisé</strong> avec les détails de toutes les personnes que vous allez rencontrer.</p>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="well organisateurs-block aside-content">
+				<h4>Organisateurs</h4>
+				<div class="row">
+					<div class="col-md-12 organisateurs-block-item">
+						<a href="#">
+								<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_03/220x0_logo_net_en.png" alt="">
+						</a>
+					</div>
+					<div class="col-md-12 organisateurs-block-item">
+						<a href="#">
+								<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_08/220x0_miriade_Region_HD.jpg" alt="">
+						</a>
+					</div>
+					<div class="col-md-12 organisateurs-block-item">
+						<a href="#">
+								<img class="img-responsive" src="http://silvernormandie.talkb2b.net/thumbs/Box/Image/2015_07/220x0_cci_midi_pyrenees.gif" alt="">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="well aside-content">
+				<h4>Vues de profil</h4>
+				<div class="row">
+					<table class="table table-condensed">
+							<tr>
+									<td class="col-md-2">Avant l'événement</td>
+									<td class="col-md-1">17218</td>
+							</tr>
+							<tr>
+									<td class="col-md-2">Après l'événement</td>
+									<td class="col-md-1">13285</td>
+							</tr>
+							<tr>
+									<td class="col-md-2">RDV acceptés</td>
+									<td class="col-md-1">107</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock%}
