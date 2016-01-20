@@ -1,0 +1,66 @@
+body {
+  background: url('../images/office.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+#login-page {
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  z-index: 3;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+#register-page {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+}
+
+#login-page .reset-label,
+#register-page .reset-label {
+  background-color: white;
+  font-style: normal;
+  position: static;
+}
+
+#login-page .col-md-9,
+#register-page .col-md-9 {
+  width: 100%;
+}
+
+#login-page .col-md-9 h2,
+#register-page .col-md-9 h2 {
+  background-color: #2f88aa;
+  color: white;
+  font-size: x-large;
+  font-variant: small-caps;
+  margin: 0 0 20px 0;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  display: block;
+}
+
+#login-page .well,
+#register-page .well {
+  padding: 0 0 30px 0;
+  width: 90%;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 0 30px black;
+}
+
+#login-page .well > .row,
+#register-page .well > .row {
+  margin: auto;
+  padding: 0 50px;
+}
+
+#login-page .form-control,
+#register-page .form-control {
+  height: 37px;
+}

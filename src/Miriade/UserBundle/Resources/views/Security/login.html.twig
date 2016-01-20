@@ -1,6 +1,26 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+{%block stylesheets%}
+	<link href="{{ asset('assets/css/login-signup.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
+
+{% block headervent %}
+	{#<li>
+		<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_program',{'id':event.id}) }}">Programme</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_contact',{'id':event.id}) }}">Contact</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_map',{'id':event.id}) }}">Plan d'accès</a>
+	</li>
+	#}
+{% endblock %}
 
 {% block content %}
 
@@ -36,5 +56,8 @@
 		</div>
 	</div>
 </div>
-
 {% endblock %}
+
+{%block javascripts%}
+	<script src="{{ asset('assets/js/formEffects.js') }}"></script>
+{%endblock%}

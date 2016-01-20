@@ -21,7 +21,6 @@ body {
     color: #1B1C1D;
     background-color: #F2F2F2;
     font-family: varela_roundregular, sans-serif;
-    background: url('../images/office.jpg') no-repeat !important;
 }
 
 textarea {
@@ -91,7 +90,7 @@ label {
     border-radius: 0;
 }
 
-.col-md-9 h1, .participants h3 {
+.col-md-9 h2, .participants h3 {
     background-color: #2F88AA;
     color: white;
     display: inline;
@@ -99,8 +98,7 @@ label {
     font-variant: small-caps;
     padding: 0 20px;
     position: relative;
-    top: -4px;
-    border-radius: 4px 4px 0 0;
+    top: -1px;
 }
 
 .aside-content {
@@ -114,7 +112,6 @@ label {
     padding: 10px;
     margin: 0 0 20px 0;
     text-align: center;
-    border-radius: 4px 4px 0 0;
 }
 
 .aside-content .row {
@@ -180,69 +177,6 @@ label {
 }
 
 /* ==================================================== */
-/* ================ Login/Inscription ================= */
-/* ==================================================== */
-
-#login-page {
-  margin: auto;
-  width: 50%;
-  height: 50%;
-  position: absolute;
-  z-index: 3;
-  top: 0; right: 0; bottom: 0; left: 0;
-}
-
-#register-page {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
-}
-
-#login-page .reset-label,
-#register-page .reset-label {
-  background-color: white;
-  font-style: normal;
-  position: static;
-}
-
-#login-page .col-md-9,
-#register-page .col-md-9 {
-  width: 100%;
-}
-
-#login-page .col-md-9 h2,
-#register-page .col-md-9 h2 {
-  background-color: #2f88aa;
-  color: white;
-  font-variant: small-caps;
-  margin: 0 0 20px 0;
-  padding: 10px 0;
-  text-align: center;
-  width: 100%;
-  border-radius: 10px 10px 0 0;
-}
-
-#login-page .well,
-#register-page .well {
-  padding: 0 0 30px 0;
-  margin: 0;
-  border: 0;
-  border-radius: 10px;
-  box-shadow: 0 0 30px black;
-}
-
-#login-page .well > .row,
-#register-page .well > .row {
-  margin: auto;
-  padding: 0 50px;
-}
-
-#login-page .form-control,
-#register-page .form-control {
-  height: 50px;
-}
-
-/* ==================================================== */
 /* ==================== Navigation ==================== */
 /* ==================================================== */
 
@@ -295,11 +229,11 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
     background-color: #D26F28;
 }
 
-.navbar-form {
+.jumbotron .navbar-form {
   margin-top: 0;
 }
 
-.navbar-form .btn {
+.jumbotron .navbar-form .btn {
   border: 0;
   padding: 12px;
   font-variant: small-caps;
@@ -307,33 +241,19 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
   border-radius: 0;
 }
 
-.navbar-form .btn:first-of-type {
+.jumbotron .navbar-form .btn:first-of-type {
   color: #8EB7D0;
   border: solid 2px #8EB7D0;
 }
 
-.navbar-form .btn:last-of-type {
+.jumbotron .navbar-form .btn:last-of-type {
   color: #E2BC7E;
   border: solid 2px #E2BC7E;
 }
 
 /* ==================================================== */
-/* ==================== Connexion ===================== */
+/* ================== Participants ==================== */
 /* ==================================================== */
-
-#connexionModal,#inscriptionModal{
-    opacity: 1;
-}
-
-#connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
-    width: 400px;
-}
-
-@media screen and (max-width: 768px) {
-    #connexionModal .modal-dialog,#inscriptionModal .modal-dialog{
-        width: auto;
-    }
-}
 
 .participants-navigation {
     padding: 0;
@@ -401,82 +321,6 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 }
 
 /* ==================================================== */
-/* ==================== Événement ===================== */
-/* ==================================================== */
-
-#event-wrapper .col-md-9 {
-    width: 100%;
-}
-
-#event-wrapper .col-md-9 h1,
-#event-wrapper .col-md-9 h2 {
-    display: inline;
-    font-size: 20px;
-    font-variant: small-caps;
-    margin-bottom: 2px;
-    margin-left: 15px;
-    margin-top: 20px;
-    padding: 10px 15px;
-    position: relative;
-    top: -9px;
-    background-color: #EEEEEE;
-    border-top: solid 1px silver;
-    border-left: solid 1px silver;
-    border-right: solid 1px silver;
-    color: gray;
-    border-radius: 4px 4px 0 0;
-}
-
-.event-creation {
-  padding: 30px !important;
-}
-
-.event-creation textarea.form-control {
-  height: 300px;
-}
-
-.event-creation input.form-control {
-  height: 50px;
-}
-
-.organisateurs-block-item a {
-    display: flex;
-    justify-content: center;
-}
-
-.event-description {
-    background-color: white;
-    padding: 25px;
-    margin-bottom: 42px;
-    border-top: solid 1px #2F88AA;
-    box-shadow: -1px 5px 10px -2px silver;
-}
-
-.participants .col-md-12.well {
-    padding-bottom: 0;
-    border-top: solid 1px #2F88AA;
-    border-radius: 0;
-}
-
-#map-outer {
-	height: 440px;
-	padding: 20px;
-	border: 2px solid #CCC;
-	margin-bottom: 20px;
-	background-color:#FFF
-}
-
-#map-container {
-	height: 220px
-}
-
-@media all and (max-width: 991px) {
-	#map-outer {
-		height: 650px
-	}
-}
-
-/* ==================================================== */
 /* ====================== Contact ===================== */
 /* ==================================================== */
 
@@ -485,7 +329,6 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 }
 
 .contact h3 {
-    font-variant: small-caps;
     margin-bottom: -7px;
 }
 
@@ -526,7 +369,7 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 }
 
 /* ==================================================== */
-/* ====================== Admin = ===================== */
+/* ====================== Admin ======================= */
 /* ==================================================== */
 
 .admin {
@@ -544,19 +387,4 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 
 .admin .intro-message {
     margin-top: 0;
-}
-
-/* ==================================================== */
-/* ===================== Footer ======================= */
-/* ==================================================== */
-
-footer{
-    margin-top: 20px;
-    padding: 5px 0;
-    background-color: #1B1C1D;
-    text-align: center;
-    color: white;
-    font-size: large;
-    position: absolute;
-    left: 0; right: 0; bottom: 0;
 }

@@ -2,8 +2,25 @@
 
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 
-{% block content %}
+{%block stylesheets%}
+	<link href="{{ asset('assets/css/login-signup.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
 
+{#<li>
+	<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
+</li>
+<li>
+	<a href="{{ path('miriade_event_program',{'id':event.id}) }}">Programme</a>
+</li>
+<li>
+	<a href="{{ path('miriade_event_contact',{'id':event.id}) }}">Contact</a>
+</li>
+<li>
+	<a href="{{ path('miriade_event_map',{'id':event.id}) }}">Plan d'accès</a>
+</li>
+#}
+
+{% block content %}
 	<div id="register-page" class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -74,6 +91,8 @@
 				</div>
 			</div>
 		</div>
-
-
 {% endblock content %}
+
+{%block javascripts%}
+	<script src="{{ asset('assets/js/formEffects.js') }}"></script>
+{%endblock%}

@@ -1,0 +1,14 @@
+.jumbotron-main {
+  background-image: none !important;
+  min-height: 0 !important;
+  padding-top: 0 !important;
+}
+
+.col-md-9 {
+  width: 100%;
+}
+
+body {
+  background: url('../images/startup-2.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+}

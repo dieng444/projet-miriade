@@ -1,0 +1,135 @@
+body {
+  padding-bottom: 0;
+}
+
+.jumbotron-main {
+    background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+    margin-bottom: 50px;
+    min-height: 400px;
+    padding-top: 50px;
+}
+
+.intro-message {
+  margin-top: 50px;
+  text-shadow: 0 0 10px black;
+}
+
+.participants-list {
+  box-shadow: -1px 5px 10px -2px silver;
+  border-radius: 0;
+}
+
+.participants .well {
+  border-radius: 0;
+}
+
+.col-md-9 h1, .col-md-9 h2 {
+  color: white;
+  background-color: #2f88aa;
+  top: 0; bottom: 0;
+  display: block;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.col-md-9 h1 {
+  font-size: x-large;
+  padding: 10px;
+}
+
+.col-md-9 h2 {
+  font-size: large;
+  padding: 5px;
+}
+
+.col-md-9 .row {
+  margin: 0 !important;
+}
+
+#event-wrapper .col-md-9 {
+    width: 100%;
+}
+
+#event-wrapper .col-md-9 h1,
+#event-wrapper .col-md-9 h2 {
+    display: inline;
+    font-size: 20px;
+    font-variant: small-caps;
+    margin-bottom: 2px;
+    margin-left: 15px;
+    margin-top: 20px;
+    padding: 10px 15px;
+    position: relative;
+    top: -9px;
+    background-color: #EEEEEE;
+    border-top: solid 1px silver;
+    border-left: solid 1px silver;
+    border-right: solid 1px silver;
+    color: gray;
+    border-radius: 4px 4px 0 0;
+}
+
+.event-creation {
+  padding: 30px !important;
+}
+
+.event-creation textarea.form-control {
+  height: 300px;
+}
+
+.event-creation input.form-control {
+  height: 50px;
+}
+
+.organisateurs-block-item a {
+    display: flex;
+    justify-content: center;
+}
+
+.event-description {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 42px;
+    border-top: solid 1px #2F88AA;
+    box-shadow: -1px 5px 10px -2px silver;
+    overflow: auto;
+}
+
+.participants .col-md-12.well {
+    padding-bottom: 0;
+    border-top: solid 1px #2F88AA;
+    border-radius: 0;
+}
+
+#map-outer {
+	height: 440px;
+	padding: 20px;
+	border: 2px solid #CCC;
+	margin-bottom: 20px;
+	background-color:#FFF
+}
+
+#map-container {
+	height: 220px
+}
+
+@media all and (max-width: 991px) {
+	#map-outer {
+		height: 650px
+	}
+}
+
+footer{
+    margin-top: 20px;
+    padding: 5px 0;
+    background-color: #1B1C1D;
+    text-align: center;
+    color: white;
+    font-size: large;
+    color: silver;
+}
+
+footer img {
+  height: 70px;
+}
