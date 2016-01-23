@@ -36,7 +36,7 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
         //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
+
         return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
     }
     /**
@@ -47,17 +47,26 @@ class EventController extends Controller
     public function newAction()
     {
         $event = new Event();
-        $session = new Session();
+        $em = $this->getDoctrine()->getManager();
         $partner = new Partner();
+
         $form = $this->CreateForm(new EventType(), $event);
         if ($this->getRequest()->isMethod("POST")) {
             $data = $this->getRequest()->request->all();
+            $nbSession = (int) $data['nbSession'];
+            $listSession = array();
             //var_dump($data);die;
-            //Les sessions
-            $session->setName(trim(strip_tags($data['session_name'])));
-            $session->setHoraireDebut($data['horaireDebut']);
-            $session->setHoraireFin($data['horaireFin']);
-            $session->setDescription(trim(strip_tags($data['session_desc'])));
+            if ($nbSession > 0) {
+                for ($i=1; $i <= $nbSession ; $i++) {
+                      $session = new Session();
+                      $session->setName(trim(strip_tags($data['session_'.$i]['tile'])));
+                      $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
+                      $session->setHoraireFin($data['session_'.$i]['horaireFin']);
+                      $session->setDescription(trim(strip_tags($data['session_'.$i]['desc'])));
+                      //$listSession[] = $session;
+                      $em->persist($session);
+                }
+            }
             //Les part�naires
             $partner->setName(trim(strip_tags($data['partner_name'])));
             $partner->setAddress(trim(strip_tags($data['partner_address'])));
@@ -68,14 +77,14 @@ class EventController extends Controller
             $partner->setLogo("_none");
 			$form->HandleRequest($this->getRequest());
 			//var_dump($this->getRequest());die;
-            $em = $this->getDoctrine()->getManager();
+
             if(isset($_FILES['event_eventbundle_event']) &&
 				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
 				$image = $_FILES['event_eventbundle_event'];
 				if($event->uploadImage($image))
 					$event->setImage($event->getImage());
 			} else
-				$event->setImage("_none");
+				  $event->setImage("_none");
 
 			if(isset($_FILES['partner_logo']) &&
 				strlen($_FILES['partner_logo']['name']) > 0 ) {
@@ -84,10 +93,10 @@ class EventController extends Controller
 				if($partner->uploadLogo($logo))
 					$partner->setLogo($partner->getLogo());
 			} else
-				$event->setLogo("_none");
+				  $partner->setLogo("_none");
 
-            $event->setPartner($partner);
-            $event->setSession($session);
+      $event->setPartner($partner);
+      $event->setSession($session);
 
 			$em->persist($event);
 			$em->flush();
@@ -109,7 +118,7 @@ class EventController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-        
+
         $event = $em->getEvent($id);
         if (!$event) {
             throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
@@ -139,14 +148,14 @@ class EventController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
+
         return $event;
 	}
 	public function contactAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        
+
 		return $this->render('MiriadeEventBundle:Event:contact.html.twig', array('var' => "contact".$id,"event" => $event));
 	}
 }
