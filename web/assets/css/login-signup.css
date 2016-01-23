@@ -3,19 +3,21 @@ body {
   background-size: cover !important;
 }
 
-#login-page {
-  margin: auto;
-  width: 50%;
-  height: 50%;
+#login-page, #register-page {
   position: absolute;
-  z-index: 3;
-  top: 0; right: 0; bottom: 0; left: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
-#register-page {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50px;
+@media screen and (max-height: 800px) {
+  #login-page, #register-page {
+    transform: none;
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 #login-page .reset-label,
@@ -54,6 +56,10 @@ body {
   box-shadow: 0 0 30px black;
 }
 
+#login-page .well {
+  width: 55%;
+}
+
 #login-page .well > .row,
 #register-page .well > .row {
   margin: auto;
@@ -63,4 +69,14 @@ body {
 #login-page .form-control,
 #register-page .form-control {
   height: 37px;
+}
+
+#login-page h2,
+#register-page h2 {
+  border-top: 0;
+  top: 0;
+}
+
+#register-page label {
+  top: 4px;
 }
