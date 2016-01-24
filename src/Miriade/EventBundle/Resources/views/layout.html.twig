@@ -39,7 +39,7 @@
                     {% if app.user %}
                         <!-- si l'utilisateur est connecté -->
 
-                        <a class="btn btn-default" href="{{ path('miriade_event_event_new') }}" role="button">Creation</a>
+                        <a class="btn btn-default" href="{{ path('miriade_event_new') }}" role="button">Creation</a>
                         <a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary">Déconnexion</a>
 
                         {% else %}
