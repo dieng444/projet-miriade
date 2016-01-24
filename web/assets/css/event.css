@@ -3,7 +3,7 @@ body {
 }
 
 .jumbotron-main {
-    background: transparent url("http://ironsummitmedia.github.io/startbootstrap-landing-page/img/intro-bg.jpg") no-repeat scroll center center / cover;
+    background: transparent url("../images/banner.jpg") no-repeat scroll center center / cover;
     margin-bottom: 50px;
     min-height: 400px;
     padding-top: 50px;
@@ -111,7 +111,7 @@ body {
 }
 
 #map-container {
-	height: 220px
+	height: 100%;
 }
 
 @media all and (max-width: 991px) {

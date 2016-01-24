@@ -27,6 +27,32 @@ textarea {
     resize: none;
 }
 
+textarea[name='session_desc'] {
+  height: 117px;
+}
+
+.event-creation textarea {
+  height: 150px;
+}
+
+.btn-save-edit-session,
+.btn-cancel-edit-session,
+.btn-save-edit-partner,
+.btn-cancel-edit-partner {
+  max-width: 40% !important;
+  margin-top: 7px;
+}
+
+.btn-save-edit-session,
+.btn-save-edit-partner {
+  background-color: #D26F28 !important;
+}
+
+.btn-cancel-edit-session,
+.btn-cancel-edit-partner {
+  background-color: #d9534f !important;
+}
+
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -83,6 +109,38 @@ label {
   width: 90%;
 }
 
+.btn.btn-lg:hover {
+  text-shadow: 0 0 20px white;
+  opacity: 1;
+}
+
+#event_eventbundle_event_startDate,
+#event_eventbundle_event_endDate {
+  padding-right: 0;
+}
+
+#event-wrapper > .row {
+  display: flex;
+  justify-content: center;
+}
+
+#event-wrapper .btn-group {
+  float: right;
+}
+
+#event-wrapper .btn.btn-lg {
+  background-color: #2f88aa;
+  border-radius: 0;
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+#event-wrapper #map-container {
+  width: 100%;
+  height: 200px;
+}
+
 .btn.btn-lg.btn-success {
     width: 100%;
     background-color: #364B5A;
@@ -91,14 +149,15 @@ label {
 }
 
 .col-md-9 h2, .participants h3 {
-    background-color: #2F88AA;
-    color: white;
     display: inline;
-    font-size: 25px;
-    font-variant: small-caps;
-    padding: 0 20px;
     position: relative;
-    top: -1px;
+    background-color: white;
+    border-top: 1px solid #8eb7d0;
+    color: #8eb7d0;
+    font-size: large;
+    padding: 3px 15px;
+    top: 1px;
+    font-variant: small-caps;
 }
 
 .aside-content {
@@ -218,7 +277,7 @@ nav.navbar-fixed-top div#navbar button {
 
 nav.navbar-fixed-top .btn.btn-default:first-of-type:hover,
 nav.navbar-fixed-top div#navbar button:hover {
-    opacity: 0.9;
+    text-shadow: 0 0 20px white;
 }
 
 nav.navbar-fixed-top div#navbar button:first-of-type {
@@ -302,7 +361,7 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 .btn-success:hover {
     background-color: #D26F28;
     border: 0;
-    opacity: 0.9;
+    text-shadow: 0 0 20px white;
 }
 
 .participants-pagination-wrap .pagination {
