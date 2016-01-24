@@ -1,3 +1,7 @@
+miriade_admin:
+    resource: "@MiriadeAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 miriade_event:
     resource: "@MiriadeEventBundle/Resources/config/routing.yml"
     prefix:   /
