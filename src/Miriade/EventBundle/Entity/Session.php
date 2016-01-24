@@ -31,13 +31,13 @@ class Session
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaireDebut", type="datetime")
+     * @ORM\Column(name="horaireDebut", type="string", length=100)
      */
     private $horaireDebut;
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="horaireFin", type="datetime")
+     * @ORM\Column(name="horaireFin", type="string", length=100)
      */
     private $horaireFin;
 
@@ -48,11 +48,17 @@ class Session
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="sessions")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * */
+    private $event;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -75,7 +81,7 @@ class Session
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -98,7 +104,7 @@ class Session
     /**
      * Get rangHoraire
      *
-     * @return string 
+     * @return string
      */
     public function getRangHoraire()
     {
@@ -121,7 +127,7 @@ class Session
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -136,19 +142,19 @@ class Session
      */
     public function setHoraireDebut($horaireDebut)
     {
-        $this->horaireDebut = new \DateTime($horaireDebut);
+        $this->horaireDebut = $horaireDebut;
         return $this;
     }
 
     /**
      * Get horaireDebut
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHoraireDebut()
     {
         return $this->horaireDebut;
-        
+
     }
 
     /**
@@ -159,7 +165,7 @@ class Session
      */
     public function setHoraireFin($horaireFin)
     {
-        $this->horaireFin = new \DateTime($horaireFin);
+        $this->horaireFin = $horaireFin;
 
         return $this;
     }
@@ -167,10 +173,33 @@ class Session
     /**
      * Get horaireFin
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHoraireFin()
     {
         return $this->horaireFin;
+    }
+
+    /**
+     * Set event
+     *
+     * @param \Miriade\EventBundle\Entity\Event $event
+     * @return Session
+     */
+    public function setEvent(\Miriade\EventBundle\Entity\Event $event = null)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \Miriade\EventBundle\Entity\Event 
+     */
+    public function getEvent()
+    {
+        return $this->event;
     }
 }

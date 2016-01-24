@@ -48,64 +48,74 @@ class EventController extends Controller
     {
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
-        $partner = new Partner();
-
         $form = $this->CreateForm(new EventType(), $event);
         if ($this->getRequest()->isMethod("POST")) {
             $data = $this->getRequest()->request->all();
             $nbSession = (int) $data['nbSession'];
-            $listSession = array();
-            //var_dump($data);die;
-            if ($nbSession > 0) {
-                for ($i=1; $i <= $nbSession ; $i++) {
-                      $session = new Session();
-                      $session->setName(trim(strip_tags($data['session_'.$i]['tile'])));
-                      $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
-                      $session->setHoraireFin($data['session_'.$i]['horaireFin']);
-                      $session->setDescription(trim(strip_tags($data['session_'.$i]['desc'])));
-                      //$listSession[] = $session;
-                      $em->persist($session);
-                }
+            $nbPartner = (int) $data['nbPartner'];
+            /*Upload de l'image de l'événement*/
+          $form->HandleRequest($this->getRequest());
+           if(isset($_FILES['event_eventbundle_event']) &&
+   			    strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
+               $image = $_FILES['event_eventbundle_event'];
+               if($event->uploadImage($image)) {
+                 $event->setImage($event->getImage());
+               } else
+     					     $event->setImage("_none");
+     			} else
+     				  $event->setImage("_none");
+            /*
+            $nbSession est capté depuis la validation du formulaire, c'est le nombre de session qui a été
+            l'admin à l'événement courant.
+            les sessions sont nommées dynamiquement de cette façon en js : session_x[name],partner_x[address]...
+            avec x qui varie à chaque appel à la function addSession en js
+            donc onse base sur le même principe pour créer au tant de sessions qu'il en a été creé en js
+            */
+        if ($nbSession > 0) {
+            for ($i=1; $i <= $nbSession ; $i++) {
+                  $session = new Session();
+                  $session->setName(trim(strip_tags($data['session_'.$i]['title'])));
+                  $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
+                  $session->setHoraireFin($data['session_'.$i]['horaireFin']);
+                  $session->setDescription(trim(strip_tags($data['session_'.$i]['desc'])));
+                  $session->setEvent($event); //Liaison entre l'événement et la session
+                  $em->persist($session); //On persist chaque session pour une insertion globale après
             }
-            //Les part�naires
-            $partner->setName(trim(strip_tags($data['partner_name'])));
-            $partner->setAddress(trim(strip_tags($data['partner_address'])));
-            $partner->setCity(trim(strip_tags($data['partner_city'])));
-            $partner->setCp((int)trim(strip_tags($data['partner_cp'])));
-            $partner->setEmail(trim(strip_tags($data['partner_email'])));
-            $partner->setPhone(trim(strip_tags($data['partner_phone'])));
-            $partner->setLogo("_none");
-			$form->HandleRequest($this->getRequest());
-			//var_dump($this->getRequest());die;
-
-            if(isset($_FILES['event_eventbundle_event']) &&
-				strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
-				$image = $_FILES['event_eventbundle_event'];
-				if($event->uploadImage($image))
-					$event->setImage($event->getImage());
-			} else
-				  $event->setImage("_none");
-
+        }
+        /*
+        nbPartner est capté depuis la validation du formulaire, c'est le nombre de partnaire qui a été
+        l'admin à l'événement courant.
+        les partnaires sont nommés dynamiquement de cette façon en js : partner_x[name],partner_x[address]...
+        avec x qui varie à chaque appel à la function addPartner en js
+        donc onse base sur le même principe pour créer au tant de partnaires qu'il en a été creé en js
+        */
+        if ($nbPartner  > 0) {
+          for ($i=1; $i <= $nbPartner; $i++) {
+              $partner = new Partner();
+              $partner->setName(trim(strip_tags($data['partner_'.$i]['name'])));
+              $partner->setAddress(trim(strip_tags($data['partner_'.$i]['address'])));
+              $partner->setCity(trim(strip_tags($data['partner_'.$i]['city'])));
+              $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
+              $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
+              $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
+              $partner->setLogo("_none");
+              $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
+              $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
+          }
+        }
+        /*Upload du logo des partenaires*/
 			if(isset($_FILES['partner_logo']) &&
 				strlen($_FILES['partner_logo']['name']) > 0 ) {
 				$logo = $_FILES['partner_logo'];
-				//var_dump($log
 				if($partner->uploadLogo($logo))
 					$partner->setLogo($partner->getLogo());
 			} else
 				  $partner->setLogo("_none");
 
-      $event->setPartner($partner);
-      $event->setSession($session);
-
 			$em->persist($event);
 			$em->flush();
 			return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
-            //~ if ($form->isValid()) {
-                //~ return $this->redirect($this->generateUrl('miriade_event_event_dashboard'));
-            //~ } else {
-				//~ return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
-			//~ }
+
         } else {
             return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
         }

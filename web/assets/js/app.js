@@ -136,9 +136,9 @@ App = {
 		var partner_name = $('input[name="partner_name"]').val();
 		var partner_address = $('input[name="partner_address"]').val();
 		var partner_city = $('input[name="partner_city"]').val();
-		var partner_cp = $('intput[name="partner_cp"]').val();
-		var partner_email = $('intput[name="partner_email"]').val();
-		var partner_phone = $('intput[name="partner_phone"]').val();
+		var partner_cp = $('input[name="partner_cp"]').val();
+		var partner_email = $('input[name="partner_email"]').val();
+		var partner_phone = $('input[name="partner_phone"]').val();
 		j++;
 		container+='<div class="list-group-item">';
 		container+='	<span>'+partner_name+'</span>';
@@ -186,9 +186,9 @@ App = {
 		$('input[name="partner_name"]').val(getInfo.name);
 		$('input[name="partner_address"]').val(getInfo.address);
 		$('input[name="partner_city"]').val(getInfo.city);
-		$('intput[name="partner_cp"]').val(getInfo.cp);
-		$('intput[name="partner_email"]').val(getInfo.email);
-		$('intput[name="partner_phone"]').val(getInfo.phone);
+		$('input[name="partner_cp"]').val(getInfo.cp);
+		$('input[name="partner_email"]').val(getInfo.email);
+		$('input[name="partner_phone"]').val(getInfo.phone);
 
 		// We add a button to give the user the ability to validate changes
 		button = "";
@@ -205,9 +205,9 @@ App = {
 		var partner_name = $('input[name="partner_name"]').val();
 		var partner_address = $('input[name="partner_address"]').val();
 		var partner_city = $('input[name="partner_city"]').val();
-		var partner_cp = $('intput[name="partner_cp"]').val();
-		var partner_email = $('intput[name="partner_email"]').val();
-		var partner_phone = $('intput[name="partner_phone"]').val();
+		var partner_cp = $('input[name="partner_cp"]').val();
+		var partner_email = $('input[name="partner_email"]').val();
+		var partner_phone = $('input[name="partner_phone"]').val();
 		var newValues = [partner_name, partner_address, partner_city, partner_cp, partner_email, partner_phone];
 		var infoPartner = $( "#info-partner-"+partnerId );
 

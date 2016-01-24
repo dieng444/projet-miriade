@@ -70,11 +70,17 @@ class Partner
      */
     private $logo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="partners")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * */
+    private $event;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -97,7 +103,7 @@ class Partner
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -120,7 +126,7 @@ class Partner
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -143,7 +149,7 @@ class Partner
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -166,7 +172,7 @@ class Partner
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -189,7 +195,7 @@ class Partner
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
@@ -212,7 +218,7 @@ class Partner
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -235,7 +241,7 @@ class Partner
     /**
      * Get cp
      *
-     * @return \int 
+     * @return \int
      */
     public function getCp()
     {
@@ -253,4 +259,27 @@ class Partner
 		} else
 			return false;
 	}
+
+    /**
+     * Set event
+     *
+     * @param \Miriade\EventBundle\Entity\Event $event
+     * @return Partner
+     */
+    public function setEvent(\Miriade\EventBundle\Entity\Event $event = null)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \Miriade\EventBundle\Entity\Event 
+     */
+    public function getEvent()
+    {
+        return $this->event;
+    }
 }

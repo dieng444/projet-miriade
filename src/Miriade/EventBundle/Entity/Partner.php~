@@ -59,7 +59,7 @@ class Partner
     /**
      * @var int
      *
-     * @ORM\Column(name="cp", type="int", length=5)
+     * @ORM\Column(name="cp", type="integer", length=5)
      */
     private $cp;
 
@@ -70,11 +70,17 @@ class Partner
      */
     private $logo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="partners")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     * */
+    private $event;
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -97,7 +103,7 @@ class Partner
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -120,7 +126,7 @@ class Partner
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -143,7 +149,7 @@ class Partner
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -166,7 +172,7 @@ class Partner
     /**
      * Get address
      *
-     * @return string 
+     * @return string
      */
     public function getAddress()
     {
@@ -189,10 +195,68 @@ class Partner
     /**
      * Get logo
      *
-     * @return string 
+     * @return string
      */
     public function getLogo()
     {
         return $this->logo;
     }
+
+    /**
+     * Set city
+     *
+     * @param string $city
+     * @return Partner
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set cp
+     *
+     * @param \int $cp
+     * @return Partner
+     */
+    public function setCp($cp)
+    {
+        $this->cp = $cp;
+
+        return $this;
+    }
+
+    /**
+     * Get cp
+     *
+     * @return \int
+     */
+    public function getCp()
+    {
+        return $this->cp;
+    }
+    public function uploadLogo($logo)
+    {
+		$realName = $logo['name'];
+	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
+	    $tmp_name = $logo['tmp_name'];
+	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
+	    if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
+			$this->logo = $name;
+			return true;
+		} else
+			return false;
+	}
 }

@@ -32,14 +32,14 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime")
+     * @ORM\Column(name="startDate",  type="string", length=100)
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="datetime")
+     * @ORM\Column(name="endDate",  type="string", length=100)
      */
     private $endDate;
 
@@ -79,18 +79,6 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $partner;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     **/
-    private $session;
-
-    /**
      * @var integer
      * @ORM\Column(name="nbTable", type="integer")
      */
@@ -102,6 +90,16 @@ class Event
      */
     private $rdv;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Session", mappedBy="event")
+     */
+    private $sessions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event")
+     */
+    private $partners;
+
     //~ public function __construct()
     //~ {
         //~ //$this->session = new ArrayCollection();
@@ -111,7 +109,7 @@ class Event
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -134,7 +132,7 @@ class Event
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -149,15 +147,15 @@ class Event
      */
     public function setStartDate($startDate)
     {
-        $this->startDate = new \DateTime($startDate);
-		
+        $this->startDate = $startDate;
+
         return $this;
     }
 
     /**
      * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -172,14 +170,14 @@ class Event
      */
     public function setEndDate($endDate)
     {
-        $this->endDate = new \DateTime($endDate);
+        $this->endDate = $endDate;
         return $this;
     }
 
     /**
      * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -202,7 +200,7 @@ class Event
     /**
      * Get locate
      *
-     * @return string 
+     * @return string
      */
     public function getLocate()
     {
@@ -225,7 +223,7 @@ class Event
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -248,57 +246,11 @@ class Event
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set partner
-     *
-     * @param \Miriade\EventBundle\Entity\Partner $partner
-     * @return Event
-     */
-    public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
-    {
-        $this->partner = $partner;
-
-        return $this;
-    }
-
-    /**
-     * Get partner
-     *
-     * @return \Miriade\EventBundle\Entity\Partner 
-     **/
-    public function getPartner()
-    {
-        return $this->partner;
-    }
-
-    /**
-     * Set session
-     *
-     * @param \Miriade\EventBundle\Entity\Session $session
-     * @return Event
-     */
-    public function setSession(\Miriade\EventBundle\Entity\Session $session)
-    {
-        $this->session = $session;
-
-        return $this;
-    }
-
-    /**
-     * Get session
-     *
-     * @return \Miriade\EventBundle\Entity\Session 
-     **/
-    public function getSession()
-    {
-        return $this->session;
     }
 
     /**
@@ -317,7 +269,7 @@ class Event
     /**
      * Get adress
      *
-     * @return string 
+     * @return string
      */
     public function getAdress()
     {
@@ -340,7 +292,7 @@ class Event
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -363,7 +315,7 @@ class Event
     /**
      * Get cp
      *
-     * @return integer 
+     * @return integer
      */
     public function getCp()
     {
@@ -386,7 +338,7 @@ class Event
     /**
      * Get nbTable
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbTable()
     {
@@ -409,7 +361,7 @@ class Event
     /**
      * Get rdv
      *
-     * @return integer 
+     * @return integer
      */
     public function getRdv()
     {
@@ -431,4 +383,78 @@ class Event
 		} else
 			return false;
 	}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sessions = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->partners = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add sessions
+     *
+     * @param \Miriade\EventBundle\Entity\session $sessions
+     * @return Event
+     */
+    public function addSession(\Miriade\EventBundle\Entity\session $sessions)
+    {
+        $this->sessions[] = $sessions;
+
+        return $this;
+    }
+
+    /**
+     * Remove sessions
+     *
+     * @param \Miriade\EventBundle\Entity\session $sessions
+     */
+    public function removeSession(\Miriade\EventBundle\Entity\session $sessions)
+    {
+        $this->sessions->removeElement($sessions);
+    }
+
+    /**
+     * Get sessions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSessions()
+    {
+        return $this->sessions;
+    }
+
+    /**
+     * Add partners
+     *
+     * @param \Miriade\EventBundle\Entity\Partner $partners
+     * @return Event
+     */
+    public function addPartner(\Miriade\EventBundle\Entity\Partner $partners)
+    {
+        $this->partners[] = $partners;
+
+        return $this;
+    }
+
+    /**
+     * Remove partners
+     *
+     * @param \Miriade\EventBundle\Entity\Partner $partners
+     */
+    public function removePartner(\Miriade\EventBundle\Entity\Partner $partners)
+    {
+        $this->partners->removeElement($partners);
+    }
+
+    /**
+     * Get partners
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPartners()
+    {
+        return $this->partners;
+    }
 }

@@ -20,8 +20,7 @@
 {% endblock %}
 
 {% block intromessage %}
-	<h1>Titre de l'événement</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+	<h1>{{event.title}}</h1>
 {% endblock %}
 
 {% block content %}
@@ -30,7 +29,7 @@
             <div class="col-md-9">
                 <h2>Description</h2>
                 <div class="event-description">
-  								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+  								<p>{{event.description}}</p>
                 </div>
                 <div class="participants">
                     <h2>Participants</h2>

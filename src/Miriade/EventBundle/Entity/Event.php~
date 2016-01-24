@@ -79,18 +79,6 @@ class Event
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Partner", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $partner;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Session", cascade={"persist"})
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $session;
-
-    /**
      * @var integer
      * @ORM\Column(name="nbTable", type="integer")
      */
@@ -102,15 +90,26 @@ class Event
      */
     private $rdv;
 
-    public function __construct()
-    {
-        $this->session = new ArrayCollection();
-    }
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\session", mappedBy="event")
+     */
+    private $sessions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event")
+     */
+    private $partners;
+
+    //~ public function __construct()
+    //~ {
+        //~ //$this->session = new ArrayCollection();
+        //~ $this->startDate = new
+    //~ }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -133,7 +132,7 @@ class Event
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -148,7 +147,7 @@ class Event
      */
     public function setStartDate($startDate)
     {
-        $this->startDate = $startDate;
+        $this->startDate = new \DateTime($startDate);
 
         return $this;
     }
@@ -156,7 +155,7 @@ class Event
     /**
      * Get startDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartDate()
     {
@@ -171,15 +170,14 @@ class Event
      */
     public function setEndDate($endDate)
     {
-        $this->endDate = $endDate;
-
+        $this->endDate = new \DateTime($endDate);
         return $this;
     }
 
     /**
      * Get endDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEndDate()
     {
@@ -202,7 +200,7 @@ class Event
     /**
      * Get locate
      *
-     * @return string 
+     * @return string
      */
     public function getLocate()
     {
@@ -225,7 +223,7 @@ class Event
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -248,57 +246,11 @@ class Event
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set partner
-     *
-     * @param \Miriade\EventBundle\Entity\Partner $partner
-     * @return Event
-     */
-    public function setPartner(\Miriade\EventBundle\Entity\Partner $partner)
-    {
-        $this->partner = $partner;
-
-        return $this;
-    }
-
-    /**
-     * Get partner
-     *
-     * @return \Miriade\EventBundle\Entity\Partner 
-     */
-    public function getPartner()
-    {
-        return $this->partner;
-    }
-
-    /**
-     * Set session
-     *
-     * @param \Miriade\EventBundle\Entity\Session $session
-     * @return Event
-     */
-    public function setSession(\Miriade\EventBundle\Entity\Session $session)
-    {
-        $this->session = $session;
-
-        return $this;
-    }
-
-    /**
-     * Get session
-     *
-     * @return \Miriade\EventBundle\Entity\Session 
-     */
-    public function getSession()
-    {
-        return $this->session;
     }
 
     /**
@@ -317,7 +269,7 @@ class Event
     /**
      * Get adress
      *
-     * @return string 
+     * @return string
      */
     public function getAdress()
     {
@@ -340,7 +292,7 @@ class Event
     /**
      * Get city
      *
-     * @return string 
+     * @return string
      */
     public function getCity()
     {
@@ -363,7 +315,7 @@ class Event
     /**
      * Get cp
      *
-     * @return integer 
+     * @return integer
      */
     public function getCp()
     {
@@ -386,10 +338,49 @@ class Event
     /**
      * Get nbTable
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbTable()
     {
         return $this->nbTable;
     }
+
+    /**
+     * Set rdv
+     *
+     * @param integer $rdv
+     * @return Event
+     */
+    public function setRdv($rdv)
+    {
+        $this->rdv = $rdv;
+
+        return $this;
+    }
+
+    /**
+     * Get rdv
+     *
+     * @return integer
+     */
+    public function getRdv()
+    {
+        return $this->rdv;
+    }
+    /**
+     * Permet d'enregistrer l'image de l'événement
+     * @param $image : l'image à enrégistrer
+     * */
+    public function uploadImage($image)
+    {
+		$realName = $image['name']['image'];
+	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
+	    $tmp_name = $image['tmp_name']['image'];
+	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
+	    if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
+			$this->image = $name;
+			return true;
+		} else
+			return false;
+	}
 }
