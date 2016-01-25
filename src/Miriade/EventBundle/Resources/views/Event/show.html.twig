@@ -21,6 +21,7 @@
 
 {% block intromessage %}
 	<h1>{{event.title}}</h1>
+	<input type="hidden" id="event-image" value="{{event.image}}">
 {% endblock %}
 
 {% block content %}
@@ -153,8 +154,13 @@
       </div>
 	</div> <!-- /container -->
 {% endblock%}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+	<script src="{{ asset('assets/js/app.js') }}"></script>
+{% endblock %}
 
 {% block footer %}
+
 <footer>
 	Cet événement vous est proposé par <a href="http://miriade-innovation.fr/"><img src="{{ asset('assets/images/miriade.png') }}" alt="Miriade"></a>
 </footer>

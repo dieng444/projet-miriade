@@ -11,7 +11,7 @@
               <h4>Miriade</h4>
               <table class="table">
                 <tr>
-                  <td valign="middle"><img src="http://silvernormandie.talkb2b.net/thumbs/Setting/OrganizationLogo/2015_08/220x140_miriade_Region_HD.jpg" alt="miriade_Region_HD.jpg"></td>
+                  <td valign="middle"><img src="//silvernormandie.talkb2b.net/thumbs/Setting/OrganizationLogo/2015_08/220x140_miriade_Region_HD.jpg" alt="miriade_Region_HD.jpg"></td>
                   <td>
                     <address>
                       Elisa Tofoni
@@ -30,7 +30,7 @@
               <h4>Miriade</h4>
               <table class="table">
                 <tr>
-                  <td valign="middle"><img src="http://silvernormandie.talkb2b.net/thumbs/Setting/OrganizationLogo/2015_08/220x140_miriade_Region_HD.jpg" alt="miriade_Region_HD.jpg"></td>
+                  <td valign="middle"><img src="//silvernormandie.talkb2b.net/thumbs/Setting/OrganizationLogo/2015_08/220x140_miriade_Region_HD.jpg" alt="miriade_Region_HD.jpg"></td>
                   <td>
                     <address>
                       Gwladys Lemenand
@@ -50,7 +50,7 @@
               <h4>Enterprise Europe Network Sud-Ouest (EENSO) – MADEELI</h4>
               <table class="table">
                 <tr>
-                  <td valign="middle"><img src="http://silvernormandie.talkb2b.net/thumbs/SupportOffice/Image/2015_07/220x140_madeeli.jpg" alt="miriade_Region_HD.jpg"></td>
+                  <td valign="middle"><img src="//silvernormandie.talkb2b.net/thumbs/SupportOffice/Image/2015_07/220x140_madeeli.jpg" alt="miriade_Region_HD.jpg"></td>
                   <td>
                     <address>
                       Christine Guidice

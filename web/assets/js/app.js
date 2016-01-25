@@ -6,7 +6,6 @@ var j = 0;
 var sessionId;
 // Partner id
 var partnerId;
-
 App = {
 	performDatePicker : function() {
 		$('#datetimepicker1').datetimepicker({
@@ -240,6 +239,7 @@ App = {
 
 $(document).ready(function(){
 	App.performDatePicker();
+	//$("body").first().css("background","transparent url('../upload/images/'"+$("#event-image").val()+"') no-repeat scroll center center / cover !important;");
 	$("#btn-add-session").click(App.addSession);
 	$("#btn-add-partner").click(App.addPartner);
 });
