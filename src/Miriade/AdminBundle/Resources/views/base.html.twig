@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}{% endblock %} - Zone d'administration</title>
+	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/style.css') }}" type="text/css" />
+</head>
+<body>
+	<nav>
+		<ul>
+			<li>
+				<a href="{{ path('miriade_admin_users') }}">Gestion des utilisateurs</a>
+			</li>
+			<li>
+				<a href="{{ path('miriade_admin_events') }}">Gestion des évènements</a>
+			</li>
+		</ul>
+	</nav>
+	{% block content %}
+	{% endblock %}
+</body>
+</html>

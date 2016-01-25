@@ -1,0 +1,20 @@
+{% extends "MiriadeAdminBundle::base.html.twig" %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block content %}
+	<h1>Gestion des utilisateurs</h1>
+
+	<ul>
+	    {% for user in users %}
+	        <li>
+	        	<span>{{ user.firstname }}</span>
+	        	<span>{{ user.lastname }}</span>
+	        	<span>{{ user.email }}</span>
+	        	<span>date d'inscription : {{ user.datesubscription|date("d/m/Y") }}</span>
+	        	<span>dernière connexion {{ user.lastlogin|date("d/m/Y") }}</span>
+	        	<span>[<a href="{{ path('miriade_admin_user_delete', {"id" : user.id}) }}">Supprimer</a>]</span>
+	        </li>
+	    {% endfor %}
+	</ul>
+{% endblock %}

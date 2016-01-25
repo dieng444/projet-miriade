@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Miriade\UserBundle\MiriadeUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Miriade\EventBundle\MiriadeEventBundle(),
+            new Miriade\AdminBundle\MiriadeAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

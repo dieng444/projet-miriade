@@ -1,0 +1,23 @@
+miriade_admin_homepage:
+    path:     /admin
+    defaults: { _controller: MiriadeAdminBundle:Default:index }
+
+miriade_admin_users:
+    path:     /admin/users
+    defaults: { _controller: MiriadeAdminBundle:User:viewAll }
+
+miriade_admin_user_delete:
+    path:     /admin/users/delete/{id}
+    defaults: { _controller: MiriadeAdminBundle:User:delete }
+    requirements:
+        id:   ^[0-9]*$
+
+miriade_admin_events:
+    path:     /admin/events
+    defaults: { _controller: MiriadeAdminBundle:Event:viewAll }
+
+miriade_admin_event_delete:
+    path:     /admin/events/delete/{id}
+    defaults: { _controller: MiriadeAdminBundle:Event:delete }
+    requirements:
+        id:   ^[0-9]*$

@@ -1,0 +1,19 @@
+{% extends "MiriadeAdminBundle::base.html.twig" %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block content %}
+	<h1>Gestion des évènements</h1>
+
+	<ul>
+	    {% for event in events %}
+	        <li>
+	        	<span>{{ event.title }}</span>
+	        	<span>Date de début : {{ event.startDate }}</span>
+	        	<span>Date de fin : {{ event.endDate }}</span>
+
+	        	<span>[<a href="{{ path('miriade_admin_event_delete', {"id" : event.id}) }}">Supprimer</a>]</span>
+	        </li>
+	    {% endfor %}
+	</ul>
+{% endblock %}
