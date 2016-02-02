@@ -45,11 +45,9 @@ class EventController extends Controller
     /**
      * Persiste un événement en BDD et redirige vers le formulaire des sessions
      * @Method("POST")
-     * @Template(EventBundle:new.html.twig)
      */
     public function newAction()
     {
-
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
         $form = $this->CreateForm(new EventType(), $event);
@@ -77,7 +75,6 @@ class EventController extends Controller
     /**
      * Persiste le tableau des sessions en BDD et redirige vers le formulaire des partenaires
      * @Method("POST")
-     * @Template(EventBundle:newSession.html.twig)
      */
     public function newSessionAction($id)
     {
@@ -114,7 +111,6 @@ class EventController extends Controller
     /**
      * Persiste le tableau des partenares en BDD
      * @Method("POST")
-     * @Template(EventBundle:newPartenaire.html.twig)
      */
     public function newPartenaireAction($id) {
         $partner = new Partner();
