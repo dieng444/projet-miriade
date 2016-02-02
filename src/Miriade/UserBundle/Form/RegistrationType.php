@@ -17,7 +17,7 @@ class RegistrationType extends AbstractType
         ->add('job', 'text', array('label' => 'Poste occupé', 'required' => false))
         ->add('siret', 'text', array('label' => 'SIRET', 'required' => true))
         ->add('adress', 'text', array('label' => 'Adresse', 'required' => true))
-        ->add('zipcode', 'text', array('label' => 'Code postale', 'required' => true))
+        ->add('zipcode', 'text', array('label' => 'Code postal', 'required' => true))
         ->add('city', 'text', array('label' => 'Ville', 'required' => true))
         ->add('phone', 'text', array('label' => 'Téléphone', 'required' => true));
 
