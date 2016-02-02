@@ -35,6 +35,14 @@ textarea[name='session_desc'] {
   height: 150px;
 }
 
+.event-creation.row.well {
+  margin-bottom: 20px !important;
+}
+
+#send-form {
+  margin-top: 0 !important;
+}
+
 .btn-save-edit-session,
 .btn-cancel-edit-session,
 .btn-save-edit-partner,

@@ -5,8 +5,8 @@
 {% block content %}
     <div id="event-wrapper" class="container">
         <div class="row">
-            <div class="col-md-9">
-                {{ form_start(form, {"action": path('miriade_event_new_session', {'id' : id }) }) }}
+            <div id="session-form-wrapper" class="col-md-9">
+                {{ form_start(form, {"action":  path('miriade_event_new_session', {'id' : id }), 'attr': {'novalidate': 'novalidate'} }) }}
                 <div class="session-creation">
                     <div class="list-group row well" id="sessions-container"></div>
                         <h2>Création des sessions</h2>
@@ -15,14 +15,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form_label(form.name) }}
-                                        {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'full_name' : 'session_title', 'placeholder' : 'Intitulé de la session'}}) }}
+                                        {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'full_name' : 'session_title', 'placeholder' : 'Intitulé de la session' }}) }}
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 {{ form_label(form.horaireDebut) }}
                                                 <div class='input-group date' id='datetimepicker3'>
-                                                    {{ form_widget(form.horaireDebut, {'attr' : {'class' : 'form-control', 'full_name' : 'horaireDebut'}}) }}
+                                                    {{ form_widget(form.horaireDebut, {'attr' : {'class' : 'form-control', 'full_name' : 'session_horaireDebut' }}) }}
                                                      <span class="input-group-addon">
                                                          <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -33,7 +33,7 @@
                                             <div class="form-group">
                                                 {{ form_label(form.horaireFin) }}
                                                 <div class='input-group date' id='datetimepicker4'>
-                                                    {{ form_widget(form.horaireFin, {'attr' : {'class' : 'form-control', 'full_name' : 'horaireFin'}}) }}
+                                                    {{ form_widget(form.horaireFin, {'attr' : {'class' : 'form-control', 'full_name' : 'session_horaireFin' }}) }}
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-time"></span>
                                                     </span>
@@ -49,11 +49,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         {{ form_label(form.description) }}
-                                        {{ form_widget(form.description, {'attr' : {'class' : 'form-control', 'full_name' : 'session_desc', 'placeholder' : 'Le but de la session en quelques mots...'}}) }}
+                                        {{ form_widget(form.description, {'attr' : {'class' : 'form-control', 'full_name' : 'session_desc', 'placeholder' : 'Le but de la session en quelques mots...' }}) }}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div id ="session-alert" class="alert alert-danger" style="display: none;">
+                      <strong>Attention !</strong> Vous devez créer au moins une session.
                     </div>
                     <div id="send-form" class="row well justified" style="margin-top: 20px;">
                         <input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer les sessions"/>

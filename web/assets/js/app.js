@@ -36,8 +36,8 @@ App = {
 	addSession : function() {
 		container = "";
 		var session_title = $('input[full_name="session_title"]').val();
-		var session_horaireDebut = $('input[full_name="horaireDebut"]').val();
-		var session_horaireFin = $('input[full_name="horaireFin"]').val();
+		var session_horaireDebut = $('input[full_name="session_horaireDebut"]').val();
+		var session_horaireFin = $('input[full_name="session_horaireFin"]').val();
 		var session_desc = $('textarea[full_name="session_desc"]').val();
 		i++;
 		container+='<div class="list-group-item">';
@@ -63,6 +63,8 @@ App = {
 			$("#sessions-container").append(container);
 		}
 
+		$( "#session-alert" ).slideUp();
+
 		$(".btn-edit-session").on("click", App.editSession);
 		$(".btn-remove-session").on("click", App.removeSession);
 
@@ -81,8 +83,8 @@ App = {
 
 		// We display all information on the visible form
 		$('input[full_name="session_title"]').val(getInfo.title);
-		$('input[full_name="horaireDebut"]').val(getInfo.horaireDebut);
-		$('input[full_name="horaireFin"]').val(getInfo.horaireFin);
+		$('input[full_name="session_horaireDebut"]').val(getInfo.horaireDebut);
+		$('input[full_name="session_horaireFin"]').val(getInfo.horaireFin);
 		$('textarea[full_name="session_desc"]').val(getInfo.desc);
 
 		// We add a button to give the user the ability to validate changes
@@ -98,8 +100,8 @@ App = {
 	},
 	saveEditSession : function() {
 		var session_title = $('input[full_name="session_title"]').val();
-		var session_horaireDebut = $('input[full_name="horaireDebut"]').val();
-		var session_horaireFin = $('input[full_name="horaireFin"]').val();
+		var session_horaireDebut = $('input[full_name="session_horaireDebut"]').val();
+		var session_horaireFin = $('input[full_name="session_horaireFin"]').val();
 		var session_desc = $('textarea[full_name="session_desc"]').val();
 		var newValues = [session_title, session_horaireDebut, session_horaireFin, session_desc];
 		var infoSession = $( "#info-session-"+sessionId );
@@ -126,7 +128,7 @@ App = {
 	resetSessionFields : function() {
 		var sessions = ["session_title", "session_horaireDebut", "session_horaireFin"];
 		for (var y = 0; y < sessions.length; y++) {
-			$('input[full_name="'+sessions[y]+'"]').val("");
+				$('input[full_name="'+sessions[y]+'"]').val("");
 		}
 		$('textarea[full_name="session_desc"]').val("");
 	},
@@ -161,8 +163,10 @@ App = {
 
 		$('input[name="nbPartner"]').val(j);
 		if (partner_name != "") {
-			$("#partner-container").append(container);
+			$("#partners-container").append(container);
 		}
+
+		$( "#partner-alert" ).slideUp();
 
 		$(".btn-edit-partner").on("click", App.editPartner);
 		$(".btn-remove-partner").on("click", App.removePartner);
@@ -237,9 +241,23 @@ App = {
 	}
 }
 
-$(document).ready(function(){
+$( document ).ready(function(){
 	App.performDatePicker();
 	//$("body").first().css("background","transparent url('../upload/images/'"+$("#event-image").val()+"') no-repeat scroll center center / cover !important;");
 	$("#btn-add-session").click(App.addSession);
 	$("#btn-add-partner").click(App.addPartner);
+});
+
+$( "#session-form-wrapper form" ).submit(function(e) {
+	if ($( "#sessions-container" ).is( ":empty" )) { // S'il n'y a aucune session ou partenaire
+		e.preventDefault();
+		$( "#session-alert" ).slideDown();
+	}
+});
+
+$( "#partner-form-wrapper form" ).submit(function(e) {
+	if ($( "#partners-container" ).is( ":empty" )) { // S'il n'y a aucune session ou partenaire
+		e.preventDefault();
+		$( "#partner-alert" ).slideDown();
+	}
 });
