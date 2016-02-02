@@ -1,0 +1,40 @@
+/* ==================================================== */
+/* ====================== Global ====================== */
+/* ==================================================== */
+@font-face {
+    font-family: 'varela_roundregular';
+    src: url('../fonts/VarelaRound/varelaround-regular-webfont.eot');
+    src: url('../fonts/VarelaRound/varelaround-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.woff2') format('woff2'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.woff') format('woff'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.ttf') format('truetype'),
+         url('../fonts/VarelaRound/varelaround-regular-webfont.svg#varela_roundregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: varela_roundregular, sans-serif;
+    background-color: #F2F2F2;
+}
+
+/* ==================================================== */
+/* ====================== SideNav ===================== */
+/* ==================================================== */
+.side-nav a {
+  color:#FFF;
+}
+
+/* ==================================================== */
+/* =================== Admin Events =================== */
+/* ==================================================== */
+.eventDates{
+  margin-bottom: 1em;
+}
+
+/* ==================================================== */
+/* =================== Admin Users  =================== */
+/* ==================================================== */
+
+#userList .sort {text-decoration: underline; color: blue; cursor: pointer;}
+#userList .list td {vertical-align: middle;}
