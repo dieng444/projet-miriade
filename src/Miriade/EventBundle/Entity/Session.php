@@ -49,7 +49,7 @@ class Session
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="sessions")
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="sessions", cascade={"persist"})
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      * */
     private $event;

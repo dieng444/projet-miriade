@@ -1,0 +1,73 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+{%block stylesheets%}
+    <link href="{{ asset('assets/css/datepicker.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
+{% block content %}
+    <div id="event-wrapper" class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {{ form_start(form, {"action": path('miriade_event_new_partenaire', {'id' : id })}) }}
+                <div class="session-creation">
+                    <h2 id="partenaires">Partenaires</h2>
+                    <div class="list-group row well" id="partner-container"></div>
+                    <h2>Ajouter un partenaire</h2>
+                    <div class="row well">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_label(form.name) }}
+                                {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_name', 'placeholder' : 'Nom'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.address) }}
+                                {{ form_widget(form.address, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_address', 'placeholder' : 'Adresse'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.city) }}
+                                {{ form_widget(form.city, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_city', 'placeholder' : 'Ville'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.cp) }}
+                                {{ form_widget(form.cp, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_cp', 'placeholder' : 'Code postal'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.email) }}
+                                {{ form_widget(form.email, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_email', 'placeholder' : 'Email'}}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.phone) }}
+                                {{ form_widget(form.phone, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_phone', 'placeholder' : 'Ville'}}) }}
+                            </div>
+                            <div class="row justified" style="margin-top: 20px;">
+                                <button type="button" class="btn btn-lg" id="btn-add-partner">Ajouter</button>
+                                <input type='hidden' name="nbPartner" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputFile">Logo</label>
+                          <span class="btn btn-default btn-file">
+                                Chercher sur mon ordinateur <input type="file" id="input-file-2" name="partner_logo">
+                          </span>
+                                <p class="help-block">Image du partenaire</p>
+                                <div id="selected-image-2">
+                                    <img class="img-responsive" src="{{ asset('assets/images/default_image.png') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="send-form" class="row well justified" style="margin-top: 20px;">
+                    <input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer les partenaires"/>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{%block javascripts%}
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/form.js') }}"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="{{ asset('assets/js/map.js') }}"></script>
+{%endblock%}

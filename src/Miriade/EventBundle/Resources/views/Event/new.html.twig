@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-9">
                 {{ form_start(form, {"action": path('miriade_event_new')} ) }}
-								<h2>Création d'événement</h2>
+				<h2>Création d'évdezdeénement</h2>
                 <div class="event-creation row well">
                     <div class="row">
                         <div class="col-md-6">
@@ -19,46 +19,46 @@
                                 {{ form_label(form.description) }}
 								{{ form_widget(form.description, {'attr' : {'class' : 'form-control', 'placeholder' : "L'événement en bref..."}}) }}
                             </div>
-														<div class="row">
-															<div class="col-md-6">
-																<div class="form-group">
-																		{{ form_label(form.startDate) }}
-																		<div class="form-group">
-																				<div class='input-group date' id='datetimepicker1'>
-																						{{ form_widget(form.startDate, {'attr' : {'class' : 'form-control'}}) }}
-																						<span class="input-group-addon">
-																								<span class="glyphicon glyphicon-calendar"></span>
-																						</span>
-																				</div>
-																		</div>
-																</div>
-																<div class="form-group">
-																		{{ form_label(form.endDate) }}
-																		<div class="form-group">
-																				<div class='input-group date' id='datetimepicker2'>
-																						{{ form_widget(form.endDate, {'attr' : {'class' : 'form-control'}}) }}
-																						<span class="input-group-addon">
-																								<span class="glyphicon glyphicon-calendar"></span>
-																						</span>
-																				</div>
-																		</div>
-																</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																 {{ form_label(form.nbTable) }}
-																 {{ form_widget(form.nbTable, {'attr' : {'class' : 'form-control', 'placeholder' : 'Nombre de tables'}}) }}
-															</div>
-															<div class="form-group">
-																 {{ form_label(form.rdv) }}
-																 {{ form_widget(form.rdv, {'attr' : {'class' : 'form-control', 'placeholder' : 'Durée des RDVs'}}) }}
-															</div>
-														</div>
-													</div>
-                        </div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										{{ form_label(form.startDate) }}
+										<div class="form-group">
+											<div class='input-group date' id='datetimepicker1'>
+												{{ form_widget(form.startDate, {'attr' : {'class' : 'form-control'}}) }}
+												<span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										{{ form_label(form.endDate) }}
+										<div class="form-group">
+											<div class='input-group date' id='datetimepicker2'>
+												{{ form_widget(form.endDate, {'attr' : {'class' : 'form-control'}}) }}
+												<span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										 {{ form_label(form.nbTable) }}
+										 {{ form_widget(form.nbTable, {'attr' : {'class' : 'form-control', 'placeholder' : 'Nombre de tables'}}) }}
+									</div>
+									<div class="form-group">
+										 {{ form_label(form.rdv) }}
+										 {{ form_widget(form.rdv, {'attr' : {'class' : 'form-control', 'placeholder' : 'Durée des RDVs'}}) }}
+									</div>
+								</div>
+							</div>
+						</div>
                         <div class="col-md-6">
                             <div class="form-group">
-															{{ form_label(form.image) }}
+								{{ form_label(form.image) }}
                                 <span class="btn btn-default btn-file">
                                     Chercher sur mon ordinateur {{ form_widget(form.image, {'id' : 'input-file-1'}) }}
                                 </span>
@@ -75,121 +75,121 @@
                                {{ form_label(form.adress) }}
                                {{ form_widget(form.adress, {'attr' : {'class' : 'form-control', 'placeholder' : 'Adresse'}}) }}
                             </div>
-														<div class="form-group">
-																{{ form_label(form.city) }}
-																{{ form_widget(form.city, {'attr' : {'class' : 'form-control', 'placeholder' : 'Ville'}}) }}
-														</div>
+							<div class="form-group">
+									{{ form_label(form.city) }}
+									{{ form_widget(form.city, {'attr' : {'class' : 'form-control', 'placeholder' : 'Ville'}}) }}
+							</div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 {{ form_label(form.cp) }}
 								{{ form_widget(form.cp, {'attr' : {'class' : 'form-control', 'placeholder' : 'Code postal'}}) }}
                             </div>
-														<div class="form-group">
-															<div id="map-container" class="col-md-8"></div>
-														</div>
+							<div class="form-group">
+								<div id="map-container" class="col-md-8"></div>
+							</div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class="session-creation">
-                    <h2 id="sessions">Sessions</h2>
-                    <div class="list-group row well" id="sessions-container"></div>
-                    <h2>Ajouter une session</h2>
-                    <div class="row well">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Titre</label>
-                                <input type="text" name="session_title" class="form-control" placeholder="Intitulé de la session">
-                            </div>
-                            <div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Début</label>
-									<div class='input-group date' id='datetimepicker3'>
-										<input type='text' name="horaireDebut" class="form-control" />
-										<span class="input-group-addon">
-											<span class="glyphicon glyphicon-time"></span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group">
-									<label>Fin</label>
-									<div class='input-group date' id='datetimepicker4'>
-										<input type='text' name="horaireFin" class="form-control" />
-										<span class="input-group-addon">
-											<span class="glyphicon glyphicon-time"></span>
-										</span>
-									</div>
-								</div>
-							</div>
-							<div class="row justified" style="margin-top: 20px;">
-									<button type="button" class="btn btn-lg" id="btn-add-session">Ajouter</button>
-									<input type='hidden' name="nbSession" class="form-control"/>
-							</div>
-						</div>
-                      </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" placeholder="Le but de la session en quelques mots..." name="session_desc"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-								<h2 id="partenaires">Partenaires</h2>
-								<div class="list-group row well" id="partner-container"></div>
-                <h2>Ajouter un partenaire</h2>
-                <div class="row well">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Nom</label>
-                            <input type="text" class="form-control" name="partner_name" placeholder="Nom">
-                        </div>
-                        <div class="form-group">
-						<label>Adresse</label>
-						  <input type="text" name="partner_address" class="form-control" name="partner_address" placeholder="Adresse">
-						</div>
-						<div class="form-group">
-						  <label>Ville</label>
-						  <input type="text" name="partner_city" class="form-control" placeholder="Ville">
-						</div>
-						<div class="form-group">
-						  <label>Code postal</label>
-						  <input type="text" class="form-control" name="partner_cp" placeholder="Code postal">
-						</div>
-                        <div class="form-group">
-                            <label>Mail</label>
-                            <input type="text" class="form-control" name="partner_email" placeholder="Mail">
-                        </div>
-                        <div class="form-group">
-                            <label>Téléphone</label>
-                            <input type="text" class="form-control" placeholder="Téléphone" name="partner_phone">
-                        </div>
-												<div class="row justified" style="margin-top: 20px;">
-														<button type="button" class="btn btn-lg" id="btn-add-partner">Ajouter</button>
-														<input type='hidden' name="nbPartner" class="form-control"/>
-												</div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="exampleInputFile">Logo</label>
-                              <span class="btn btn-default btn-file">
-                                    Chercher sur mon ordinateur <input type="file" id="input-file-2" name="partner_logo">
-                              </span>
-                            <p class="help-block">Image du partenaire</p>
-														<div id="selected-image-2">
-                            	<img class="img-responsive" src="{{ asset('assets/images/default_image.png') }}" alt="">
-														</div>
-                        </div>
-                    </div>
-                </div>
-                <div id="send-form" class="row well justified" style="margin-top: 20px;">
-									<input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer l'événement"/>
-								</div>
-							</form>
+                {#<div class="session-creation">#}
+                    {#<h2 id="sessions">Sessions</h2>#}
+                    {#<div class="list-group row well" id="sessions-container"></div>#}
+                    {#<h2>Ajouter une session</h2>#}
+                    {#<div class="row well">#}
+                        {#<div class="col-md-6">#}
+                            {#<div class="form-group">#}
+                                {#<label>Titre</label>#}
+                                {#<input type="text" name="session_title" class="form-control" placeholder="Intitulé de la session">#}
+                            {#</div>#}
+                            {#<div class="row">#}
+							{#<div class="col-md-6">#}
+								{#<div class="form-group">#}
+									{#<label>Début</label>#}
+									{#<div class='input-group date' id='datetimepicker3'>#}
+										{#<input type='text' name="horaireDebut" class="form-control" />#}
+										{#<span class="input-group-addon">#}
+											{#<span class="glyphicon glyphicon-time"></span>#}
+										{#</span>#}
+									{#</div>#}
+								{#</div>#}
+							{#</div>#}
+							{#<div class="col-md-6">#}
+								{#<div class="form-group">#}
+									{#<label>Fin</label>#}
+									{#<div class='input-group date' id='datetimepicker4'>#}
+										{#<input type='text' name="horaireFin" class="form-control" />#}
+										{#<span class="input-group-addon">#}
+											{#<span class="glyphicon glyphicon-time"></span>#}
+										{#</span>#}
+									{#</div>#}
+								{#</div>#}
+							{#</div>#}
+							{#<div class="row justified" style="margin-top: 20px;">#}
+									{#<button type="button" class="btn btn-lg" id="btn-add-session">Ajouter</button>#}
+									{#<input type='hidden' name="nbSession" class="form-control"/>#}
+							{#</div>#}
+						{#</div>#}
+                      {#</div>#}
+                        {#<div class="col-md-6">#}
+                            {#<div class="form-group">#}
+                                {#<label>Description</label>#}
+                                {#<textarea class="form-control" placeholder="Le but de la session en quelques mots..." name="session_desc"></textarea>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+				{#<h2 id="partenaires">Partenaires</h2>#}
+				{#<div class="list-group row well" id="partner-container"></div>#}
+                {#<h2>Ajouter un partenaire</h2>#}
+                {#<div class="row well">#}
+                    {#<div class="col-md-6">#}
+                        {#<div class="form-group">#}
+                            {#<label>Nom</label>#}
+                            {#<input type="text" class="form-control" name="partner_name" placeholder="Nom">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+						{#<label>Adresse</label>#}
+						  {#<input type="text" name="partner_address" class="form-control" name="partner_address" placeholder="Adresse">#}
+						{#</div>#}
+						{#<div class="form-group">#}
+						  {#<label>Ville</label>#}
+						  {#<input type="text" name="partner_city" class="form-control" placeholder="Ville">#}
+						{#</div>#}
+						{#<div class="form-group">#}
+						  {#<label>Code postal</label>#}
+						  {#<input type="text" class="form-control" name="partner_cp" placeholder="Code postal">#}
+						{#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label>Mail</label>#}
+                            {#<input type="text" class="form-control" name="partner_email" placeholder="Mail">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                            {#<label>Téléphone</label>#}
+                            {#<input type="text" class="form-control" placeholder="Téléphone" name="partner_phone">#}
+                        {#</div>#}
+												{#<div class="row justified" style="margin-top: 20px;">#}
+														{#<button type="button" class="btn btn-lg" id="btn-add-partner">Ajouter</button>#}
+														{#<input type='hidden' name="nbPartner" class="form-control"/>#}
+												{#</div>#}
+                    {#</div>#}
+                    {#<div class="col-md-6">#}
+                        {#<div class="form-group">#}
+                            {#<label for="exampleInputFile">Logo</label>#}
+                              {#<span class="btn btn-default btn-file">#}
+                                    {#Chercher sur mon ordinateur <input type="file" id="input-file-2" name="partner_logo">#}
+                              {#</span>#}
+                            {#<p class="help-block">Image du partenaire</p>#}
+														{#<div id="selected-image-2">#}
+                            	{#<img class="img-responsive" src="{{ asset('assets/images/default_image.png') }}" alt="">#}
+														{#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+					<div id="send-form" class="row well justified" style="margin-top: 20px;">
+						<input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer l'événement"/>
+					</div>
+				</form>
             </div>
             <!-- Aside here? -->
         </div>

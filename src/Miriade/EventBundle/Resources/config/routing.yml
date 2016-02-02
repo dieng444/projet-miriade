@@ -15,6 +15,16 @@ miriade_event_new:
     defaults:
         _controller: MiriadeEventBundle:Event:new
 
+miriade_event_new_session:
+    pattern: /event/new/session/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:newSession
+
+miriade_event_new_partenaire:
+    pattern: /event/new/partenaire/{id}
+    defaults:
+        _controller: MiriadeEventBundle:Event:newPartenaire
+
 miriade_event_create:
     pattern: /event/create
     defaults:

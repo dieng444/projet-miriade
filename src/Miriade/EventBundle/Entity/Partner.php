@@ -71,7 +71,7 @@ class Partner
     private $logo;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="partners")
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="partners", cascade={"persist"})
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      * */
     private $event;

@@ -13,6 +13,8 @@ use Miriade\EventBundle\Entity\Event;
 use Miriade\EventBundle\Entity\Session;
 use Miriade\EventBundle\Entity\Partner;
 use Miriade\EventBundle\Form\EventType;
+use Miriade\EventBundle\Form\SessionType;
+use Miriade\EventBundle\Form\PartnerType;
 
 class EventController extends Controller
 {
@@ -39,87 +41,113 @@ class EventController extends Controller
 
         return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
     }
+
     /**
-     * Displays a form to create a new Categorie entity.
-     * @Method("GET")
-     * @Template()
+     * Persiste un événement en BDD et redirige vers le formulaire des sessions
+     * @Method("POST")
+     * @Template(EventBundle:new.html.twig)
      */
     public function newAction()
     {
+
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
         $form = $this->CreateForm(new EventType(), $event);
         if ($this->getRequest()->isMethod("POST")) {
-            $data = $this->getRequest()->request->all();
-            $nbSession = (int) $data['nbSession'];
-            $nbPartner = (int) $data['nbPartner'];
-            /*Upload de l'image de l'événement*/
-          $form->HandleRequest($this->getRequest());
-           if(isset($_FILES['event_eventbundle_event']) &&
-   			    strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
-               $image = $_FILES['event_eventbundle_event'];
-               if($event->uploadImage($image)) {
-                 $event->setImage($event->getImage());
-               } else
-     					     $event->setImage("_none");
-     			} else
-     				  $event->setImage("_none");
-            /*
-            $nbSession est capté depuis la validation du formulaire, c'est le nombre de session qui a été
-            l'admin à l'événement courant.
-            les sessions sont nommées dynamiquement de cette façon en js : session_x[name],partner_x[address]...
-            avec x qui varie à chaque appel à la function addSession en js
-            donc onse base sur le même principe pour créer au tant de sessions qu'il en a été creé en js
-            */
-        if ($nbSession > 0) {
-            for ($i=1; $i <= $nbSession ; $i++) {
-                  $session = new Session();
-                  $session->setName(trim(strip_tags($data['session_'.$i]['title'])));
-                  $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
-                  $session->setHoraireFin($data['session_'.$i]['horaireFin']);
-                  $session->setDescription(trim(strip_tags($data['session_'.$i]['desc'])));
-                  $session->setEvent($event); //Liaison entre l'événement et la session
-                  $em->persist($session); //On persist chaque session pour une insertion globale après
-            }
-        }
-        /*
-        nbPartner est capté depuis la validation du formulaire, c'est le nombre de partnaire qui a été
-        l'admin à l'événement courant.
-        les partnaires sont nommés dynamiquement de cette façon en js : partner_x[name],partner_x[address]...
-        avec x qui varie à chaque appel à la function addPartner en js
-        donc onse base sur le même principe pour créer au tant de partnaires qu'il en a été creé en js
-        */
-        if ($nbPartner  > 0) {
-          for ($i=1; $i <= $nbPartner; $i++) {
-              $partner = new Partner();
-              $partner->setName(trim(strip_tags($data['partner_'.$i]['name'])));
-              $partner->setAddress(trim(strip_tags($data['partner_'.$i]['address'])));
-              $partner->setCity(trim(strip_tags($data['partner_'.$i]['city'])));
-              $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
-              $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
-              $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
-              $partner->setLogo("_none");
-              $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
-              $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
-          }
-        }
-        /*Upload du logo des partenaires*/
-			if(isset($_FILES['partner_logo']) &&
-				strlen($_FILES['partner_logo']['name']) > 0 ) {
-				$logo = $_FILES['partner_logo'];
-				if($partner->uploadLogo($logo))
-					$partner->setLogo($partner->getLogo());
-			} else
-				  $partner->setLogo("_none");
+            $form->HandleRequest($this->getRequest());
+            if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
+                $image = $_FILES['event_eventbundle_event'];
+                if($event->uploadImage($image)) {
+                    $event->setImage($event->getImage());
+                } else
+                    $event->setImage("_none");
+            } else
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($event);
+            $em->flush();
 
-			$em->persist($event);
-			$em->flush();
-			return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
+            $this->get('session')->set('currentEvent', $event);
 
+            return $this->redirect($this->generateUrl('miriade_event_new_session', array ('id' => $event->getId())));
         } else {
             return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
         }
     }
+
+    /**
+     * Persiste le tableau des sessions en BDD et redirige vers le formulaire des partenaires
+     * @Method("POST")
+     * @Template(EventBundle:newSession.html.twig)
+     */
+    public function newSessionAction($id)
+    {
+        $session = new Session();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->CreateForm(new SessionType(), $session);
+        if ($this->getRequest()->isMethod("POST")) {
+            $data = $this->getRequest()->request->all();
+            $nbSession = (int) $data['nbSession'];
+            //$event = $this->get('session')->get('currentEvent');
+            $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+
+            if ($nbSession > 0) {
+                for ($i=1; $i <= $nbSession ; $i++) {
+                    //$form->HandleRequest($this->getRequest());
+
+                    $session = new Session();
+                    $session->setName(trim(strip_tags($data['session_'.$i]['title'])));
+                    $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
+                    $session->setHoraireFin($data['session_'.$i]['horaireFin']);
+                    $session->setDescription(trim(strip_tags($data['session_'.$i]['desc'])));
+                    $session->setEvent($event); //Liaison entre l'événement et la session
+                    $em->persist($session); //On persist chaque session pour une insertion globale après
+                }
+            }
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('miriade_event_new_partenaire', array ('id' => $id)));
+        } else {
+            return $this->render('MiriadeEventBundle:Event:newSession.html.twig', array('form' => $form->createView(), 'id' => $id));
+        }
+    }
+
+    /**
+     * Persiste le tableau des partenares en BDD
+     * @Method("POST")
+     * @Template(EventBundle:newPartenaire.html.twig)
+     */
+    public function newPartenaireAction($id) {
+        $partner = new Partner();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->CreateForm(new PartnerType(), $partner);
+        if ($this->getRequest()->isMethod("POST")) {
+            $data = $this->getRequest()->request->all();
+            $nbPartner = (int) $data['nbPartner'];
+            //$event = $this->get('session')->get('currentEvent');
+            $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+            var_dump($nbPartner);
+            if ($nbPartner  > 0) {
+                for ($i=1; $i <= $nbPartner; $i++) {
+                    $partner = new Partner();
+                    $partner->setName(trim(strip_tags($data['partner_'.$i]['name'])));
+                    $partner->setAddress(trim(strip_tags($data['partner_'.$i]['address'])));
+                    $partner->setCity(trim(strip_tags($data['partner_'.$i]['city'])));
+                    $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
+                    $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
+                    $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
+                    $partner->setLogo("_none");
+                    $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
+                    $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
+                }
+            }
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('miriade_home', array('id' => $id)));
+        } else {
+            return $this->render('MiriadeEventBundle:Event:newPartenaire.html.twig', array('form' => $form->createView(), 'id' => $id));
+        }
+    }
+
 	/**
      * Trouve et affiche les informations d'un �v�nement enregistr� dans la base de données.
      *
@@ -128,7 +156,7 @@ class EventController extends Controller
      */
     public function showAction(Request $request, $id)
     {
-
+        $em = $this->getDoctrine()->getManager();
         $event = $em->getEvent($id);
         if (!$event) {
             throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');

@@ -18,12 +18,12 @@ class PartnerType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'Titre', 'required' => true ))
-            ->add('email', 'textarea', array('label' => 'Mail','required' => true))
-            ->add('phone', 'datetime', array('label' => 'Téléphone','required' => true))
-            ->add('address', 'datetime', array('label' => 'Adresse','required' => true))
-            ->add('city', 'datetime', array('label' => 'Ville','required' => true))
-            ->add('cp', 'datetime', array('label' => 'Code postale','required' => true))
-            ->add('logo', 'file', array('label' => 'Logo','required' => true))
+            ->add('email', 'text', array('label' => 'Mail','required' => true))
+            ->add('phone', 'text', array('label' => 'TÃ©lÃ©phone','required' => true))
+            ->add('address', 'text', array('label' => 'Adresse','required' => true))
+            ->add('city', 'text', array('label' => 'Ville','required' => true))
+            ->add('cp', 'text', array('label' => 'Code postal','required' => true))
+            //->add('logo', 'file', array('label' => 'Logo','required' => true))
         ;
     }
 

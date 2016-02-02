@@ -18,8 +18,9 @@ class SessionType extends AbstractType
     {
         $builder
             ->add('name', 'text', array('label' => 'Titre', 'required' => true ))
-            ->add('rangHoraire', 'textarea', array('label' => 'Plage horaire','required' => true))
-            ->add('description', 'datetime', array('label' => 'Description','required' => true))
+            ->add('horaireDebut', 'text', array('label' => 'Horaire de début','required' => true))
+            ->add('horaireFin', 'text', array('label' => 'Horaire de fin','required' => true))
+            ->add('description', 'textarea', array('label' => 'Description','required' => true))
         ;
     }
 

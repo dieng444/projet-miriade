@@ -1,0 +1,73 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+{%block stylesheets%}
+    <link href="{{ asset('assets/css/datepicker.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
+{% block content %}
+    <div id="event-wrapper" class="container">
+        <div class="row">
+            <div class="col-md-9">
+                {{ form_start(form, {"action": path('miriade_event_new_session', {'id' : id }) }) }}
+                <div class="session-creation">
+                    <div class="list-group row well" id="sessions-container"></div>
+                        <h2>Création des sessions</h2>
+                        <div class="event-creation row well">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.name) }}
+                                        {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'full_name' : 'session_title', 'placeholder' : 'Intitulé de la session'}}) }}
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {{ form_label(form.horaireDebut) }}
+                                                <div class='input-group date' id='datetimepicker3'>
+                                                    {{ form_widget(form.horaireDebut, {'attr' : {'class' : 'form-control', 'full_name' : 'horaireDebut'}}) }}
+                                                     <span class="input-group-addon">
+                                                         <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {{ form_label(form.horaireFin) }}
+                                                <div class='input-group date' id='datetimepicker4'>
+                                                    {{ form_widget(form.horaireFin, {'attr' : {'class' : 'form-control', 'full_name' : 'horaireFin'}}) }}
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-time"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row justified" style="margin-top: 20px;">
+                                            <button type="button" class="btn btn-lg" id="btn-add-session">Ajouter</button>
+                                            <input type='hidden' name="nbSession" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form_label(form.description) }}
+                                        {{ form_widget(form.description, {'attr' : {'class' : 'form-control', 'full_name' : 'session_desc', 'placeholder' : 'Le but de la session en quelques mots...'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="send-form" class="row well justified" style="margin-top: 20px;">
+                        <input type="submit" class="btn btn-lg btn-success" name="form_action" value="Créer les sessions"/>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{%block javascripts%}
+    <script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/form.js') }}"></script>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="{{ asset('assets/js/map.js') }}"></script>
+{%endblock%}
