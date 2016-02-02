@@ -3,17 +3,34 @@
 {% block title %}Gestion des utilisateurs{% endblock %}
 
 {% block content %}
-	<h1>Gestion des évènements</h1>
-
-	<ul>
-	    {% for event in events %}
-	        <li>
-	        	<span>{{ event.title }}</span>
-	        	<span>Date de début : {{ event.startDate }}</span>
-	        	<span>Date de fin : {{ event.endDate }}</span>
-
-	        	<span>[<a href="{{ path('miriade_admin_event_delete', {"id" : event.id}) }}">Supprimer</a>]</span>
-	        </li>
-	    {% endfor %}
-	</ul>
+<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Gestion des évènements <a href="{{ path('miriade_event_new') }}" class="btn btn-default">Création</a></h1>
+		</div>
+</div>
+	<div class="row">
+		<div class="col-md-4 col-sm-6 hero-feature">
+			<ul>
+			    {% for event in events %}
+			        <div class="thumbnail" style="box-shadow: 0px 1px 5px rgb(0, 0, 0);">
+			        	<h3><a href="{{ path('miriade_home', {"id" : event.id}) }}">{{ event.title }}</a></h3>
+								<div class="row eventDates">
+									<div class="col-sm-6">
+										<span><b>Début :</b><br/> {{ event.startDate }}</span>
+									</div>
+									<div class="col-sm-6">
+										<span><b>Fin :</b><br/> {{ event.endDate }}</span>
+									</div>
+								</div>
+								<div class="row btnsAction">
+									<div class="col-sm-12">
+										<a href="" class="btn btn-primary">Modifier</a>
+					        	<a href="{{ path('miriade_admin_event_delete', {"id" : event.id}) }}"class="btn btn-default">Supprimer</a>
+									</div>
+								</div>
+			        </div>
+			    {% endfor %}
+			</ul>
+		</div>
+	</div>
 {% endblock %}
