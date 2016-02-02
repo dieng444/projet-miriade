@@ -31,3 +31,10 @@ body {
 .eventDates{
   margin-bottom: 1em;
 }
+
+/* ==================================================== */
+/* =================== Admin Users  =================== */
+/* ==================================================== */
+
+#userList .sort {text-decoration: underline; color: blue; cursor: pointer;}
+#userList .list td {vertical-align: middle;}

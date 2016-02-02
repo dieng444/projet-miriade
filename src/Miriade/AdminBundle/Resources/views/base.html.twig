@@ -54,6 +54,15 @@
 	</div>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap.min.js') }}"></script>
+	<script src="//listjs.com/no-cdn/list.js"></script>
+	<script type="text/javascript">
+			var options = {
+				valueNames: [ 'userName', 'societyName' ]
+			};
+
+			var managerList = new List('managerList', options);
+			var participantList = new List('participantList', options);
+	</script>
 	<!--<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/plugins/morris/raphael.min.js') }}"></script>-->
 	<!--<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/plugins/morris/morris.js') }}"></script>-->
 	<!--<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/plugins/morris/morris-data.js') }}"></script>-->
