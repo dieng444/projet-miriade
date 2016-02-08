@@ -9,11 +9,11 @@ miriade_event_dashboard:
         _controller: MiriadeEventBundle:Event:dashboard
 
 miriade_event_home:
-    pattern: /event/{id}
+    pattern: /event/{slug}
     defaults:
         _controller: MiriadeEventBundle:Event:home
     requirements:
-              id: \d+
+              slug:   ^[a-zA-Z0-9_-]+$
 
 miriade_event_new:
     pattern: /event/new

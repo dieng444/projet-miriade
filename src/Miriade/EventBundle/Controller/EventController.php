@@ -33,11 +33,13 @@ class EventController extends Controller
     /**
      * @Template()
      */
-    public function homeAction($id)
+    public function homeAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
-        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+        $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(
+            array('slug' => $slug)
+        );
 
         return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
     }

@@ -22,6 +22,12 @@ miriade_admin_events:
     path:     /admin/events
     defaults: { _controller: MiriadeAdminBundle:Event:viewAll }
 
+miriade_admin_event_update:
+    path:     /admin/events/update/{id}
+    defaults: { _controller: MiriadeAdminBundle:Event:update }
+    requirements:
+        id:   ^[0-9]*$
+
 miriade_admin_event_delete:
     path:     /admin/events/delete/{id}
     defaults: { _controller: MiriadeAdminBundle:Event:delete }
