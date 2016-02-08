@@ -1,15 +1,20 @@
+miriade_home:
+    pattern: /
+    defaults:
+        _controller: MiriadeEventBundle:Default:home
+
 miriade_event_dashboard:
     pattern: /event/dashboard
     defaults:
         _controller: MiriadeEventBundle:Event:dashboard
-        
-miriade_home:
-    pattern: /{id}
+
+miriade_event_home:
+    pattern: /event/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:home
     requirements:
               id: \d+
-        
+
 miriade_event_new:
     pattern: /event/new
     defaults:
@@ -49,7 +54,7 @@ miriade_event_session_create:
     pattern: /session/create
     defaults:
         _controller: MiriadeEventBundle:Session:create
-        
+
 miriade_event_show:
     pattern: /event/show/{id}
     defaults:
