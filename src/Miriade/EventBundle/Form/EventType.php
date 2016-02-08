@@ -25,7 +25,7 @@ class EventType extends AbstractType
             ->add('adress', 'text', array('label' => 'Adresse', 'required' => true))
             ->add('city', 'text', array('label' => 'Ville', 'required' => true))
             ->add('cp', 'text', array('label' => 'Code postal', 'required' => true))
-            ->add('image', 'file', array('label' => 'Image', 'required' => false))
+            ->add('image', 'file', array('label' => 'Image', 'required' => false, 'data_class' => null))
             ->add('nbTable', 'text', array('label' => 'Nombre de tables', 'required' => false))
             ->add('rdv', 'text', array('label' => 'Durée des RDVs', 'required' => false))
             /*->add('partner', 'collection', array(

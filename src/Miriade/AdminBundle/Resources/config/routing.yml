@@ -6,6 +6,12 @@ miriade_admin_users:
     path:     /admin/users
     defaults: { _controller: MiriadeAdminBundle:User:viewAll }
 
+miriade_admin_user_update:
+    path:     /admin/users/update/{id}
+    defaults: { _controller: MiriadeAdminBundle:User:update }
+    requirements:
+        id:   ^[0-9]*$
+
 miriade_admin_user_delete:
     path:     /admin/users/delete/{id}
     defaults: { _controller: MiriadeAdminBundle:User:delete }
@@ -15,6 +21,12 @@ miriade_admin_user_delete:
 miriade_admin_events:
     path:     /admin/events
     defaults: { _controller: MiriadeAdminBundle:Event:viewAll }
+
+miriade_admin_event_update:
+    path:     /admin/events/update/{id}
+    defaults: { _controller: MiriadeAdminBundle:Event:update }
+    requirements:
+        id:   ^[0-9]*$
 
 miriade_admin_event_delete:
     path:     /admin/events/delete/{id}

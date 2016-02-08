@@ -3,11 +3,16 @@
 namespace Miriade\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function homeAction()
     {
-        return $this->render('MiriadeEventBundle:Default:index.html.twig', array('name' => $name));
+    	$em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+        $events = array_reverse($events);
+        if(count($events) > 0)
+        	return new RedirectResponse($this->generateUrl('miriade_event_home', array("slug" => $events[0]->getSlug())));
     }
 }

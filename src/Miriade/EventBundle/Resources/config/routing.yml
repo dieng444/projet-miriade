@@ -1,19 +1,24 @@
+miriade_home:
+    pattern: /
+    defaults:
+        _controller: MiriadeEventBundle:Default:home
+
 miriade_event_dashboard:
     pattern: /event/dashboard
     defaults:
         _controller: MiriadeEventBundle:Event:dashboard
-        
-miriade_home:
-    pattern: /{id}
-    defaults:
-        _controller: MiriadeEventBundle:Event:home
-    requirements:
-              id: \d+
-        
+
 miriade_event_new:
     pattern: /event/new
     defaults:
         _controller: MiriadeEventBundle:Event:new
+
+miriade_event_home:
+    pattern: /event/{slug}
+    defaults:
+        _controller: MiriadeEventBundle:Event:home
+    requirements:
+              slug:   ^[a-zA-Z0-9_-]+$
 
 miriade_event_new_session:
     pattern: /event/new/session/{id}
@@ -24,11 +29,6 @@ miriade_event_new_partenaire:
     pattern: /event/new/partenaire/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:newPartenaire
-
-miriade_event_create:
-    pattern: /event/create
-    defaults:
-        _controller: MiriadeEventBundle:Event:create
 
 miriade_event_partner_new:
     pattern: /partner/new
@@ -49,7 +49,7 @@ miriade_event_session_create:
     pattern: /session/create
     defaults:
         _controller: MiriadeEventBundle:Session:create
-        
+
 miriade_event_show:
     pattern: /event/show/{id}
     defaults:
