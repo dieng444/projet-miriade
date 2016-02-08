@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>{% block title %}{% endblock %} - Zone d'administration</title>
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/bootstrap.min.css') }}" type="text/css" />
-	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/plugins/morris.css') }}" type="text/css" />
+	<!--<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/plugins/morris.css') }}" type="text/css" />-->
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/font-awesome/css/font-awesome.min.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/sb-admin.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/style.css') }}" type="text/css" />
@@ -18,15 +18,6 @@
 					<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {{ app.user }} <b class="caret"></b></a>
 							<ul class="dropdown-menu">
-									<li>
-											<a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-									</li>
-									<li>
-											<a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-									</li>
-									<li>
-											<a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-									</li>
 									<li class="divider"></li>
 									<li>
 											<a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -54,7 +45,7 @@
 	</div>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap.min.js') }}"></script>
-	<script src="//listjs.com/no-cdn/list.js"></script>
+	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/list.js') }}"></script>
 	<script type="text/javascript">
 			var options = {
 				valueNames: [ 'userName', 'societyName', 'eventName', 'startDate' ]
