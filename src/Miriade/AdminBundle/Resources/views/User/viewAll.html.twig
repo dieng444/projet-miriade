@@ -23,7 +23,7 @@
 								</div><!-- /input-group -->
 						</div>
 						<div class="col-md-4">
-								<a type="button" class="btn btn-default pull-right"><span class="glyphicon glyphicon-plus text-danger"></span>&nbsp;Nouveau manager</a>
+								<a type="button" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nouveau manager</a>
 						</div>
 				</div>
 				<br>
@@ -44,7 +44,7 @@
 												<td><a href="#" class="userName">{{ user.firstname }} {{ user.lastname }}</a></td>
 												<td class="societyName">{{ user.enterprise }}</td>
 												<td>
-																<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit text-danger"></span>&nbsp;Modifier</a>
+																<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modifier</a>
 																<a type="button" href="{{ path('miriade_admin_user_delete', {"id" : user.id}) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Supprimer</a>
 												</td>
 										</tr>
@@ -66,7 +66,7 @@
 								</div><!-- /input-group -->
 						</div>
 						<div class="col-md-4">
-								<a type="button" href="{{ path('fos_user_registration_register') }}"class="btn btn-default pull-right"><span class="glyphicon glyphicon-plus text-danger"></span>&nbsp;Nouveau participant</a>
+								<a type="button" href="{{ path('fos_user_registration_register') }}"class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nouveau participant</a>
 						</div>
 				</div>
 				<br>
@@ -87,7 +87,7 @@
 												<td><a href="#" class="userName">{{ user.firstname }} {{ user.lastname }}</a></td>
 												<td class="societyName">{{ user.enterprise }}</td>
 												<td>
-																<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit text-danger"></span>&nbsp;Modifier</a>
+																<a type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modifier</a>
 																<a type="button" href="{{ path('miriade_admin_user_delete', {"id" : user.id}) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Supprimer</a>
 												</td>
 										</tr>

@@ -28,13 +28,29 @@ body {
 /* ==================================================== */
 /* =================== Admin Events =================== */
 /* ==================================================== */
-.eventDates{
-  margin-bottom: 1em;
+
+.eventName, .userName {
+  font-size: 1.3em;
 }
 
 /* ==================================================== */
 /* =================== Admin Users  =================== */
 /* ==================================================== */
 
-#userList .sort {text-decoration: underline; color: blue; cursor: pointer;}
-#userList .list td {vertical-align: middle;}
+#userList .list td, #eventList .list td {vertical-align: middle;}
+#userList .btn-success, #eventList .btn-success {
+    background-color: #d16a25;
+    border: 0 none;
+  }
+table th {
+  color: white;
+  background-color: #2f88aa;
+}
+
+table th.sort{
+  cursor: pointer;
+}
+
+.eventName, .userName {
+  font-size: 1.3em;
+}
