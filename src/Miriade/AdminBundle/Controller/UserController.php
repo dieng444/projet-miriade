@@ -4,6 +4,8 @@ namespace Miriade\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Request;
+use Miriade\UserBundle\Form\UserType as UserType;
 
 class UserController extends Controller
 {
@@ -40,5 +42,31 @@ class UserController extends Controller
 		$em->flush();
 
 		return $this->redirect($this->generateUrl('miriade_admin_users'));	
+    }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function updateAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('MiriadeUserBundle:User');
+
+        $user = $repository->find($id);
+
+        $form = $this->get('form.factory')->create(new UserType, $user);
+
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirect($this->generateUrl('miriade_admin_users'));
+        }
+
+        return $this->render('MiriadeAdminBundle:User:update.html.twig', array('form' => $form->createView())); 
     }
 }
