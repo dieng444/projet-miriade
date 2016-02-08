@@ -53,6 +53,7 @@ class EventController extends Controller
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
         $form = $this->CreateForm(new EventType(), $event);
+        
         if ($this->getRequest()->isMethod("POST")) {
             $form->HandleRequest($this->getRequest());
             if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
@@ -69,9 +70,10 @@ class EventController extends Controller
             $this->get('session')->set('currentEvent', $event);
 
             return $this->redirect($this->generateUrl('miriade_event_new_session', array ('id' => $event->getId())));
-        } else {
-            return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
-        }
+        } 
+        
+        return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
+        
     }
 
     /**
