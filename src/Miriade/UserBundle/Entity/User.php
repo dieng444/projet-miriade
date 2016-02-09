@@ -97,7 +97,7 @@ class User extends BaseUser
     {
         parent::__construct();
         $this->dateSubscription = new \Datetime();
-        $this->addRole("ROLE_USER");
+        $this->addRole("ROLE_PARTICIPANT");
     }
 
     /**
