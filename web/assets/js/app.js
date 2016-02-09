@@ -9,16 +9,20 @@ var partnerId;
 App = {
 	performDatePicker : function() {
 		$('#datetimepicker1').datetimepicker({
-			locale: 'fr'
+			locale: 'fr',
+			allowInputToggle: true
 		});
 		$('#datetimepicker2').datetimepicker( {
-			locale: 'fr'
+			locale: 'fr',
+			allowInputToggle: true
 		});
 		$('#datetimepicker3').datetimepicker({
-			locale: 'fr'
+			locale: 'fr',
+			allowInputToggle: true
 		});
 		$('#datetimepicker4').datetimepicker({
-			locale: 'fr'
+			locale: 'fr',
+			allowInputToggle: true
 		});
 		$('#datetimepicker1 input').focus(function(){
 		  $('#datetimepicker1').show;
