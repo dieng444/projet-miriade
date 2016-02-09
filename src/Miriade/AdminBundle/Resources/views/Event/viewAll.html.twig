@@ -37,7 +37,7 @@
 
 						{% for event in events %}
 								<tr>
-										<td><a class="eventName" href="{{ path('miriade_home', {"id" : event.id}) }}">{{ event.title }}</a></td>
+										<td><a class="eventName" href="{{ path('miriade_event_home', {"slug" : event.slug}) }}">{{ event.title }}</a></td>
 										<td class="startDate">{{ event.startDate }}</td>
 										<td>{{ event.endDate }}</td>
 										<td>
