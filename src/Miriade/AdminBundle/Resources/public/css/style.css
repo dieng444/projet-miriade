@@ -28,7 +28,6 @@ body {
 /* ==================================================== */
 /* =================== Admin Events =================== */
 /* ==================================================== */
-
 .eventName, .userName {
   font-size: 1.3em;
 }
@@ -36,9 +35,11 @@ body {
 /* ==================================================== */
 /* =================== Admin Users  =================== */
 /* ==================================================== */
-
+.error {
+  color: red;
+}
 #userList .list td, #eventList .list td {vertical-align: middle;}
-#userList .btn-success, #eventList .btn-success {
+#userList .btn-success, #eventList .btn-success, form .btn-success {
     background-color: #d16a25;
     border: 0 none;
   }

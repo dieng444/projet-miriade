@@ -44,12 +44,7 @@
 												<td><a href="#" class="userName">{{ user.firstname }} {{ user.lastname }}</a></td>
 												<td class="societyName">{{ user.enterprise }}</td>
 												<td>
-<<<<<<< HEAD
-
-																<a type="button" class="btn btn-default" href="{{ path('miriade_admin_user_update', {"id" : user.id}) }}"><span class="glyphicon glyphicon-edit text-danger"></span>&nbsp;Modifier</a>
-=======
 																<a type="button" class="btn btn-default" href="{{ path('miriade_admin_user_update', {"id" : user.id}) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modifier</a>
->>>>>>> c4b38286ac4614d8af1630d1d9a69a68afdd7880
 																<a type="button" href="{{ path('miriade_admin_user_delete', {"id" : user.id}) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Supprimer</a>
 												</td>
 										</tr>
@@ -85,25 +80,20 @@
 										</tr>
 								</thead>
 								<tbody class="list">
-									
+
 									{% for user in users %}
 										{% if "ROLE_ADMIN" not in user.roles %}
 										<tr>
 												<td><a href="#" class="userName">{{ user.firstname }} {{ user.lastname }}</a></td>
 												<td class="societyName">{{ user.enterprise }}</td>
 												<td>
-<<<<<<< HEAD
-																<a type="button" class="btn btn-default" href="{{ path('miriade_admin_user_update', {"id" : user.id}) }}"><span class="glyphicon glyphicon-edit text-danger"></span>&nbsp;Modifier</a>
-
-=======
 																<a type="button" class="btn btn-default" href="{{ path('miriade_admin_user_update', {"id" : user.id}) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modifier</a>
->>>>>>> c4b38286ac4614d8af1630d1d9a69a68afdd7880
 																<a type="button" href="{{ path('miriade_admin_user_delete', {"id" : user.id}) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Supprimer</a>
 												</td>
 										</tr>
 										{% endif %}
 									{% endfor %}
-										
+
 								</tbody>
 						</table>
 				</div>

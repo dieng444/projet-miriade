@@ -4,46 +4,71 @@
 
 {% block content %}
 
-	<div class="row">
+	<div id="updateEvent">
 		<div class="col-lg-12">
 			<h1 class="page-header">{{ event.title }}</h1>
 		</div>
 
 		{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+		<div class="row">
+			<div class="col-md-12">
+				{# Les erreurs générales du formulaire. #}
+				{{ form_errors(form) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				{{ form_label(form.title, "Intitulé :") }}
+		    {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+				<br>
+				{{ form_label(form.description, "Description :") }}
+	    	{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+				<div class="row">
+					<br>
+					<div class="col-md-6">
+						{{ form_label(form.startDate, "Date de début :") }}
+			    	{{ form_widget(form.startDate, {'attr': {'class': 'form-control'}}) }}
+						<br>
+						{{ form_label(form.endDate, "Date de fin :") }}
+			    	{{ form_widget(form.endDate, {'attr': {'class': 'form-control'}}) }}
+					</div>
 
-		{# Les erreurs générales du formulaire. #}
-		{{ form_errors(form) }}
+					<div class="col-md-6">
+						{{ form_label(form.nbTable, "Nombre de tables :") }}
+			    	{{ form_widget(form.nbTable, {'attr': {'class': 'form-control'}}) }}
+						<br>
+						{{ form_label(form.rdv, "Durée des rendez-vous :") }}
+			    	{{ form_widget(form.rdv, {'attr': {'class': 'form-control'}}) }}
+					</div>
+				</div>
 
-		{{ form_label(form.title, "Intitulé :") }}
-    	{{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="col-md-6">
+				{{ form_label(form.image, "Image :") }}
+	    	{{ form_widget(form.image) }}
+			</div>
+		</div>
+		<div class="row">
+			<br>
+			<div class="col-md-6">
+				{{ form_label(form.adress, "Adresse :") }}
+	    	{{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="col-md-6">
+				{{ form_label(form.adress, "Adresse :") }}
+	    	{{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
 
-    	{{ form_label(form.image, "Image :") }}
-    	{{ form_widget(form.image) }}
+				{{ form_label(form.cp, "Code postal :") }}
+				{{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
+			</div>
+			<div class="col-md-6">
+				<br>
+				{{ form_label(form.city, "Ville :") }}
+	    	{{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+			</div>
 
-    	{{ form_label(form.description, "Description :") }}
-    	{{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.startDate, "Date de début :") }}
-    	{{ form_widget(form.startDate, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.endDate, "Date de fin :") }}
-    	{{ form_widget(form.endDate, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.adress, "Adresse :") }}
-    	{{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.city, "Ville :") }}
-    	{{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.cp, "Code postal :") }}
-    	{{ form_widget(form.cp, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.nbTable, "Nombre de tables :") }}
-    	{{ form_widget(form.nbTable, {'attr': {'class': 'form-control'}}) }}
-
-    	{{ form_label(form.rdv, "Durée des rendez-vous :") }}
-    	{{ form_widget(form.rdv, {'attr': {'class': 'form-control'}}) }}
-
+		</div>
+		<br>
 		<input type="submit" class="btn btn-success" value="Modifier" />
 
 		{# Fermeture de la balise <form> du formulaire HTML #}
