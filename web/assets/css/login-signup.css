@@ -3,20 +3,49 @@ body {
   background-size: cover !important;
 }
 
-#login-page, #register-page {
-  position: absolute;
+#login-page {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
 }
 
-@media screen and (max-height: 800px) {
-  #login-page, #register-page {
-    transform: none;
-    position: static;
-    margin-left: auto;
-    margin-right: auto;
+#login-page {
+  position: absolute;
+}
+
+#register-page h3 {
+  color: #2F88AA;
+  text-align: center;
+  font-size: 1.5em;
+  font-variant: small-caps;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: solid 1px #2F88AA;
+}
+
+#register-page label {
+  top: 5px;
+}
+
+#register-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#register-container .col-md-6 {
+  width: 45%;
+  border: solid 2px #EEEEEE;
+  padding: 0 30px 15px 30px;
+}
+
+@media screen and (max-width: 1000px) {
+  #register-container {
+    display: block;
+  }
+
+  #register-container .col-md-6 {
+    width: 100%;
   }
 }
 
@@ -60,10 +89,13 @@ body {
   width: 55%;
 }
 
-#login-page .well > .row,
-#register-page .well > .row {
+#login-page .well > .row {
   margin: auto;
   padding: 0 50px;
+}
+
+#register-page .well > .row {
+  margin: auto;
 }
 
 #login-page .form-control,
@@ -75,8 +107,4 @@ body {
 #register-page h2 {
   border-top: 0;
   top: 0;
-}
-
-#register-page label {
-  top: 4px;
 }
