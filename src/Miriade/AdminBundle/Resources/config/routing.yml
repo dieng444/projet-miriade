@@ -2,15 +2,22 @@ miriade_admin_homepage:
     path:     /admin
     defaults: { _controller: MiriadeAdminBundle:Default:index }
 
-miriade_admin_users:
-    path:     /admin/users
-    defaults: { _controller: MiriadeAdminBundle:User:viewAll }
+miriade_admin_users_events:
+    path:     /admin/users/events
+    defaults: { _controller: MiriadeAdminBundle:User:viewAllEvents }
 
-miriade_admin_user_update:
-    path:     /admin/users/update/{id}
-    defaults: { _controller: MiriadeAdminBundle:User:update }
+miriade_admin_users_events_users:
+    path:     /admin/users/events/{id}/users
+    defaults: { _controller: MiriadeAdminBundle:User:viewAllEventsUsers }
     requirements:
         id:   ^[0-9]*$
+
+miriade_admin_user_update:
+    path:     /admin/users/events/{idEvent}/users/{idUser}
+    defaults: { _controller: MiriadeAdminBundle:User:update }
+    requirements:
+        idEvent:   ^[0-9]*$
+        idUser:   ^[0-9]*$
 
 miriade_admin_user_delete:
     path:     /admin/users/delete/{id}

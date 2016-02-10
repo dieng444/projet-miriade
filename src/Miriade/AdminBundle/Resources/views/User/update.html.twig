@@ -41,6 +41,9 @@
     {{ form_label(form.phone, "Téléphone :") }}
     {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
 
+    {{ form_label(form.roles, "Rôle :") }}
+    {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+
 	<input type="submit" class="btn btn-success" value="Modifier" />
 
   {# Fermeture de la balise <form> du formulaire HTML #}

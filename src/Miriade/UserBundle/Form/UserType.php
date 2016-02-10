@@ -20,7 +20,16 @@ class UserType extends AbstractType
         ->add('adress', 'text', array('label' => 'Adresse', 'required' => true))
         ->add('zipcode', 'text', array('label' => 'Code postal', 'required' => true))
         ->add('city', 'text', array('label' => 'Ville', 'required' => true))
-        ->add('phone', 'text', array('label' => 'Téléphone', 'required' => true));
+        ->add('phone', 'text', array('label' => 'Téléphone', 'required' => true))
+        ->add('roles', 'choice', array('choices' =>
+                array(
+                    'ROLE_PARTICIPANT' => "Participant",
+                    'ROLE_MANAGER' => "Manager",
+                    'ROLE_ADMIN' => "Admin"
+                ),
+                'required'  => true,
+                'multiple' => true
+            ));
   }
 
   public function setDefaultOptions(OptionsResolverInterface $resolver)

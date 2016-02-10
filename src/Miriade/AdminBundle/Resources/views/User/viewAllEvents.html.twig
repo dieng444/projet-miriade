@@ -5,7 +5,8 @@
 {% block content %}
 <div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Gestion des évènements</h1>
+			<h1 class="page-header">Gestion des utilisateurs</h1>
+			<p>Choisissez un évènement pour afficher la liste de ses utilisateurs.</p>
 		</div>
 </div>
 <div class="col-lg-12" id="eventList">
@@ -18,9 +19,6 @@
 					</span>
 				</div><!-- /input-group -->
 		</div>
-		<div class="col-md-2">
-				<a type="button" href="{{ path('miriade_event_new') }}" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;Nouvel Projet</a>
-		</div>
 </div>
 	<br>
 	<div class="table-responsive">
@@ -30,20 +28,15 @@
 										<th class="sort" data-sort="eventName">Évenement <b class="caret"></b></th>
 										<th class="sort" data-sort="startDate">Date de début <b class="caret"></b></th>
 										<th>Date de fin</b></th>
-										<th>Actions</th>
 								</tr>
 						</thead>
 						<tbody class="list">
 
 						{% for event in events %}
 								<tr>
-										<td><a class="eventName" href="{{ path('miriade_event_home', {"slug" : event.slug}) }}">{{ event.title }}</a></td>
+										<td><a class="eventName" href="{{ path('miriade_admin_users_events_users', {"id" : event.id}) }}">{{ event.title }}</a></td>
 										<td class="startDate">{{ event.startDate }}</td>
 										<td>{{ event.endDate }}</td>
-										<td>
-											<a type="button" class="btn btn-default" href="{{ path('miriade_admin_event_update', {"id" : event.id}) }}"><span class="glyphicon glyphicon-edit"></span>&nbsp;Modifier</a>
-											<a type="button" href="{{ path('miriade_admin_event_delete', {"id" : event.id}) }}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Supprimer</a>
-										</td>
 								</tr>
 						{% endfor %}
 						</tbody>
