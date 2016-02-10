@@ -198,6 +198,10 @@ label {
   color: red;
 }
 
+.panel-footer {
+  overflow: hidden;
+}
+
 /* ==================================================== */
 /* ====================== Header ====================== */
 /* ==================================================== */
@@ -246,6 +250,14 @@ label {
 
 #list-events .row:hover {
   background-color: rgba(242, 242, 242, 0.2);
+}
+
+.btn-participer {
+  white-space: normal;
+  width: 100% !important;
+  background: #FECB00;
+  color: white !important;
+  font-weight: bold;
 }
 
 /* ==================================================== */
@@ -460,3 +472,19 @@ nav.navbar-fixed-top div#navbar button:last-of-type {
 .admin .intro-message {
     margin-top: 0;
 }
+
+.panel-user-profile {
+  border-color: #72b7c5;
+}
+
+.panel-user-profile .panel-heading {
+  font-weight: bold;
+  background-color: #2f88aa;
+  border-color: #2f88aa;
+  color: #fff;
+}
+
+.panel.panel-user-profile input[type="text"] {
+    margin-bottom: 5px;
+}
+.panel-user-profile .panel-title {font-weight: bold;}
