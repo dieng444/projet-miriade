@@ -29,7 +29,7 @@ class UserController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-        $users = $em->getRepository('MiriadeUserBundle:User')->findAll();
+        $users = $event->getParticipants();
 
         return $this->render('MiriadeAdminBundle:User:viewAll.html.twig', array("event" =>$event, "users" => $users));
     }
