@@ -1,0 +1,23 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-md-9">
+            	<h1>Mon profil</h1>
+            	<a href="{{ path('miriade_user_profil_update') }}">(modifier)</a>
+            </div>
+            <div class="col-md-9">
+            	<p>{{user.firstname}} {{user.lastname}}</p>
+            	<p>{{user.email}}</p>
+            	<p>{{user.phone}}</p>
+            	<p>{{user.adress}}</p>
+            	<p>{{user.zipcode}}</p>
+            	<p>{{user.city}}</p>
+            	<p>{{user.siret}}</p>
+            	<p>{{user.enterprise}}</p>
+            	<p>{{user.job}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
