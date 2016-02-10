@@ -4,6 +4,7 @@ namespace Miriade\EventBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -15,6 +16,7 @@ use Miriade\EventBundle\Entity\Partner;
 use Miriade\EventBundle\Form\EventType;
 use Miriade\EventBundle\Form\SessionType;
 use Miriade\EventBundle\Form\PartnerType;
+use Miriade\EventBundle\Entity\EventUser as EventUser;
 
 class EventController extends Controller
 {
@@ -36,7 +38,7 @@ class EventController extends Controller
     public function homeAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
+
         $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(
             array('slug' => $slug)
         );
@@ -154,17 +156,16 @@ class EventController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function showAction(Request $request, $id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        $event = $em->getEvent($id);
+        $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(array('slug' => $slug));
+
         if (!$event) {
             throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
         }
 
-        return array(
-            'events' => $event
-        );
+        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
 	}
 
 	public function programAction($id)
@@ -196,4 +197,29 @@ class EventController extends Controller
 
 		return $this->render('MiriadeEventBundle:Event:contact.html.twig', array('var' => "contact".$id,"event" => $event));
 	}
+
+    /**
+     * @Security("has_role('ROLE_PARTICIPANT')")
+     */
+    public function participationAction($slug) 
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(array('slug' => $slug));
+
+        $eventUser = $em->getRepository('MiriadeEventBundle:EventUser')->findBy(array('participant' => $user, 'event' => $event));
+
+        if(count($eventUser) > 0) {
+            return $this->render('MiriadeEventBundle:Event:participationError.html.twig', array('event' => $event));
+        } else {
+            $eventUser = new EventUser();
+            $eventUser->setParticipant($user);
+            $eventUser->setEvent($event);
+
+            $em->persist($eventUser);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('miriade_home', array('slug' => $slug)));
+        }
+    }
 }

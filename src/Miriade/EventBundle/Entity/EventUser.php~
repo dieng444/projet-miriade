@@ -1,0 +1,76 @@
+<?php
+
+namespace Miriade\EventBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EventUser
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Miriade\EventBundle\Entity\EventUserRepository")
+ */
+class EventUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime")
+     */
+    private $date;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\UserBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $participant;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     * @return EventUser
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime 
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+}

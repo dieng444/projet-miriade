@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\AttributeOverrides;
 use Doctrine\ORM\Mapping\AttributeOverride;
 use FOS\UserBundle\Model\User as BaseUser;
+use Miriade\EventBundle\Entity\EventUser as EventUser;
 
 /**
  * @ORM\Table(name="users")
@@ -92,12 +93,18 @@ class User extends BaseUser
      */
     private $phone;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="participant")
+     */
+    private $events;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->dateSubscription = new \Datetime();
         $this->addRole("ROLE_PARTICIPANT");
+        $this->events = new ArrayCollection();
     }
 
     /**
@@ -343,5 +350,21 @@ class User extends BaseUser
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    public function addEvent(EventUser $event)
+    {
+        $this->events[] = $event;
+        return $this;
+    }
+
+    public function removeEvent(EventUser $event)
+    {
+        $this->events->removeElement($event);
+    }
+
+    public function getEvents()
+    {
+        return $this->events;
     }
 }

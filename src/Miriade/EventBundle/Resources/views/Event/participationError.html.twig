@@ -1,0 +1,51 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+
+{%block stylesheets%}
+	<link href="{{ asset('assets/css/event.css') }}" type="text/css" rel="stylesheet" />
+{%endblock%}
+
+{% block headervent %}
+	<li>
+		<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_program',{'id':event.id}) }}">Programme</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_contact',{'id':event.id}) }}">Contact</a>
+	</li>
+	<li>
+		<a href="{{ path('miriade_event_map',{'id':event.id}) }}">Plan d'accès</a>
+	</li>
+{% endblock %}
+
+{% block intromessage %}
+	<h1>{{event.title}}</h1>
+	<input type="hidden" id="event-image" value="{{event.image}}">
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <h2>Erreur</h2>
+                <div class="event-description">
+  					<p>Vous êtes déjà inscrit à cet évènement.</p>
+                    <p><a href="{{ path('miriade_event_show', {'slug':event.slug}) }}">Retour à la page de l'évènement</a></p>
+                </div>
+            </div>
+        </div>
+      </div>
+	</div> <!-- /container -->
+{% endblock%}
+{% block javascripts %}
+	<script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
+	<script src="{{ asset('assets/js/app.js') }}"></script>
+{% endblock %}
+
+{% block footer %}
+
+<footer>
+	Cet événement vous est proposé par <a href="http://miriade-innovation.fr/"><img src="{{ asset('assets/images/miriade.png') }}" alt="Miriade"></a>
+</footer>
+{% endblock %}
