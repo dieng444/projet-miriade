@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/font-awesome/css/font-awesome.min.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/sb-admin.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/style.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/datepicker.css') }}" type="text/css" />
 </head>
 <body>
 	<div id="wrapper">
@@ -46,7 +47,10 @@
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/list.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/moment.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap-datetimepicker.js') }}"></script>
 	<script type="text/javascript">
+
 			var options = {
 				valueNames: [ 'userName', 'societyName', 'eventName', 'startDate' ]
 			};
@@ -54,6 +58,17 @@
 			var managerList = new List('managerList', options);
 			var participantList = new List('participantList', options);
 			var eventList = new List('eventList', options);
+
+			$(function () {
+					$('#datetimepicker1').datetimepicker({
+							locale: 'fr',
+							allowInputToggle: true
+					});
+					$('#datetimepicker2').datetimepicker({
+              locale: 'fr',
+							allowInputToggle: true
+          });
+      });
 	</script>
 </body>
 </html>
