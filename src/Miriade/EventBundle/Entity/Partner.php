@@ -24,9 +24,16 @@ class Partner
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="libelle", type="string", length=255)
      */
-    private $name;
+    private $libelle;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="namecontact", type="string", length=255)
+     */
+    private $nameContact;
 
     /**
      * @var string
@@ -71,6 +78,13 @@ class Partner
     private $logo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=255)
+     */
+    private $statut;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="partners", cascade={"persist"})
      * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
      * */
@@ -87,28 +101,6 @@ class Partner
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return Partner
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set email
@@ -287,5 +279,74 @@ class Partner
     public function getEvent()
     {
         return $this->event;
+    }
+
+    /**
+     * Set statut
+     *
+     * @param string $statut
+     * @return Partner
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    /**
+     * Get statut
+     *
+     * @return string 
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     * @return Partner
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string 
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set nameContact
+     *
+     * @param string $nameContact
+     * @return Partner
+     */
+    public function setNameContact($nameContact)
+    {
+        $this->nameContact = $nameContact;
+
+        return $this;
+    }
+
+    /**
+     * Get nameContact
+     *
+     * @return string 
+     */
+    public function getNameContact()
+    {
+        return $this->nameContact;
     }
 }

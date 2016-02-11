@@ -14,8 +14,12 @@
                     <div class="row well">
                         <div class="col-md-6">
                             <div class="form-group">
-                                {{ form_label(form.name) }}
-                                {{ form_widget(form.name, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_name', 'placeholder' : 'Nom' }}) }}
+                                {{ form_label(form.libelle) }}
+                                {{ form_widget(form.libelle, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_libelle', 'placeholder' : 'Nom du partenaire' }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.nameContact) }}
+                                {{ form_widget(form.nameContact, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_nameContact', 'placeholder' : 'Nom du contact' }}) }}
                             </div>
                             <div class="form-group">
                                 {{ form_label(form.address) }}
@@ -36,6 +40,10 @@
                             <div class="form-group">
                                 {{ form_label(form.phone) }}
                                 {{ form_widget(form.phone, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_phone', 'placeholder' : 'Ville' }}) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_label(form.statut) }}
+                                {{ form_widget(form.statut, {'attr' : {'class' : 'form-control', 'full_name' : 'partner_statut' }}) }}
                             </div>
                             <div class="row justified" style="margin-top: 20px;">
                                 <button type="button" class="btn btn-lg" id="btn-add-partner">Ajouter</button>

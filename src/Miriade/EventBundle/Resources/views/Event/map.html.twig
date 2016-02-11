@@ -20,26 +20,34 @@
 {% endblock %}
 {% block content %}
 	<div class="container">
-      <div class="row">
-				<div class="col-md-9">
-          <h1>Plan d'accès</h1>
-            <div class="row">
-              <div id="map-outer" class="col-md-12">
-                <div id="address" class="col-md-4">
-                  <h3>Notre position</h3>
-                  	<address>
-                      <strong>MIRIADE INNOVATION</strong><br>
-                      Campus EffiScience <br>
-                      2 Esplanade Anton Philips <br>
-                      14460 COLOMBELLES<br>
-                      FRANCE
-                  	</address>
-                  </div>
-                <div id="map-container" class="col-md-8"></div>
-            	</div><!-- /map-outer -->
+		<div class="row">
+			<div class="col-md-9">
+				<h1>Plan d'accès</h1>
+				<div class="row">
+					<div id="map-outer" class="col-md-12">
+						<div id="address" class="col-md-4">
+							<h3>Notre position</h3>
+							<address>
+								<strong>MIRIADE INNOVATION</strong><br>
+								Campus EffiScience <br>
+								2 Esplanade Anton Philips <br>
+								14460 COLOMBELLES<br>
+								FRANCE
+							</address>
+							<h3>Position de l'événement</h3>
+								<address>
+									<strong>{{ event.title }}</strong><br>
+									{{ event.adress }} <br>
+									{{ event.cp }} <br>
+									{{ event.city }}<br>
+									FRANCE
+								</address>
 						</div>
-					</div>
-        </div>
+						<div id="map-container" class="col-md-8"></div>
+					</div><!-- /map-outer -->
+				</div>
+			</div>
+		</div>
     </div>
 {% endblock %}
 

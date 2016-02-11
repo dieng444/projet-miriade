@@ -32,15 +32,14 @@ class EventController extends Controller
             'events' => $events,
         );
     }
+
     /**
+     * Trouve et affiche les informations d'un evenement enregistre dans la bdd.
      * @Template()
      */
     public function homeAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
-        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
-
-        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
         $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(
             array('slug' => $slug)
         );
@@ -76,7 +75,7 @@ class EventController extends Controller
             return $this->redirect($this->generateUrl('miriade_event_new_session', array ('id' => $event->getId())));
         } 
         
-        return $this->render('MiriadeEventBundle:Event:new.html.twig', array('form' => $form->createView()));
+        return $this->render('MiriadeEventBundle:Event:newEvent.html.twig', array('form' => $form->createView()));
         
     }
 
@@ -129,17 +128,18 @@ class EventController extends Controller
             $nbPartner = (int) $data['nbPartner'];
             //$event = $this->get('session')->get('currentEvent');
             $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
-            var_dump($nbPartner);
             if ($nbPartner  > 0) {
                 for ($i=1; $i <= $nbPartner; $i++) {
                     $partner = new Partner();
-                    $partner->setName(trim(strip_tags($data['partner_'.$i]['name'])));
+                    $partner->setLibelle(trim(strip_tags($data['partner_'.$i]['libelle'])));
+                    $partner->setNameContact(trim(strip_tags($data['partner_'.$i]['nameContact'])));
                     $partner->setAddress(trim(strip_tags($data['partner_'.$i]['address'])));
                     $partner->setCity(trim(strip_tags($data['partner_'.$i]['city'])));
                     $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
                     $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
                     $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
-                    var_dump($_FILES['event_eventbundle_event']['name']['logo']);
+                    $partner->setStatut(trim(strip_tags($data['event_eventbundle_event']['statut'])));
+
                     if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['logo']) > 0 ) {
                         $logo = $_FILES['event_eventbundle_event'];
                         if($partner->uploadLogo($logo))
@@ -158,24 +158,6 @@ class EventController extends Controller
             return $this->render('MiriadeEventBundle:Event:newPartenaire.html.twig', array('form' => $form->createView(), 'id' => $id));
         }
     }
-
-	/**
-     * Trouve et affiche les informations d'un �v�nement enregistr� dans la base de données.
-     *
-     * @Method("GET")
-     * @Template()
-     */
-    public function showAction($slug)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(array('slug' => $slug));
-
-        if (!$event) {
-            throw $this->createNotFoundException('Impossible de trouver l\'événement demandé.');
-        }
-
-        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
-	}
 
 	public function programAction($id)
 	{
@@ -203,8 +185,9 @@ class EventController extends Controller
 	{
 		$em = $this->getDoctrine()->getManager();
         $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+        $partners = $em->getRepository('MiriadeEventBundle:Partner')->findBy(array('event' => $id));
 
-		return $this->render('MiriadeEventBundle:Event:contact.html.twig', array('var' => "contact".$id,"event" => $event));
+		return $this->render('MiriadeEventBundle:Event:contact.html.twig', array('var' => "contact".$id,"event" => $event, 'partners' => $partners));
 	}
 
     /**

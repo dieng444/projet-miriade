@@ -138,15 +138,18 @@ App = {
 	},
 	addPartner : function() {
 		container = "";
-		var partner_name = $('input[full_name="partner_name"]').val();
+		var partner_libelle = $('input[full_name="partner_libelle"]').val();
+		var partner_nameContact = $('input[full_name="partner_nameContact"]').val();
 		var partner_address = $('input[full_name="partner_address"]').val();
 		var partner_city = $('input[full_name="partner_city"]').val();
 		var partner_cp = $('input[full_name="partner_cp"]').val();
 		var partner_email = $('input[full_name="partner_email"]').val();
 		var partner_phone = $('input[full_name="partner_phone"]').val();
+		var partner_statut = $('select option:selected').val();
+		console.log(partner_libelle);
 		j++;
 		container+='<div class="list-group-item">';
-		container+='	<span>'+partner_name+'</span>';
+		container+='	<span>'+partner_libelle+'</span>';
 		container+='	<div class="btn-group">';
 		container+='		<button type="button" class="btn btn-xs btn-warning btn-edit-partner">';
 		container+='			<span class="glyphicon glyphicon-pencil"></span>&nbsp';
@@ -156,17 +159,19 @@ App = {
 		container+='		</button>';
 		container+='	</div>';
 		container+=' 	<div id="info-partner-'+j+'">';
-		container+='		<input type="hidden" name="partner_'+j+'[name]" value="'+partner_name+'"/>';
+		container+='		<input type="hidden" name="partner_'+j+'[libelle]" value="'+partner_libelle+'"/>';
+		container+='		<input type="hidden" name="partner_'+j+'[nameContact]" value="'+partner_nameContact+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[address]" value="'+partner_address+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[city]" value="'+partner_city+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[cp]" value="'+partner_cp+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[email]" value="'+partner_email+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[phone]" value="'+partner_phone+'"/>';
+		container+='		<select name="partner_'+j+'[statut]" value="'+partner_statut+'"/>';
 		container+=' </div>';
 		container+='</div>';
 
 		$('input[name="nbPartner"]').val(j);
-		if (partner_name != "") {
+		if (partner_libelle != "") {
 			$("#partners-container").append(container);
 		}
 
@@ -181,21 +186,26 @@ App = {
 		var info = $( this ).parent().next().children();
 		partnerId = info.eq(0).attr("name").charAt(8);
 		var getInfo = {
-			"name": info.eq(0).val(),
-			"address": info.eq(1).val(),
-			"city": info.eq(2).val(),
-			"cp": info.eq(3).val(),
-			"email": info.eq(4).val(),
-			"phone": info.eq(5).val()
+			"libelle": info.eq(0).val(),
+			"nameContact": info.eq(1).val(),
+			"address": info.eq(2).val(),
+			"city": info.eq(3).val(),
+			"cp": info.eq(4).val(),
+			"email": info.eq(5).val(),
+			"phone": info.eq(6).val(),
+			"statut": info.eq(7).val()
 		}
 
 		// We display all information on the visible form
-		$('input[full_name="partner_name"]').val(getInfo.name);
+		$('input[full_name="partner_libelle"]').val(getInfo.libelle);
+		$('input[full_name="partner_nameContact"]').val(getInfo.nameContact);
 		$('input[full_name="partner_address"]').val(getInfo.address);
 		$('input[full_name="partner_city"]').val(getInfo.city);
 		$('input[full_name="partner_cp"]').val(getInfo.cp);
 		$('input[full_name="partner_email"]').val(getInfo.email);
 		$('input[full_name="partner_phone"]').val(getInfo.phone);
+		$('select[full_name="partner_statut"]').val(getInfo.statut);
+
 
 		// We add a button to give the user the ability to validate changes
 		button = "";
@@ -209,17 +219,19 @@ App = {
 		$( ".btn-cancel-edit-partner" ).on("click", App.cancelEditPartner);
 	},
 	saveEditPartner : function() {
-		var partner_name = $('input[full_name="partner_name"]').val();
+		var partner_libelle = $('input[full_name="partner_libelle"]').val();
+		var partner_nameContact = $('input[full_name="partner_nameContact"]').val();
 		var partner_address = $('input[full_name="partner_address"]').val();
 		var partner_city = $('input[full_name="partner_city"]').val();
 		var partner_cp = $('input[full_name="partner_cp"]').val();
 		var partner_email = $('input[full_name="partner_email"]').val();
 		var partner_phone = $('input[full_name="partner_phone"]').val();
-		var newValues = [partner_name, partner_address, partner_city, partner_cp, partner_email, partner_phone];
+		var partner_statut = $('select[full_name="partner_statut"]').val();
+		var newValues = [partner_libelle, partner_nameContact, partner_address, partner_city, partner_cp, partner_email, partner_phone, partner_statut];
 		var infoPartner = $( "#info-partner-"+partnerId );
 
 		// Update the hidden fields and the visible name
-		infoPartner.prev().prev("span").text(partner_name);
+		infoPartner.prev().prev("span").text(partner_libelle);
 		for (var x = 0; x < newValues.length; x++) {
 			infoPartner.children().eq(x).val(newValues[x]);
 		}
@@ -238,7 +250,7 @@ App = {
 		$( this ).parent().parent().remove();
 	},
 	resetPartnerFields : function() {
-		var partners = ["partner_name", "partner_address", "partner_city", "partner_cp", "partner_email", "partner_phone"];
+		var partners = ["partner_libelle", "partner_nameContact", "partner_address", "partner_city", "partner_cp", "partner_email", "partner_phone", "partner_statut"];
 		for (var y = 0; y < partners.length; y++) {
 			$('input[full_name="'+partners[y]+'"]').val("");
 		}

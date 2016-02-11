@@ -116,7 +116,7 @@
 				<div class="row">
                     {% for partner in partners %}
                         <div class="col-md-12 organisateurs-block-item">
-                            {{ partner.name }}
+                            {{ partner.libelle }}
                             {% if partner.logo != '_none' %}
                                 <img class="img-responsive" src="{{ asset('upload/images/'~partner.logo) }}" alt="">
                             {% endif %}
