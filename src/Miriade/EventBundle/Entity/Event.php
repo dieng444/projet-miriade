@@ -107,11 +107,21 @@ class Event
      */
     private $partners;
 
-    //~ public function __construct()
-    //~ {
-        //~ //$this->session = new ArrayCollection();
-        //~ $this->startDate = new
-    //~ }
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="event")
+     */
+    private $participants;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sessions = new ArrayCollection();
+        $this->partners = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -390,14 +400,6 @@ class Event
 		} else
 			return false;
 	}
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->sessions = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->partners = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add sessions
@@ -486,5 +488,21 @@ class Event
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    public function addParticipant(EventUser $participant)
+    {
+        $this->participants[] = $participant;
+        return $this;
+    }
+
+    public function removeParticipant(EventUser $participant)
+    {
+        $this->participants->removeElement($participant);
+    }
+
+    public function getParticipants()
+    {
+        return $this->participants;
     }
 }

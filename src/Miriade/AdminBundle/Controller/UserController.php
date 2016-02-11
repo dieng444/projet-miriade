@@ -12,16 +12,26 @@ class UserController extends Controller
 	/**
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function viewAllAction()
+    public function viewAllEventsAction()
     {
-    	$repository = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('MiriadeUserBundle:User');
+        $em = $this->getDoctrine()->getManager();
 
-		$users = $repository->findAll();
+		$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
 
-        return $this->render('MiriadeAdminBundle:User:viewAll.html.twig', array("users" => $users));
+        return $this->render('MiriadeAdminBundle:User:viewAllEvents.html.twig', array("events" => $events));
+    }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function viewAllEventsUsersAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $event = $em->getRepository('MiriadeEventBundle:Event')->find($id);
+        $users = $event->getParticipants();
+
+        return $this->render('MiriadeAdminBundle:User:viewAll.html.twig', array("event" =>$event, "users" => $users));
     }
 
     /**
@@ -31,10 +41,7 @@ class UserController extends Controller
     {
     	$em = $this->getDoctrine()->getManager();
     	
-    	$repository = $this
-			->getDoctrine()
-			->getManager()
-			->getRepository('MiriadeUserBundle:User');
+    	$repository = $em->getRepository('MiriadeUserBundle:User');
 
 		$user = $repository->find($id);
 
@@ -47,16 +54,12 @@ class UserController extends Controller
     /**
      * @Security("has_role('ROLE_ADMIN')")
      */
-    public function updateAction($id, Request $request)
+    public function updateAction($idEvent, $idUser, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
-        $repository = $this
-            ->getDoctrine()
-            ->getManager()
-            ->getRepository('MiriadeUserBundle:User');
 
-        $user = $repository->find($id);
+        $user = $em->getRepository('MiriadeUserBundle:User')->find($idUser);
+        $event = $em->getRepository('MiriadeEventBundle:Event')->find($idEvent);
 
         $form = $this->get('form.factory')->create(new UserType, $user);
 
@@ -64,7 +67,7 @@ class UserController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            return $this->redirect($this->generateUrl('miriade_admin_users'));
+            return $this->redirect($this->generateUrl('miriade_admin_users_events_users', array("id" => $idEvent)));
         }
 
         return $this->render('MiriadeAdminBundle:User:update.html.twig', array('form' => $form->createView())); 

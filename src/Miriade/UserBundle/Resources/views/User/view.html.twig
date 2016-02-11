@@ -1,0 +1,68 @@
+{% extends 'MiriadeEventBundle::layout.html.twig' %}
+
+{% block content %}
+	<div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            	<div class="panel panel-user-profile">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Mon profil</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/web/assets/images/business-profile.png" class="img-circle img-responsive"> </div>
+                        <div class=" col-md-9 col-lg-9 "> 
+                          <table class="table table-user-information">
+                            <tbody>
+                              <tr>
+                                <td>Nom Prénom:</td>
+                                <td>{{user.firstname}} {{user.lastname}}</td>
+                              </tr>
+                              <tr>
+                                <td>Email:</td>
+                                <td>{{user.email}}</td>
+                              </tr>
+                              <tr>
+                                <td>Téléphone:</td>
+                                <td>{{user.phone}}</td>
+                              </tr>
+                              <tr>
+                                <td>Adresse:</td>
+                                <td>{{user.adress}}</td>
+                              </tr>
+                              <tr>
+                                <td>Code postal:</td>
+                                <td>{{user.zipcode}}</td>
+                              </tr>
+                              <tr>
+                                <td>Ville:</td>
+                                <td>{{user.city}}</td>
+                              </tr>
+                              <tr>
+                                <td>SIRET:</td>
+                                <td>{{user.siret}}</td>
+                              </tr>
+                              <tr>
+                                <td>Organisatin:</td>
+                                <td>{{user.enterprise}}</td>
+                              </tr>
+                              <tr>
+                                <td>Poste:</td>
+                                <td>{{user.job}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="panel-footer">
+                        <span class="pull-right">
+                            <a href="{{ path('miriade_user_profil_update') }}" data-original-title="Modifier le profile" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i>&nbsp;Modifier</a>
+                            <a data-original-title="Supprimer le profile" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>&nbsp;Supprimer</a>
+                        </span>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

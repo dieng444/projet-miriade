@@ -30,7 +30,7 @@
             <div class="col-md-9">
                 <h2>Description</h2>
                 <div class="event-description">
-  								<p>{{event.description}}</p>
+  					<p>{{event.description}}</p>
                 </div>
                 <div class="participants">
                     <h2>Participants</h2>
@@ -60,32 +60,29 @@
                     </div>
                 </div>
                 <div class="participants-list well">
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-5">
-                            <a href="#">
-                                <img class="img-responsive" src="{{asset('assets/images/business-profile.png')}}" alt="">
-                            </a>
+
+                    {% for Eventuser in event.participants %}
+
+                        <div class="row">
+                            <div class="col-sm-3 col-xs-5">
+                                <a href="#">
+                                    <img class="img-responsive" src="{{asset('assets/images/business-profile.png')}}" alt="">
+                                </a>
+                            </div>
+                            <div class="col-sm-9 col-xs-5">
+                                <h3>{{Eventuser.participant.firstname}} {{Eventuser.participant.lastname}}</h3>
+                                <h4>Introtext</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                                <a class="btn btn-success" href="#">Prendre RDV<span class="glyphicon glyphicon-chevron-right"></span></a>
+                            </div>
                         </div>
-                        <div class="col-sm-9 col-xs-5">
-                            <h3>Profil</h3>
-                            <h4>Introtext</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-                            <a class="btn btn-success" href="#">Prendre RDV<span class="glyphicon glyphicon-chevron-right"></span></a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-3 col-xs-5">
-                            <a href="#">
-                                <img class="img-responsive" src="{{asset('assets/images/business-profile.png')}}" alt="">
-                            </a>
-                    </div>
-                    <div class="col-sm-9 col-xs-5">
-                        <h3>Profil</h3>
-                        <h4>Introtext</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
-                        <a class="btn btn-success" href="#">Prendre RDV <span class="glyphicon glyphicon-chevron-right"></span></a>
-                    </div>
+
+                        {% if not loop.last %}
+                            <hr>
+                        {% endif %}
+
+                    {% endfor %}
+                    
                 </div>
             </div>
             <nav class="participants-pagination-wrap justified">
@@ -111,8 +108,11 @@
             </nav>
         </div>
 		<div class="col-md-3">
+            <div class="well aside-content">
+                <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Je participe à cet évènement !</a>
+            </div>
 			<div class="well organisateurs-block aside-content">
-				<h4>Organisateurs</h4>
+				<h4>Partenaires</h4>
 				<div class="row">
 					<div class="col-md-12 organisateurs-block-item">
 						<a href="#">
@@ -132,7 +132,7 @@
 				</div>
 			</div>
 			<div class="well aside-content">
-				<h4>Vues de de la page</h4>
+				<h4>Vues de la page</h4>
 				<div class="row">
 					<table class="table table-condensed">
 							<tr>

@@ -51,9 +51,11 @@ miriade_event_session_create:
         _controller: MiriadeEventBundle:Session:create
 
 miriade_event_show:
-    pattern: /event/show/{id}
+    pattern: /event/{slug}
     defaults:
         _controller: MiriadeEventBundle:Event:show
+    requirements:
+              slug:   ^[a-zA-Z0-9_-]+$
 
 miriade_event_program:
     pattern: /event/program/{id}
@@ -64,13 +66,19 @@ miriade_event_contact:
     pattern: /event/contact/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:contact
-        
+
 miriade_event_about:
     pattern: /event/about/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:about
-        
+
 miriade_event_map:
     pattern: /event/map/{id}
     defaults:
         _controller: MiriadeEventBundle:Event:map
+
+miriade_event_participation:
+    pattern: /event/{slug}/participation
+    defaults: { _controller: MiriadeEventBundle:Event:participation }
+    requirements:
+        slug:   ^[a-zA-Z0-9_-]+$

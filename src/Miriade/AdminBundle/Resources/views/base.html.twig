@@ -8,11 +8,12 @@
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/font-awesome/css/font-awesome.min.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/sb-admin.css') }}" type="text/css" />
 	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/style.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ asset('bundles/miriadeadmin/css/datepicker.css') }}" type="text/css" />
 </head>
 <body>
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-			<a class="navbar-brand" href="events-list.php">Miriade Admin</a>
+			<a class="navbar-brand" href="{{ path('miriade_admin_homepage') }}">Miriade Admin</a>
 			<!-- Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
 					<li class="dropdown">
@@ -32,7 +33,7 @@
 						<a href="{{ path('miriade_admin_events') }}"><span class="glyphicon glyphicon-list-alt"></span> ÉVÉNEMENTS	</a>
 					</li>
 					<li class="active">
-						<a href="{{ path('miriade_admin_users') }}"><span class="glyphicon glyphicon-user"></span> UTILISATEURS</a>
+						<a href="{{ path('miriade_admin_users_events') }}"><span class="glyphicon glyphicon-user"></span> UTILISATEURS</a>
 					</li>
 				</ul>
 		</div>
@@ -46,7 +47,10 @@
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/jquery.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/list.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/moment.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('bundles/miriadeadmin/js/bootstrap-datetimepicker.js') }}"></script>
 	<script type="text/javascript">
+
 			var options = {
 				valueNames: [ 'userName', 'societyName', 'eventName', 'startDate' ]
 			};
@@ -54,6 +58,17 @@
 			var managerList = new List('managerList', options);
 			var participantList = new List('participantList', options);
 			var eventList = new List('eventList', options);
+
+			$(function () {
+					$('#datetimepicker1').datetimepicker({
+							locale: 'fr',
+							allowInputToggle: true
+					});
+					$('#datetimepicker2').datetimepicker({
+              locale: 'fr',
+							allowInputToggle: true
+          });
+      });
 	</script>
 </body>
 </html>

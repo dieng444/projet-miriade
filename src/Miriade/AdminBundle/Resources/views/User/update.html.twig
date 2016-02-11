@@ -3,47 +3,98 @@
 {% block title %}Modification d'un utilisateur{% endblock %}
 
 {% block content %}
+<div id="wrapper-user-update" class="container">
+	<div class="row">
+		<h1>Modification d'une fiche utilisateur</h1>
+	</div>
+	<div class="row">
+		{{ form_start(form, {'attr': {'class': 'form'}}) }}
+			<div class="row">
+				{# Les erreurs générales du formulaire. #}
+		    <p class="text-danger">{{ form_errors(form) }}</p>
+			</div>
 
-<h1>Modification d'une fiche utilisateur</h1>
+				<div class="col-md-6">
+					<fieldset>
+						<legend>Utilisateur</legend>
+						<div class="form-group">
+							{{ form_label(form.lastname, "Nom :") }}
+							{{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="form-group">
+							{{ form_label(form.firstname, "Prénom :") }}
+					    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="form-group">
+							{{ form_label(form.phone, "Téléphone :") }}
+							{{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="form-group">
+                            {{ form_label(form.email, "Email :") }}
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
 
-	{{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                        <div class="form-group">
+							{{ form_label(form.roles, "Rôle :") }}
+                            {{ form_widget(form.roles, {'attr': {'class': 'form-control'}}) }}
+						</div>
 
-    {# Les erreurs générales du formulaire. #}
-    {{ form_errors(form) }}
+					</fieldset>
+					</div>
 
-    {{ form_label(form.lastname, "Nom :") }}
-    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+				<div class="col-md-6">
+					<fieldset>
+						<legend>Organisation ou entreprise</legend>
+						<div class="form-group">
+							{{ form_label(form.enterprise, "Entreprise :") }}
+							{{ form_widget(form.enterprise, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_label(form.job, "Poste occupé :") }}
+							    {{ form_widget(form.job, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_label(form.siret, "Siret :") }}
+							    {{ form_widget(form.siret, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
 
-    {{ form_label(form.firstname, "Prénom :") }}
-    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+						<div class="form-group">
+							{{ form_label(form.adress, "Adresse :") }}
+					    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_label(form.zipcode, "Code postal :") }}
+							    {{ form_widget(form.zipcode, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									{{ form_label(form.city, "Ville :") }}
+									{{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+								</div>
+							</div>
+						</div>
+					</fieldset>
 
-    {{ form_label(form.email, "Email :") }}
-    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
 
-    {{ form_label(form.enterprise, "Entreprise :") }}
-    {{ form_widget(form.enterprise, {'attr': {'class': 'form-control'}}) }}
 
-    {{ form_label(form.job, "Poste occupé :") }}
-    {{ form_widget(form.job, {'attr': {'class': 'form-control'}}) }}
+				</div>
+				<div class="col-md-12">
+					<input type="submit" class="btn btn-success" value="Enregistrer" />
+					<a type="button" class="btn btn-default" onclick="history.go(-1)"/>Retour</a>
+				</div>
 
-    {{ form_label(form.siret, "Siret :") }}
-    {{ form_widget(form.siret, {'attr': {'class': 'form-control'}}) }}
-
-    {{ form_label(form.adress, "Adresse :") }}
-    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
-
-    {{ form_label(form.zipcode, "Code postal :") }}
-    {{ form_widget(form.zipcode, {'attr': {'class': 'form-control'}}) }}
-
-    {{ form_label(form.city, "Ville :") }}
-    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
-
-    {{ form_label(form.phone, "Téléphone :") }}
-    {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
-
-	<input type="submit" class="btn btn-success" value="Modifier" />
-
-  {# Fermeture de la balise <form> du formulaire HTML #}
-  {{ form_end(form) }}
-
+	  {# Fermeture de la balise <form> du formulaire HTML #}
+	  {{ form_end(form) }}
+	</div>
+</div>
 {% endblock %}
+

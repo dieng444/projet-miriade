@@ -92,12 +92,18 @@ class User extends BaseUser
      */
     private $phone;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Miriade\EventBundle\Entity\Event", inversedBy="participants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $event;
+
 
     public function __construct()
     {
         parent::__construct();
         $this->dateSubscription = new \Datetime();
-        $this->addRole("ROLE_USER");
+        $this->addRole("ROLE_PARTICIPANT");
     }
 
     /**
@@ -282,7 +288,7 @@ class User extends BaseUser
      * @param \int $zipcode
      * @return User
      */
-    public function setZipcode(\int $zipcode)
+    public function setZipcode($zipcode)
     {
         $this->zipcode = $zipcode;
 
@@ -328,7 +334,7 @@ class User extends BaseUser
      * @param \int $phone
      * @return User
      */
-    public function setPhone(\int $phone)
+    public function setPhone($phone)
     {
         $this->phone = $phone;
 
