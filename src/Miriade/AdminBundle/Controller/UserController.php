@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Miriade\UserBundle\Form\UserType as UserType;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
@@ -71,5 +72,61 @@ class UserController extends Controller
         }
 
         return $this->render('MiriadeAdminBundle:User:update.html.twig', array('form' => $form->createView())); 
+    }
+
+    /**
+     * @Security("has_role('ROLE_ADMIN')")
+     */
+    public function exportCsvAction($idEvent)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event = $em->getRepository('MiriadeEventBundle:Event')->find($idEvent);
+        $eventUsers = $event->getParticipants();
+
+        $list = array();
+        $list[] = array("Prénom", "Nom", "Nom de l'organisation", "Siret", "Poste occupé", "Adresse", "Code postal", "Ville", "Date d'inscription à l'évènement");
+
+        foreach($eventUsers as $eventUser) {
+            $participant = $eventUser->getParticipant();
+            $list[] = array(
+                        $participant->getFirstName(), 
+                        $participant->getLastName(), 
+                        $participant->getEnterprise(), 
+                        $participant->getSiret(), 
+                        $participant->getJob(), 
+                        $participant->getAdress(), 
+                        $participant->getZipcode(),
+                        $participant->getCity(),
+                        $eventUser->getDate()->format('d/m/Y H:i:s')
+                    );
+        }
+
+        $this->utf8_converter($list);
+
+        $handle = fopen('php://memory', 'r+');
+
+        foreach ($list as $fields) {
+            fputcsv($handle, $fields);
+        }
+
+        rewind($handle);
+        $content = stream_get_contents($handle);
+        fclose($handle);
+        
+        return new Response($content, 200, array(
+            'Content-Type' => 'application/force-download',
+            'Content-Disposition' => 'attachment; filename="'.$event->getSlug().'.csv"'
+        ));
+    }
+
+    private function utf8_converter($array)
+    {
+        array_walk_recursive($array, function(&$item, $key){
+            if(!mb_detect_encoding($item, 'utf-8', true)){
+                    $item = utf8_encode($item);
+            }
+        });
+     
+        return $array;
     }
 }

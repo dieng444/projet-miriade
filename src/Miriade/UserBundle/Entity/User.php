@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping\AttributeOverrides;
 use Doctrine\ORM\Mapping\AttributeOverride;
 use FOS\UserBundle\Model\User as BaseUser;
 use Miriade\EventBundle\Entity\EventUser as EventUser;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="users")
