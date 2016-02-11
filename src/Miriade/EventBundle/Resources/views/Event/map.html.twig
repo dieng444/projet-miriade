@@ -5,6 +5,7 @@
 	<link href="{{ asset('assets/css/reset.css') }}" type="text/css" rel="stylesheet" />
 {%endblock%}
 {% block headervent %}
+	<input type="hidden" id="event-slug" value="{{event.slug}}"/>
 	<li>
 		<a href="{{ path('miriade_event_about',{'id':event.id}) }}">À propos</a>
 	</li>
@@ -54,4 +55,5 @@
 {%block javascripts%}
 	<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script src="{{ asset('assets/js/map.js') }}"></script>
+	<script src="{{ asset('assets/js/link.js') }}"></script>
 {%endblock%}
