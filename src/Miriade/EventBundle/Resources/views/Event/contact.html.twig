@@ -67,44 +67,31 @@
                     </div>
                     <h3>&#10149; Co-organisateurs</h3>
                     <hr>
-                    <div class="col-md-6">
-                        <div class="contact-item">
-                            <h4>Enterprise Europe Network Sud-Ouest – MADEELI</h4>
-                            <table class="table">
-                                <tr>
-                                    <td valign="middle">
-                                        <img src="http://silvernormandie.talkb2b.net/thumbs/SupportOffice/Image/2015_07/220x140_madeeli.jpg" alt="Miriade">
-                                    </td>
-                                    <td>
-                                        <address>
-                                            Christine Guidice<br>
-                                            <abbr title="Téléphone">P:</abbr>06 32 81 36 82<br>
-                                            <abbr title="E-mail">E:</abbr><a href="mailto:christine.guidice@madeeli.fr">christine.guidice@madeeli.fr</a>
-                                        </address>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="contact-item">
-                            <h4>Miriade</h4>
-                            <table class="table">
-                                <tr>
-                                    <td valign="middle">
-                                        <img src="http://silvernormandie.talkb2b.net/thumbs/Setting/OrganizationLogo/2015_08/220x140_miriade_Region_HD.jpg" alt="Miriade">
-                                    </td>
-                                    <td>
-                                        <address>
-                                            Gwladys Lemenand<br>
-                                            <abbr title="Téléphone">P:</abbr>+33231533457<br>
-                                            <abbr title="E-mail">E:</abbr><a href="mailto:tofoni@miriade-innovation.fr">lemenand@miriade-innovation.fr</a>
-                                        </address>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
+                    {% for partner in partners %}
+                        {% if (partner.statut == 'Co-Organisateur') or (partner.statut == 'Organisateur') %}
+                            <div class="col-md-6">
+                                <div class="contact-item">
+                                    <h4>{{ partner.libelle }}</h4>
+                                    <table class="table">
+                                        <tr>
+                                            {% if partner.logo != '_none' %}
+                                                <td valign="middle">
+                                                    <img class="img-responsive" src="{{ asset('upload/images/'~partner.logo) }}" alt="{{ partner.libelle }}">
+                                                </td>
+                                            {% endif %}
+                                            <td>
+                                                <address>
+                                                    {{ partner.nameContact }}<br>
+                                                    <abbr title="Téléphone">P:</abbr>{{ partner.phone }}<br>
+                                                    <abbr title="E-mail">E:</abbr><a href="{{ partner.email }}">Envoyer un mail</a>
+                                                </address>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
             </div>
         </div>

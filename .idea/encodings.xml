@@ -2,7 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/Miriade/EventBundle/Resources/views/Event/new.html.twig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Miriade/EventBundle/Resources/views/Event/newEvent.html.twig" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/Miriade/EventBundle/Resources/views/layout.html.twig" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>

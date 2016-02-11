@@ -13,13 +13,6 @@ miriade_event_new:
     defaults:
         _controller: MiriadeEventBundle:Event:new
 
-miriade_event_home:
-    pattern: /event/{slug}
-    defaults:
-        _controller: MiriadeEventBundle:Event:home
-    requirements:
-              slug:   ^[a-zA-Z0-9_-]+$
-
 miriade_event_new_session:
     pattern: /event/new/session/{id}
     defaults:
@@ -30,30 +23,10 @@ miriade_event_new_partenaire:
     defaults:
         _controller: MiriadeEventBundle:Event:newPartenaire
 
-miriade_event_partner_new:
-    pattern: /partner/new
-    defaults:
-        _controller: MiriadeEventBundle:Partner:new
-
-miriade_event_partner_create:
-    pattern: /partner/create
-    defaults:
-        _controller: MiriadeEventBundle:Partner:create
-
-miriade_event_session_new:
-    pattern: /session/new
-    defaults:
-        _controller: MiriadeEventBundle:Session:new
-
-miriade_event_session_create:
-    pattern: /session/create
-    defaults:
-        _controller: MiriadeEventBundle:Session:create
-
-miriade_event_show:
+miriade_event_home:
     pattern: /event/{slug}
     defaults:
-        _controller: MiriadeEventBundle:Event:show
+        _controller: MiriadeEventBundle:Event:home
     requirements:
               slug:   ^[a-zA-Z0-9_-]+$
 
