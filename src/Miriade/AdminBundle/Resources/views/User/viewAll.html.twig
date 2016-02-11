@@ -8,6 +8,7 @@
 				<h1 class="page-header">
 						Liste des utilisateurs pour l'évènement "{{event.title}}"
 				</h1>
+				<p><a href="{{ path('miriade_admin_export_user', {'idEvent' : event.id}) }}">Exporter la liste au format .csv</a></p>
 		</div>
 </div>
 <div class="row" id="userList">

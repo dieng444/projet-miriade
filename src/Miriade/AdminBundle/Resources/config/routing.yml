@@ -40,3 +40,9 @@ miriade_admin_event_delete:
     defaults: { _controller: MiriadeAdminBundle:Event:delete }
     requirements:
         id:   ^[0-9]*$
+
+miriade_admin_export_user:
+    path:     /admin/users/events/{idEvent}/users/export
+    defaults: { _controller: MiriadeAdminBundle:User:exportCsv }
+    requirements:
+        id:   ^[0-9]*$

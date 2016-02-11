@@ -13,6 +13,6 @@ class DefaultController extends Controller
         $events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
         $events = array_reverse($events);
         if(count($events) > 0)
-        	return new RedirectResponse($this->generateUrl('miriade_event_home', array("slug" => $events[0]->getSlug())));
+        	return new RedirectResponse($this->generateUrl('miriade_event_show', array("slug" => $events[0]->getSlug())));
     }
 }
