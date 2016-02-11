@@ -11,5 +11,6 @@
 /web/bundles/
 /web/upload/
 .idea/*
+.idea/workspace.xml
 app/SymfonyRequirements.php
 app/check.php

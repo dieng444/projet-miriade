@@ -44,16 +44,17 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="exampleInputFile">Logo</label>
-                          <span class="btn btn-default btn-file">
-                                Chercher sur mon ordinateur <input type="file" id="input-file-2" name="partner_logo">
-                          </span>
+                                {{ form_label(form.logo) }}
+                                <span class="btn btn-default btn-file">
+                                    Chercher sur mon ordinateur {{ form_widget(form.logo, {'id' : 'input-file-1', 'attr' : {'name': 'partner_logo'}}) }}
+                                </span>
                                 <p class="help-block">Image du partenaire</p>
-                                <div id="selected-image-2">
+                                <div id="selected-image-1">
                                     <img class="img-responsive" src="{{ asset('assets/images/default_image.png') }}" alt="">
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div id="partner-alert" class="alert alert-danger" style="display: none;">

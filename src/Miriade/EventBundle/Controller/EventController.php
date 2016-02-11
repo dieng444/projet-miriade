@@ -38,12 +38,14 @@ class EventController extends Controller
     public function homeAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
+        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
 
+        //$events = $em->getRepository('MiriadeEventBundle:Event')->findAll();
         $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(
             array('slug' => $slug)
         );
-
-        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event));
+        $partners = $em->getRepository('MiriadeEventBundle:Partner')->findBy(array('event' => $event->getId()));
+        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event, 'partners' => $partners));
     }
 
     /**
@@ -137,7 +139,14 @@ class EventController extends Controller
                     $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
                     $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
                     $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
-                    $partner->setLogo("_none");
+                    var_dump($_FILES['event_eventbundle_event']['name']['logo']);
+                    if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['logo']) > 0 ) {
+                        $logo = $_FILES['event_eventbundle_event'];
+                        if($partner->uploadLogo($logo))
+                            $partner->setLogo($partner->getLogo());
+                    } else {
+                        $partner->setLogo("_none");
+                    }
                     $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
                     $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
                 }

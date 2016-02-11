@@ -23,7 +23,7 @@ class PartnerType extends AbstractType
             ->add('address', 'text', array('label' => 'Adresse','required' => true))
             ->add('city', 'text', array('label' => 'Ville','required' => true))
             ->add('cp', 'text', array('label' => 'Code postal','required' => true))
-            //->add('logo', 'file', array('label' => 'Logo','required' => true))
+            ->add('logo', 'file', array('label' => 'Logo','required' => false, 'data_class' => null))
         ;
     }
 

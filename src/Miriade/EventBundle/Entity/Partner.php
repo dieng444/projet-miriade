@@ -247,13 +247,19 @@ class Partner
     {
         return $this->cp;
     }
+
+    /**
+     * Méthode qui permet de uploader un logo pour le partenaire courant et qui l'enregistre dans le dossier web/upload/images
+     * @param $logo, le logo a uploader
+     * @return bool
+     */
     public function uploadLogo($logo)
     {
-		$realName = $logo['name'];
+		$realName = $logo['name']['logo'];
 	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
-	    $tmp_name = $logo['tmp_name'];
+	    $tmp_name = $logo['tmp_name']['logo'];
 	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
-	    if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
+        if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
 			$this->logo = $name;
 			return true;
 		} else
