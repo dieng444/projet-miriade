@@ -106,17 +106,17 @@ class Event
     private $rdv;
 
     /**
-     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Session", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Session", mappedBy="event", cascade={"remove"})
      */
     private $sessions;
 
     /**
-     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event", cascade={"remove"})
      */
     private $partners;
 
     /**
-     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="event", cascade={"remove"})
      */
     private $participants;
 
@@ -514,7 +514,7 @@ class Event
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug()
     {

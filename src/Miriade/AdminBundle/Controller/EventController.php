@@ -76,7 +76,7 @@ class EventController extends Controller
 			->getRepository('MiriadeEventBundle:Event');
 
 		$event = $repository->find($id);
-
+    //unlink(__DIR__."/../../../../web/upload/images/".$event->getImage());
 		$em->remove($event);
 		$em->flush();
 
