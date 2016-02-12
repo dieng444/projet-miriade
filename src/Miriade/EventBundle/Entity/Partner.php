@@ -247,17 +247,17 @@ class Partner
      */
     public function uploadLogo($logo)
     {
-		$realName = $logo['name']['logo'];
-	    $ext = pathinfo($realName, PATHINFO_EXTENSION);
-	    $tmp_name = $logo['tmp_name']['logo'];
-	    $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
+		    $realName = $logo['name']['logo'];
+        $ext = pathinfo($realName, PATHINFO_EXTENSION);
+        $tmp_name = $logo['tmp_name']['logo'];
+        $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
         if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
-			$this->logo = $name;
-			return true;
-		} else
-			return false;
-	}
-
+			       $this->logo = $name;
+             return true;
+		    } else {
+          return false;
+        }
+    }
     /**
      * Set event
      *
@@ -274,7 +274,7 @@ class Partner
     /**
      * Get event
      *
-     * @return \Miriade\EventBundle\Entity\Event 
+     * @return \Miriade\EventBundle\Entity\Event
      */
     public function getEvent()
     {
@@ -297,7 +297,7 @@ class Partner
     /**
      * Get statut
      *
-     * @return string 
+     * @return string
      */
     public function getStatut()
     {
@@ -320,7 +320,7 @@ class Partner
     /**
      * Get libelle
      *
-     * @return string 
+     * @return string
      */
     public function getLibelle()
     {
@@ -343,7 +343,7 @@ class Partner
     /**
      * Get nameContact
      *
-     * @return string 
+     * @return string
      */
     public function getNameContact()
     {

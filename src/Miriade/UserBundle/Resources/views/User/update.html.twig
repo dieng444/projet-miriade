@@ -1,7 +1,9 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 
 {% block content %}
-
+{%if app.session.get('currentEvent') != null %}
+  <input type="hidden" id="event-slug" value="{{app.session.get('currentEvent').slug}}">
+{%endif%}
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
@@ -13,7 +15,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="/web/assets/images/business-profile.png" class="img-circle img-responsive"> </div>
-                <div class=" col-md-9 col-lg-9 "> 
+                <div class=" col-md-9 col-lg-9 ">
 
                     {# Les erreurs générales du formulaire. #}
                     {{ form_errors(form) }}
@@ -48,7 +50,7 @@
                     {{ form_label(form.phone, "Téléphone :") }}
                     {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
 
-                  
+
                 </div>
               </div>
             </div>
@@ -63,5 +65,6 @@
 
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="{{ asset('assets/js/link.js') }}"></script>
 {% endblock %}

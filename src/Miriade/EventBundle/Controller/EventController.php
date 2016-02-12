@@ -43,6 +43,7 @@ class EventController extends Controller
         $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(
             array('slug' => $slug)
         );
+        $this->get('session')->set('currentEvent', $event);
         $partners = $em->getRepository('MiriadeEventBundle:Partner')->findBy(array('event' => $event->getId()));
         return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event, 'partners' => $partners));
     }
@@ -56,7 +57,7 @@ class EventController extends Controller
         $event = new Event();
         $em = $this->getDoctrine()->getManager();
         $form = $this->CreateForm(new EventType(), $event);
-        
+
         if ($this->getRequest()->isMethod("POST")) {
             $form->HandleRequest($this->getRequest());
             if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
@@ -73,10 +74,10 @@ class EventController extends Controller
             $this->get('session')->set('currentEvent', $event);
 
             return $this->redirect($this->generateUrl('miriade_event_new_session', array ('id' => $event->getId())));
-        } 
-        
+        }
+
         return $this->render('MiriadeEventBundle:Event:newEvent.html.twig', array('form' => $form->createView()));
-        
+
     }
 
     /**
@@ -153,7 +154,7 @@ class EventController extends Controller
             }
             $em->flush();
 
-            return $this->redirect($this->generateUrl('miriade_home', array('id' => $id)));
+            return $this->redirect($this->generateUrl('miriade_event_home', array('slug' => $event->getSlug())));
         } else {
             return $this->render('MiriadeEventBundle:Event:newPartenaire.html.twig', array('form' => $form->createView(), 'id' => $id));
         }
@@ -193,7 +194,7 @@ class EventController extends Controller
     /**
      * @Security("has_role('ROLE_PARTICIPANT')")
      */
-    public function participationAction($slug) 
+    public function participationAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
@@ -211,7 +212,7 @@ class EventController extends Controller
             $em->persist($eventUser);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('miriade_home', array('slug' => $slug)));
+            return $this->redirect($this->generateUrl('miriade_event_home', array('slug' => $slug)));
         }
     }
 }

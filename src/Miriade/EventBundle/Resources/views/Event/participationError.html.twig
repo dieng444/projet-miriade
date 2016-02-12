@@ -22,6 +22,7 @@
 {% block intromessage %}
 	<h1>{{event.title}}</h1>
 	<input type="hidden" id="event-image" value="{{event.image}}">
+	<input type="hidden" id="event-slug" value="{{event.slug}}">
 {% endblock %}
 
 {% block content %}
@@ -41,6 +42,7 @@
 {% block javascripts %}
 	<script src="{{ asset('assets/js/bootstrap-datetimepicker.js') }}"></script>
 	<script src="{{ asset('assets/js/app.js') }}"></script>
+	<script src="{{ asset('assets/js/link.js') }}"></script>
 {% endblock %}
 
 {% block footer %}

@@ -15,7 +15,9 @@ class UserController extends Controller
     public function viewAction()
     {
     	$user = $this->getUser();
-        return $this->render('MiriadeUserBundle:User:view.html.twig', array('user' => $user));
+      //$event  = $this->get('session')->get("currentEvent");
+      //var_dump($event);die;
+      return $this->render('MiriadeUserBundle:User:view.html.twig', array('user' => $user));
     }
 
     /**
@@ -34,6 +36,6 @@ class UserController extends Controller
             return $this->redirect($this->generateUrl('miriade_user_profil'));
         }
 
-        return $this->render('MiriadeUserBundle:User:update.html.twig', array('form' => $form->createView())); 
+        return $this->render('MiriadeUserBundle:User:update.html.twig', array('form' => $form->createView()));
     }
 }

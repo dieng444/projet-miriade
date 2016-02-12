@@ -4,5 +4,7 @@ $( document ).ready(function(){
   * permet de revenir à la page d'accueil de l'événement à aprtir de
   * n'importe quelle autre page.
   **/
-	$("#event-home").attr("href","/app_dev.php/event/"+$("#event-slug").val());
+  if ($("#event-slug").length > 0) {
+    $("#event-home").attr("href","/app_dev.php/event/"+$("#event-slug").val());
+  }
 })

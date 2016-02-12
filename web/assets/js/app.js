@@ -260,7 +260,7 @@ App = {
 $( document ).ready(function(){
 	App.performDatePicker();
 	//L'image de de l'événement sur la page show
-	$("#current-evnt-container").first().css("background","url('../../upload/images/"+$("#event-image").val()+"')" + " " + "no-repeat scroll center center / cover rgba(0, 0, 0, 0)");
+	$("#current-evnt-container").first().css("background","url('../../../upload/images/"+$("#event-image").val()+"')" + " " + "no-repeat scroll center center / cover rgba(0, 0, 0, 0)");
 	$("#btn-add-session").click(App.addSession);
 	$("#btn-add-partner").click(App.addPartner);
 });
