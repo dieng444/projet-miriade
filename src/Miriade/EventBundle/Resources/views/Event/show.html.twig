@@ -27,6 +27,7 @@
 {% block content %}
 	<div class="container">
         <div class="row">
+
             <div class="col-md-9">
                 <h2>Description</h2>
                 <div class="event-description">
@@ -106,49 +107,50 @@
                     </nav> <!-- end .participants-pagination-wrap -->
 
                 </div> <!-- end .row -->
-
             </div> <!-- end .col-md-9 -->
-        </div>
-		<div class="col-md-3">
-            <div class="well aside-content">
-                {% if isExpired == false %}
-                    <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Je participe à cet évènement !</a>
-                    {% else %}
-                    <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Les inscriptions pour cet évènement sont closes !</a>
-                {% endif %}
-            </div>
-			<div class="well organisateurs-block aside-content">
-				<h4>Partenaires</h4>
-				<div class="row">
-                    {% for partner in partners %}
-                        <div class="col-md-12 organisateurs-block-item">
-                            {{ partner.libelle }}
-                            {% if partner.logo != '_none' %}
-                                <img class="img-responsive" src="{{ asset('upload/images/'~partner.logo) }}" alt="">
-                            {% endif %}
-                        </div>
-                    {% endfor %}
-				</div>
-			</div>
-			<div class="well aside-content">
-				<h4>Vues de la page</h4>
-				<div class="row">
-					<table class="table table-condensed">
-							<tr>
-									<td class="col-md-2">Avant l'événement</td>
-									<td class="col-md-1">17218</td>
-							</tr>
-							<tr>
-									<td class="col-md-2">Après l'événement</td>
-									<td class="col-md-1">13285</td>
-							</tr>
-							<tr>
-									<td class="col-md-2">RDV acceptés</td>
-									<td class="col-md-1">107</td>
-							</tr>
-					</table>
-				</div>
-			</div>
+        
+    		<div class="col-md-3">
+                <div class="well aside-content">
+                    {% if isExpired == false %}
+                        <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Je participe à cet évènement !</a>
+                        {% else %}
+                        <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Les inscriptions pour cet évènement sont closes !</a>
+                    {% endif %}
+                </div>
+    			<div class="well organisateurs-block aside-content">
+    				<h4>Partenaires</h4>
+    				<div class="row">
+                        {% for partner in partners %}
+                            <div class="col-md-12 organisateurs-block-item">
+                                {{ partner.libelle }}
+                                {% if partner.logo != '_none' %}
+                                    <img class="img-responsive" src="{{ asset('upload/images/'~partner.logo) }}" alt="">
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+    				</div>
+    			</div>
+    			<div class="well aside-content">
+    				<h4>Vues de la page</h4>
+    				<div class="row">
+    					<table class="table table-condensed">
+    							<tr>
+    									<td class="col-md-2">Avant l'événement</td>
+    									<td class="col-md-1">17218</td>
+    							</tr>
+    							<tr>
+    									<td class="col-md-2">Après l'événement</td>
+    									<td class="col-md-1">13285</td>
+    							</tr>
+    							<tr>
+    									<td class="col-md-2">RDV acceptés</td>
+    									<td class="col-md-1">107</td>
+    							</tr>
+    					</table>
+    				</div>
+    			</div>
+            </div> <!-- end .col-md-3 -->
+            
 		</div>
     <!-- </div> -->
 	</div> <!-- /container -->
