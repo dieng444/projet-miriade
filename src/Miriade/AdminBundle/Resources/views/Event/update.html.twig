@@ -70,7 +70,7 @@
 					<div class="form-group">
 						{{ form_label(form.image, "Image :") }}
 						<span class="btn btn-default btn-file">
-				    	Chercher sur mon ordinateur{{ form_widget(form.image) }}
+				    	Chercher sur mon ordinateur{{ form_widget(form.image, {'id' : 'input-file-1'}) }}
 						</span>
 						<p class="help-block">Image de l'événement sur la page d'accueil</p>
 						<div id="selected-image-1">
@@ -105,8 +105,8 @@
 			{# Fermeture de la balise <form> du formulaire HTML #}
 			{{ form_end(form) }}
 		</div>
-
-
 	</div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="{{ asset('assets/js/form.js') }}"></script>
 {% endblock %}

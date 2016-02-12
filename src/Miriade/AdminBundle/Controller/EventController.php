@@ -30,20 +30,33 @@ class EventController extends Controller
     public function updateAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        
+
         $repository = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('MiriadeEventBundle:Event');
 
         $event = $repository->find($id);
-
+        //Permet de garder l'ancienne image au cas où l'admin ne change pas
+        //l'image de l'événement lors de la modification
+        $oldImage = $event->getImage();
         $form = $this->get('form.factory')->create(new EventType, $event);
 
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['image']) > 0 ) {
+                $image = $_FILES['event_eventbundle_event'];
+                if($event->uploadImage($image)) {
+                    $event->setImage($event->getImage());
+                }
+            } else {
+              $event->setImage($oldImage); //on remets l'ancienne image
+            }
+
             $em->persist($event);
             $em->flush();
+
+            $this->get('session')->set('currentEvent', $event);
             return $this->redirect($this->generateUrl('miriade_admin_events'));
         }
 
@@ -56,7 +69,7 @@ class EventController extends Controller
     public function deleteAction($id)
     {
     	$em = $this->getDoctrine()->getManager();
-    	
+
     	$repository = $this
 			->getDoctrine()
 			->getManager()
@@ -67,6 +80,6 @@ class EventController extends Controller
 		$em->remove($event);
 		$em->flush();
 
-		return $this->redirect($this->generateUrl('miriade_admin_events'));	
+		return $this->redirect($this->generateUrl('miriade_admin_events'));
     }
 }

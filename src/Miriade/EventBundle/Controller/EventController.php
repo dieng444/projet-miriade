@@ -77,7 +77,8 @@ class EventController extends Controller
                     $event->setImage($event->getImage());
                 } else
                     $event->setImage("_none");
-            } else
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
             $em->flush();
@@ -232,7 +233,7 @@ class EventController extends Controller
             $em->persist($eventUser);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('miriade_event_home', array('slug' => $slug)));
+            return $this->redirect($this->generateUrl('miriade_event_show', array('slug' => $slug)));
         }
     }
 }
