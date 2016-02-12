@@ -178,8 +178,6 @@ class EventController extends Controller
 
             if ($nbSession > 0) {
                 for ($i=1; $i <= $nbSession ; $i++) {
-                    //$form->HandleRequest($this->getRequest());
-
                     $session = new Session();
                     $session->setName(trim(strip_tags($data['session_'.$i]['title'])));
                     $session->setHoraireDebut($data['session_'.$i]['horaireDebut']);
@@ -220,10 +218,18 @@ class EventController extends Controller
                     $partner->setCp((int)trim(strip_tags($data['partner_'.$i]['cp'])));
                     $partner->setEmail(trim(strip_tags($data['partner_'.$i]['email'])));
                     $partner->setPhone(trim(strip_tags($data['partner_'.$i]['phone'])));
-                    $partner->setStatut(trim(strip_tags($data['event_eventbundle_event']['statut'])));
+                    $partner->setStatut(trim(strip_tags($data['partner_'.$i]['statut'])));
 
-                    if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['logo']) > 0 ) {
+                    /*if(isset($_FILES['event_eventbundle_event']) && strlen($_FILES['event_eventbundle_event']['name']['logo']) > 0 ) {
                         $logo = $_FILES['event_eventbundle_event'];
+                        if($partner->uploadLogo($logo))
+                            $partner->setLogo($partner->getLogo());
+                    } else {
+                        $partner->setLogo("_none");
+                    }*/
+
+                   if(isset($data['partner_'.$i]['logo'])) {
+                        $logo = $data['partner_'.$i]['logo'];
                         if($partner->uploadLogo($logo))
                             $partner->setLogo($partner->getLogo());
                     } else {
@@ -231,11 +237,10 @@ class EventController extends Controller
                     }
                     $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
                     $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
+                    $em->flush();
                 }
             }
-            $em->flush();
-
-            return $this->redirect($this->generateUrl('miriade_event_home', array('slug' => $event->getSlug())));
+            return $this->redirect($this->generateUrl('miriade_event_show', array('slug' => $event->getSlug())));
         } else {
             return $this->render('MiriadeEventBundle:Event:newPartenaire.html.twig', array('form' => $form->createView(), 'id' => $id));
         }
