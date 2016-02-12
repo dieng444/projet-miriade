@@ -119,6 +119,10 @@ class Event
      * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="event", cascade={"remove"})
      */
     private $participants;
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventView", mappedBy="event", cascade={"remove"})
+     */
+    private $views;
 
 
     /**
@@ -535,5 +539,38 @@ class Event
     public function getParticipants()
     {
         return $this->participants;
+    }
+
+    /**
+     * Add views
+     *
+     * @param \Miriade\EventBundle\Entity\EventView $views
+     * @return Event
+     */
+    public function addView(\Miriade\EventBundle\Entity\EventView $views)
+    {
+        $this->views[] = $views;
+
+        return $this;
+    }
+
+    /**
+     * Remove views
+     *
+     * @param \Miriade\EventBundle\Entity\EventView $views
+     */
+    public function removeView(\Miriade\EventBundle\Entity\EventView $views)
+    {
+        $this->views->removeElement($views);
+    }
+
+    /**
+     * Get views
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getViews()
+    {
+        return $this->views;
     }
 }

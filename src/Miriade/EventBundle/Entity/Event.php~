@@ -4,6 +4,7 @@ namespace Miriade\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Event
@@ -23,6 +24,12 @@ class Event
     private $id;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -32,16 +39,24 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="datetime")
+     * @ORM\Column(name="startDate",  type="string", length=100)
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="datetime")
+     * @ORM\Column(name="endDate",  type="string", length=100)
      */
     private $endDate;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="limitDate",  type="string", length=100)
+     */
+    private $limitDate;
 
     /**
      * @var string
@@ -80,31 +95,45 @@ class Event
 
     /**
      * @var integer
-     * @ORM\Column(name="nbTable", type="integer")
+     * @ORM\Column(name="nbTable", type="integer", nullable=true)
      */
     private $nbTable;
 
     /**
      * @var integer
-     * @ORM\Column(name="rdv", type="integer")
+     * @ORM\Column(name="rdv", type="integer", nullable=true)
      */
     private $rdv;
 
     /**
-     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\session", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Session", mappedBy="event", cascade={"remove"})
      */
     private $sessions;
 
     /**
-     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event")
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\Partner", mappedBy="event", cascade={"remove"})
      */
     private $partners;
 
-    //~ public function __construct()
-    //~ {
-        //~ //$this->session = new ArrayCollection();
-        //~ $this->startDate = new
-    //~ }
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventUser", mappedBy="event", cascade={"remove"})
+     */
+    private $participants;
+    /**
+     * @ORM\OneToMany(targetEntity="Miriade\EventBundle\Entity\EventView", mappedBy="event", cascade={"remove"})
+     */
+    private $views;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->sessions = new ArrayCollection();
+        $this->partners = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -147,7 +176,7 @@ class Event
      */
     public function setStartDate($startDate)
     {
-        $this->startDate = new \DateTime($startDate);
+        $this->startDate = $startDate;
 
         return $this;
     }
@@ -170,7 +199,7 @@ class Event
      */
     public function setEndDate($endDate)
     {
-        $this->endDate = new \DateTime($endDate);
+        $this->endDate = $endDate;
         return $this;
     }
 
@@ -182,6 +211,29 @@ class Event
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+
+    /**
+     * Get limitDate
+     *
+     * @return \DateTime
+     */
+    public function getLimitDate()
+    {
+        return $this->limitDate;
+    }
+
+    /**
+     * Set limitDate
+     *
+     * @param \DateTime $limitDate
+     * @return Event
+     */
+    public function setLimitDate($limitDate)
+    {
+        $this->limitDate = $limitDate;
+        return $this;
     }
 
     /**
@@ -383,4 +435,109 @@ class Event
 		} else
 			return false;
 	}
+
+    /**
+     * Add sessions
+     *
+     * @param \Miriade\EventBundle\Entity\session $sessions
+     * @return Event
+     */
+    public function addSession(\Miriade\EventBundle\Entity\session $sessions)
+    {
+        $this->sessions[] = $sessions;
+
+        return $this;
+    }
+
+    /**
+     * Remove sessions
+     *
+     * @param \Miriade\EventBundle\Entity\session $sessions
+     */
+    public function removeSession(\Miriade\EventBundle\Entity\session $sessions)
+    {
+        $this->sessions->removeElement($sessions);
+    }
+
+    /**
+     * Get sessions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSessions()
+    {
+        return $this->sessions;
+    }
+
+    /**
+     * Add partners
+     *
+     * @param \Miriade\EventBundle\Entity\Partner $partners
+     * @return Event
+     */
+    public function addPartner(\Miriade\EventBundle\Entity\Partner $partners)
+    {
+        $this->partners[] = $partners;
+
+        return $this;
+    }
+
+    /**
+     * Remove partners
+     *
+     * @param \Miriade\EventBundle\Entity\Partner $partners
+     */
+    public function removePartner(\Miriade\EventBundle\Entity\Partner $partners)
+    {
+        $this->partners->removeElement($partners);
+    }
+
+    /**
+     * Get partners
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPartners()
+    {
+        return $this->partners;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Event
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    public function addParticipant(EventUser $participant)
+    {
+        $this->participants[] = $participant;
+        return $this;
+    }
+
+    public function removeParticipant(EventUser $participant)
+    {
+        $this->participants->removeElement($participant);
+    }
+
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
 }

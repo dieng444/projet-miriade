@@ -109,7 +109,7 @@
 
                 </div> <!-- end .row -->
             </div> <!-- end .col-md-9 -->
-        
+
     		<div class="col-md-3">
                 <div class="well aside-content">
                     {% if isExpired == false %}
@@ -137,11 +137,11 @@
     					<table class="table table-condensed">
     							<tr>
     									<td class="col-md-2">Avant l'événement</td>
-    									<td class="col-md-1">17218</td>
+    									<td class="col-md-1">{{ eventStats.nbViewBeforeEvent }}</td>
     							</tr>
     							<tr>
     									<td class="col-md-2">Après l'événement</td>
-    									<td class="col-md-1">13285</td>
+    									<td class="col-md-1">{{ eventStats.nbViewAfterEvent }}</td>
     							</tr>
     							<tr>
     									<td class="col-md-2">RDV acceptés</td>
@@ -151,7 +151,7 @@
     				</div>
     			</div>
             </div> <!-- end .col-md-3 -->
-            
+
 		</div>
     <!-- </div> -->
 	</div> <!-- /container -->

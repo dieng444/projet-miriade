@@ -48,6 +48,7 @@ class EventController extends Controller
                 $image = $_FILES['event_eventbundle_event'];
                 if($event->uploadImage($image)) {
                     $event->setImage($event->getImage());
+                    unlink(__DIR__."/../../../../web/upload/images/".$oldImage);
                 }
             } else {
               $event->setImage($oldImage); //on remets l'ancienne image
@@ -76,7 +77,8 @@ class EventController extends Controller
 			->getRepository('MiriadeEventBundle:Event');
 
 		$event = $repository->find($id);
-    //unlink(__DIR__."/../../../../web/upload/images/".$event->getImage());
+    //Suppression de l'image de l'événement
+    unlink(__DIR__."/../../../../web/upload/images/".$event->getImage());
 		$em->remove($event);
 		$em->flush();
 

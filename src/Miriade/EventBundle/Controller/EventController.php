@@ -17,6 +17,7 @@ use Miriade\EventBundle\Form\EventType;
 use Miriade\EventBundle\Form\SessionType;
 use Miriade\EventBundle\Form\PartnerType;
 use Miriade\EventBundle\Entity\EventUser as EventUser;
+use Miriade\EventBundle\Entity\EventView;
 
 class EventController extends Controller
 {
@@ -55,10 +56,78 @@ class EventController extends Controller
         if($dateNow > $dateLimit) {
             $isExpired = true;
         }
-
-        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event, 'partners' => $partners, 'isExpired' => $isExpired));
+        $eventStats = $this->getEventStats($event,$em);
+        //var_dump($statsView);die;
+        //var_dump($this->getUserIP());die;
+        return $this->render('MiriadeEventBundle:Event:show.html.twig',
+                              array('event' => $event, 'partners' => $partners,
+                                    'isExpired' => $isExpired,'eventStats' => $eventStats));
     }
+    /**
+    * Permet de gérer le nombre de vue d'un événement
+    * @return array
+    ***/
+    public function getEventStats($event,$em) {
+      //Récupèration de la liste des vues de l'événement
+      $eventViews = $event->getViews();
+      $ipsTable = array();
+      /*
+      * Liste des adresses ip des anciens visiteurs, pour éviter que
+      * le même visiteur recharge la page plusieurs fois
+      **/
+      if (sizeof($eventViews) > 0) {
+          foreach ($eventViews as $eventView)
+            $ipsTable[] = $eventView->getUserIP();
+      }
+      if (!in_array($this->getUserIP(),$ipsTable)) {
+          $eventView = new eventView();
+          $eventView->setEvent($event); //Lévénement vue
+          $eventView->setViewDate(new \DateTime("now")); //Date de la visite
+          $eventView->setUserIp($this->getUserIP());
+          $em->persist($eventView);
+          $em->flush();
+      }
+      
+      $nbViewBeforeEvent = 0; //nb de vue avant l'événement
+      $nbViewAfterEvent = 0; //nb de vue après l'événement
 
+      if (sizeof($eventViews) > 0) {
+        foreach ($eventViews as $eventView) {
+          $viewDate = $eventView->getViewDate()->format('Y-m-d');
+          $evenEndDate = str_replace('/','-',$event->getEndDate());
+          $evenEndDate = date('Y-m-d',strtotime($evenEndDate));
+          if ($evenEndDate > $viewDate)
+              $nbViewBeforeEvent++;
+          else
+              $nbViewAfterEvent++;
+        }
+      }
+      $eventStats = array(
+                          'nbViewBeforeEvent' => $nbViewBeforeEvent,
+                          'nbViewAfterEvent' => $nbViewAfterEvent
+                        );
+
+      return $eventStats;
+    }
+    /**
+    * Renvoie l'adresse ip de l'utilisateur courant
+    * @return $ip : l'ip de l'utilisateur
+    ***/
+    public function getUserIP()
+    {
+        $client  = @$_SERVER['HTTP_CLIENT_IP'];
+        $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
+        $remote  = $_SERVER['REMOTE_ADDR'];
+
+        if(filter_var($client, FILTER_VALIDATE_IP))
+            $ip = $client;
+        elseif(filter_var($forward, FILTER_VALIDATE_IP))
+            $ip = $forward;
+        else
+            $ip = $remote;
+
+        return $ip;
+    }
     /**
      * Persiste un événement en BDD et redirige vers le formulaire des sessions
      * @Method("POST")
@@ -78,7 +147,7 @@ class EventController extends Controller
                 } else
                     $event->setImage("_none");
             }
-            
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($event);
             $em->flush();
