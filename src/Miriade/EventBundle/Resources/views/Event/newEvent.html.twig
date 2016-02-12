@@ -43,6 +43,17 @@
 											</div>
 										</div>
 									</div>
+									<div class="form-group">
+										{{ form_label(form.limitDate, "Date limite inscription/désinscription :") }}
+										<div class="form-group">
+											<div class='input-group date' id='datetimepicker3'>
+												{{ form_widget(form.limitDate, {'attr' : {'class' : 'form-control'}}) }}
+												<span class="input-group-addon">
+														<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">

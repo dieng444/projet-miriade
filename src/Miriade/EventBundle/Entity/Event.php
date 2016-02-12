@@ -50,6 +50,14 @@ class Event
      */
     private $endDate;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="limitDate",  type="string", length=100)
+     */
+    private $limitDate;
+
     /**
      * @var string
      *
@@ -87,13 +95,13 @@ class Event
 
     /**
      * @var integer
-     * @ORM\Column(name="nbTable", type="integer")
+     * @ORM\Column(name="nbTable", type="integer", nullable=true)
      */
     private $nbTable;
 
     /**
      * @var integer
-     * @ORM\Column(name="rdv", type="integer")
+     * @ORM\Column(name="rdv", type="integer", nullable=true)
      */
     private $rdv;
 
@@ -199,6 +207,29 @@ class Event
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+
+    /**
+     * Get limitDate
+     *
+     * @return \DateTime
+     */
+    public function getLimitDate()
+    {
+        return $this->limitDate;
+    }
+
+    /**
+     * Set limitDate
+     *
+     * @param \DateTime $limitDate
+     * @return Event
+     */
+    public function setLimitDate($limitDate)
+    {
+        $this->limitDate = $limitDate;
+        return $this;
     }
 
     /**

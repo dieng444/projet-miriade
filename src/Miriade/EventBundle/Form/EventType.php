@@ -22,6 +22,7 @@ class EventType extends AbstractType
             ->add('description', 'textarea', array('label' => 'Description','required' => true))
             ->add('startDate', 'text', array('label' => 'Date de début','required' => true))
             ->add('endDate', 'text', array('label' => 'Date de fin','required' => true))
+            ->add('limitDate', 'text', array('label' => 'Date limite inscription/désinscription','required' => true))
             ->add('adress', 'text', array('label' => 'Adresse', 'required' => true))
             ->add('city', 'text', array('label' => 'Ville', 'required' => true))
             ->add('cp', 'text', array('label' => 'Code postal', 'required' => true))

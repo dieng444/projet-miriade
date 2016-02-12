@@ -45,7 +45,18 @@ class EventController extends Controller
         );
         $this->get('session')->set('currentEvent', $event);
         $partners = $em->getRepository('MiriadeEventBundle:Partner')->findBy(array('event' => $event->getId()));
-        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event, 'partners' => $partners));
+
+        $dateNow = time();
+        $dateLimit = str_replace('/', '-', $event->getLimitDate());
+        $dateLimit = date('Y-m-d', strtotime($dateLimit));
+        $dateLimit = strtotime($dateLimit);
+
+        $isExpired = false;
+        if($dateNow > $dateLimit) {
+            $isExpired = true;
+        }
+
+        return $this->render('MiriadeEventBundle:Event:show.html.twig', array('event' => $event, 'partners' => $partners, 'isExpired' => $isExpired));
     }
 
     /**
@@ -199,6 +210,15 @@ class EventController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $event = $em->getRepository('MiriadeEventBundle:Event')->findOneBy(array('slug' => $slug));
+
+        $dateNow = time();
+        $dateLimit = str_replace('/', '-', $event->getLimitDate());
+        $dateLimit = date('Y-m-d', strtotime($dateLimit));
+        $dateLimit = strtotime($dateLimit);
+
+        if($dateNow > $dateLimit) {
+             return $this->render('MiriadeEventBundle:Event:participationExpired.html.twig', array('event' => $event));
+        }
 
         $eventUser = $em->getRepository('MiriadeEventBundle:EventUser')->findBy(array('participant' => $user, 'event' => $event));
 
