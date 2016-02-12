@@ -23,7 +23,7 @@ miriade_event_new_partenaire:
     defaults:
         _controller: MiriadeEventBundle:Event:newPartenaire
 
-miriade_event_home:
+miriade_event_show:
     pattern: /event/{slug}
     defaults:
         _controller: MiriadeEventBundle:Event:home
