@@ -59,9 +59,20 @@ class EventController extends Controller
         $eventStats = $this->getEventStats($event,$em);
         //var_dump($statsView);die;
         //var_dump($this->getUserIP());die;
+
+        $user = $this->getUser();
+        $eventUser = $em->getRepository('MiriadeEventBundle:EventUser')->findOneBy(
+            array('event' => $event, 'participant' => $user)
+        );
+
+        $isInscrit = false;
+        if($eventUser != null) {
+          $isInscrit = true;
+        }
+
         return $this->render('MiriadeEventBundle:Event:show.html.twig',
                               array('event' => $event, 'partners' => $partners,
-                                    'isExpired' => $isExpired,'eventStats' => $eventStats));
+                                    'isExpired' => $isExpired, 'isInscrit' => $isInscrit, 'eventStats' => $eventStats));
     }
     /**
     * Permet de gérer le nombre de vue d'un événement

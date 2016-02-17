@@ -113,9 +113,13 @@
     		<div class="col-md-3">
                 <div class="well aside-content">
                     {% if isExpired == false %}
-                        <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Je participe à cet évènement !</a>
+                        {% if isInscrit == false %} 
+                            <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Je participe à cet évènement !</a>
+                            {% else %}
+                                <a type="button" class="btn btn-lg btn-participer" href="#">Je suis déjà inscrit à cet évènement</a>
+                            {% endif %}
                         {% else %}
-                        <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Les inscriptions pour cet évènement sont closes !</a>
+                             <a type="button" class="btn btn-lg btn-participer" href="{{ path('miriade_event_participation', {'slug' : event.slug}) }}">Les inscriptions pour cet évènement sont closes !</a>
                     {% endif %}
                 </div>
     			<div class="well organisateurs-block aside-content">
