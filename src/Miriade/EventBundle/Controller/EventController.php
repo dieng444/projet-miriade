@@ -228,13 +228,13 @@ class EventController extends Controller
                         $partner->setLogo("_none");
                     }*/
 
-                   if(isset($data['partner_'.$i]['logo'])) {
+                    /*if(isset($data['partner_'.$i]['logo'])) {
                         $logo = $data['partner_'.$i]['logo'];
                         if($partner->uploadLogo($logo))
                             $partner->setLogo($partner->getLogo());
                     } else {
                         $partner->setLogo("_none");
-                    }
+                    }*/
                     $partner->setEvent($event);//Liaison entre l'événement et le partenaire courant
                     $em->persist($partner); //On persist chaque partenaire pour une insertion globale après
                     $em->flush();

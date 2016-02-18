@@ -6,6 +6,10 @@ var j = 0;
 var sessionId;
 // Partner id
 var partnerId;
+var dataUrl;
+var reader;
+var input;
+var the_url;
 App = {
 	performDatePicker : function() {
 		$('#datetimepicker1').datetimepicker({
@@ -136,6 +140,7 @@ App = {
 		}
 		$('textarea[full_name="session_desc"]').val("");
 	},
+
 	addPartner : function() {
 		container = "";
 		var partner_libelle = $('input[full_name="partner_libelle"]').val();
@@ -146,7 +151,8 @@ App = {
 		var partner_email = $('input[full_name="partner_email"]').val();
 		var partner_phone = $('input[full_name="partner_phone"]').val();
 		var partner_statut = $('select option:selected').text();
-		var partner_logo = $('input[full_name="partner_logo"]').val();
+
+		//console.log(reader);
 
 		j++;
 		container+='<div class="list-group-item">';
@@ -167,8 +173,8 @@ App = {
 		container+='		<input type="hidden" name="partner_'+j+'[cp]" value="'+partner_cp+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[email]" value="'+partner_email+'"/>';
 		container+='		<input type="hidden" name="partner_'+j+'[phone]" value="'+partner_phone+'"/>';
-		container+='		<input type="hidden" name="partner_'+j+'[logo]" value="'+partner_logo+'"/>';
-		container+='		<input type="hidden" name="partner_'+j+'[statut]" value="'+partner_statut+'"/>';
+		//container+='		<input type="hidden" name="partner_'+j+'[logo][]"multiple value="'+reader+'"/>';
+		container+='		<input type="hidden" name="partner_'+j+'[statut]"  value="'+partner_statut+'"/>';
 		container+=' </div>';
 		container+='</div>';
 
@@ -285,4 +291,13 @@ $( "#partner-form-wrapper form" ).submit(function(e) {
 		e.preventDefault();
 		$( "#partner-alert" ).slideDown();
 	}
+});
+
+$( "#input-file-1" ).change(function(event) {
+		input = event.target.files[0];
+		reader = new FileReader();
+	reader.onload = function(event) {
+		the_url = event.target.result;
+	}
+		reader.readAsText(input);
 });
