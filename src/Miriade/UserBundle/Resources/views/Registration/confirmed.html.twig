@@ -3,7 +3,7 @@
 {% extends 'MiriadeEventBundle::layout.html.twig' %}
 
 {% block content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <div class="alert alert-success col-md-5 col-md-offset-3 text-center" role="alert">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</div>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
