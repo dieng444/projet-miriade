@@ -73,7 +73,7 @@ class Partner
     /**
      * @var string
      *
-     * @ORM\Column(name="logo", type="string", length=255)
+     * @ORM\Column(name="logo", type="string", length=255, nullable=true)
      */
     private $logo;
 
@@ -247,15 +247,15 @@ class Partner
      */
     public function uploadLogo($logo)
     {
-		    $realName = $logo['name']['logo'];
+        $realName = $logo['name']['logo'];
         $ext = pathinfo($realName, PATHINFO_EXTENSION);
         $tmp_name = $logo['tmp_name']['logo'];
         $name = sha1(uniqid(mt_rand(), true)).'.'.$ext;
         if(move_uploaded_file($tmp_name,__DIR__."/../../../../web/upload/images/".$name)) {
-			       $this->logo = $name;
-             return true;
-		    } else {
-          return false;
+            $this->logo = $name;
+            return true;
+        } else {
+            return false;
         }
     }
     /**

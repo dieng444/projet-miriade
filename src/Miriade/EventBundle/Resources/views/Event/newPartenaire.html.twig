@@ -50,18 +50,18 @@
                                 <input type='hidden' name="nbPartner" class="form-control"/>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!--<div class="col-md-6">
                             <div class="form-group">
-                                {{ form_label(form.logo) }}
+                               {#{{ form_label(form.logo) }} #}
                                 <span class="btn btn-default btn-file">
-                                    Chercher sur mon ordinateur {{ form_widget(form.logo, {'id' : 'input-file-1', 'attr' : {'name': 'partner_logo'}}) }}
+                                    Chercher sur mon ordinateur  {#{{ form_widget(form.logo, {'id' : 'input-file-1', 'attr' : {'full_name': 'partner_logo[]', 'onchange' : 'App.openFile(event)'}}) }}#}
                                 </span>
                                 <p class="help-block">Image du partenaire</p>
                                 <div id="selected-image-1">
-                                    <img class="img-responsive" src="{{ asset('assets/images/default_image.png') }}" alt="">
+                                    <img class="img-responsive" src=" {#{{ asset('assets/images/default_image.png') }} #}" alt="" onchange="App.openFile(event)">
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
                     </div>
                 </div>

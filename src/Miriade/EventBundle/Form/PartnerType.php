@@ -33,7 +33,7 @@ class PartnerType extends AbstractType
                     "Organisateur" => "Organisateur",
                 ),
             ))
-            ->add('logo', 'file', array('label' => 'Logo','required' => false, 'data_class' => null))
+            //->add('logo', 'file', array('label' => 'Logo','required' => false, 'data_class' => null))
         ;
     }
 
